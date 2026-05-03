@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BioScan — Health Intelligence OS</title>
+<title>BioScan — Rodrigo Dantas Santos</title>
 <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><rect width='32' height='32' rx='8' fill='%2300d2a0'/><path d='M16 4v8M16 20v8M4 16h8M20 16h8' stroke='%23080c10' stroke-width='3' stroke-linecap='round'/><circle cx='16' cy='16' r='4' fill='%23080c10'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -18,75 +17,50 @@
   --danger:#ff4f4f;--warn:#ffb347;--good:#00d2a0;
   --font:'Syne',sans-serif;--mono:'DM Mono',monospace;
   --einstein-bg:rgba(0,140,255,0.12);--einstein-border:rgba(0,140,255,0.3);--einstein-text:#4db8ff;
-  --fleury-bg:rgba(255,60,60,0.12);--fleury-border:rgba(255,60,60,0.3);--fleury-text:#ff7070;
   --delboni-bg:rgba(255,150,0,0.12);--delboni-border:rgba(255,150,0,0.3);--delboni-text:#ffb74d;
-  --osvaldo-bg:rgba(120,80,255,0.12);--osvaldo-border:rgba(120,80,255,0.3);--osvaldo-text:#a57aff;
   --dasa-bg:rgba(0,200,150,0.12);--dasa-border:rgba(0,200,150,0.3);--dasa-text:#00c896;
-  --sirio-bg:rgba(255,200,0,0.12);--sirio-border:rgba(255,200,0,0.3);--sirio-text:#ffd740;
   --hcor-bg:rgba(255,80,140,0.12);--hcor-border:rgba(255,80,140,0.3);--hcor-text:#ff6eb0;
   --cete-bg:rgba(0,220,220,0.12);--cete-border:rgba(0,220,220,0.3);--cete-text:#00dcdc;
+  --sirio-bg:rgba(255,200,0,0.12);--sirio-border:rgba(255,200,0,0.3);--sirio-text:#ffd740;
   --outros-bg:rgba(150,150,150,0.12);--outros-border:rgba(150,150,150,0.3);--outros-text:#aaa;
 }
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;line-height:1.5;}
 
-/* ─── LOGIN ─────────────────────────────────────────────── */
-#login-screen{
-  position:fixed;inset:0;z-index:1000;background:var(--bg);
-  display:flex;align-items:center;justify-content:center;
-  background-image:radial-gradient(ellipse at 20% 50%, rgba(0,210,160,0.05) 0%, transparent 60%),
-                   radial-gradient(ellipse at 80% 20%, rgba(0,168,255,0.05) 0%, transparent 60%);
-}
-.login-box{width:360px;background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:36px 32px;text-align:center;}
+/* LOGIN */
+#login-screen{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:center;justify-content:center;background-image:radial-gradient(ellipse at 20% 50%,rgba(0,210,160,0.05) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(0,168,255,0.05) 0%,transparent 60%);}
+.login-box{width:380px;background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:38px 34px;text-align:center;}
 .login-logo{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
-.login-logo svg{width:30px;height:30px;}
 .login-brand{font-size:24px;font-weight:700;letter-spacing:0.06em;color:var(--text);margin-bottom:4px;}
-.login-tagline{font-size:10px;color:var(--text3);font-family:var(--mono);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:30px;}
+.login-tagline{font-size:10px;color:var(--text3);font-family:var(--mono);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;}
+.blood-type{display:inline-block;background:rgba(255,79,79,0.1);border:1px solid rgba(255,79,79,0.3);color:#ff6b6b;font-family:var(--mono);font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:22px;}
 .login-label{font-size:11px;color:var(--text2);text-align:left;margin-bottom:6px;font-family:var(--mono);}
 .login-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-family:var(--mono);font-size:13px;margin-bottom:14px;outline:none;transition:border 0.2s;}
 .login-input:focus{border-color:var(--accent);}
-.login-btn{width:100%;background:var(--accent);color:#080c10;border:none;border-radius:8px;padding:13px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all 0.15s;margin-top:4px;letter-spacing:0.02em;}
-.login-btn:hover{background:var(--accent3);transform:translateY(-1px);}
-.login-error{font-size:11px;color:var(--danger);font-family:var(--mono);margin-top:10px;display:none;}
-.login-hint{font-size:10px;color:var(--text3);margin-top:18px;font-family:var(--mono);}
-.login-divider{height:1px;background:var(--border);margin:20px 0;}
-.login-access{display:flex;flex-direction:column;gap:4px;}
-.login-access-row{display:flex;align-items:center;justify-content:space-between;font-size:10px;font-family:var(--mono);}
-.login-access-label{color:var(--text3);}
-.login-access-val{color:var(--text2);}
+.login-btn{width:100%;background:var(--accent);color:#080c10;border:none;border-radius:8px;padding:13px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all 0.15s;margin-top:4px;}
+.login-btn:hover{background:var(--accent3);}
+.login-error{font-size:11px;color:var(--danger);font-family:var(--mono);margin-top:8px;display:none;}
+.login-hint{font-size:10px;color:var(--text3);margin-top:16px;font-family:var(--mono);}
 
-/* ─── SHELL ─────────────────────────────────────────────── */
+/* SHELL */
 #app{display:none;height:100vh;overflow:hidden;}
 .shell{display:flex;height:100%;}
 
-/* ─── SIDEBAR ───────────────────────────────────────────── */
-.sidebar{
-  width:218px;min-width:218px;background:var(--bg2);
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;
-  height:100%;overflow-y:auto;
-  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
-}
-.sidebar::-webkit-scrollbar{width:4px;}
-.sidebar::-webkit-scrollbar-track{background:transparent;}
-.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
-
+/* SIDEBAR */
+.sidebar{width:218px;min-width:218px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;height:100%;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
 .logo-area{padding:20px 18px 16px;border-bottom:1px solid var(--border);flex-shrink:0;}
 .logo-mark{display:flex;align-items:center;gap:10px;}
 .logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.logo-icon svg{width:18px;height:18px;}
 .logo-name{font-size:16px;font-weight:700;letter-spacing:0.06em;color:var(--text);}
 .logo-ver{font-size:9px;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;font-family:var(--mono);margin-top:1px;}
-
 .patient-card{margin:12px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:13px;flex-shrink:0;}
 .patient-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00d2a0,#00a8ff);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#080c10;margin-bottom:9px;}
 .patient-name{font-size:12px;font-weight:700;color:var(--text);}
 .patient-meta{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:2px;}
 .patient-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px;}
 .ptag{font-size:9px;padding:2px 7px;border-radius:20px;font-family:var(--mono);}
-.ptag-green{background:rgba(0,210,160,0.12);color:var(--accent);border:1px solid rgba(0,210,160,0.2);}
-.ptag-blue{background:rgba(0,168,255,0.12);color:var(--accent2);border:1px solid rgba(0,168,255,0.2);}
-.ptag-warn{background:rgba(255,179,71,0.12);color:var(--warn);border:1px solid rgba(255,179,71,0.2);}
-
+.ptag-g{background:rgba(0,210,160,0.12);color:var(--accent);border:1px solid rgba(0,210,160,0.2);}
+.ptag-b{background:rgba(0,168,255,0.12);color:var(--accent2);border:1px solid rgba(0,168,255,0.2);}
+.ptag-r{background:rgba(255,79,79,0.12);color:#ff6b6b;border:1px solid rgba(255,79,79,0.2);}
 .nav-section{padding:0 10px;margin-top:4px;}
 .nav-label{font-size:9px;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;font-family:var(--mono);padding:10px 8px 4px;}
 .nav-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;cursor:pointer;color:var(--text2);font-size:12px;font-weight:500;transition:all 0.15s;margin-bottom:1px;border:1px solid transparent;user-select:none;}
@@ -96,9 +70,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .nav-badge{margin-left:auto;font-size:9px;padding:1px 6px;border-radius:20px;font-family:var(--mono);}
 .nb-g{background:rgba(0,210,160,0.15);color:var(--accent);}
 .nb-b{background:rgba(0,168,255,0.15);color:var(--accent2);}
-.nb-w{background:rgba(255,179,71,0.15);color:var(--warn);}
+.nb-r{background:rgba(255,79,79,0.15);color:#ff6b6b;}
 .nb-x{background:rgba(255,255,255,0.06);color:var(--text3);}
-
 .sidebar-bottom{margin-top:auto;padding:12px;border-top:1px solid var(--border);flex-shrink:0;}
 .access-badge{display:flex;align-items:center;gap:8px;background:rgba(0,168,255,0.06);border:1px solid rgba(0,168,255,0.15);border-radius:8px;padding:9px 12px;}
 .access-dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);flex-shrink:0;animation:pulse 2s infinite;}
@@ -106,18 +79,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .access-text{font-size:9px;color:var(--text2);font-family:var(--mono);}
 .logout-btn{margin-top:8px;width:100%;background:transparent;border:1px solid var(--border);border-radius:7px;color:var(--text3);font-size:11px;font-family:var(--mono);padding:7px;cursor:pointer;transition:all 0.15s;}
 .logout-btn:hover{border-color:var(--danger);color:var(--danger);}
-
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
 @keyframes spin{to{transform:rotate(360deg);}}
 
-/* ─── MAIN AREA ─────────────────────────────────────────── */
+/* MAIN */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
-.topbar{
-  background:var(--bg2);border-bottom:1px solid var(--border);
-  padding:12px 24px;display:flex;align-items:center;justify-content:space-between;
-  flex-shrink:0;
-}
-.topbar-left{}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .page-title{font-size:14px;font-weight:700;color:var(--text);}
 .page-subtitle{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px;}
 .topbar-right{display:flex;align-items:center;gap:8px;}
@@ -129,24 +96,17 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
 .btn-primary{background:var(--accent);color:#080c10;font-weight:700;}
 .btn-primary:hover{background:var(--accent3);}
-
 .scroll-area{flex:1;overflow-y:auto;padding:22px 24px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
-.scroll-area::-webkit-scrollbar{width:4px;}
-.scroll-area::-webkit-scrollbar-track{background:transparent;}
-.scroll-area::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
-
-/* ─── PAGES ─────────────────────────────────────────────── */
 .page{display:none;}.page.active{display:block;}
 
-/* ─── SECTION HEADER ────────────────────────────────────── */
+/* SECTION HEADER */
 .sh{display:flex;align-items:center;gap:10px;margin:0 0 14px;}
 .sh-title{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);font-family:var(--mono);white-space:nowrap;}
 .sh-line{flex:1;height:1px;background:var(--border);}
 .sh-date{font-size:10px;font-family:var(--mono);color:var(--text3);white-space:nowrap;}
 
-/* ─── VITALS ─────────────────────────────────────────────── */
+/* VITALS */
 .vitals-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
-@media(max-width:900px){.vitals-row{grid-template-columns:repeat(2,1fr);}}
 .vcard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;position:relative;overflow:hidden;}
 .vcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--vl,var(--accent));}
 .vcard-label{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);font-family:var(--mono);margin-bottom:6px;}
@@ -155,12 +115,48 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .vcard-delta{display:inline-flex;align-items:center;font-size:10px;margin-top:8px;font-family:var(--mono);padding:2px 7px;border-radius:20px;}
 .dg{background:rgba(0,210,160,0.1);color:var(--good);}
 .dw{background:rgba(255,179,71,0.1);color:var(--warn);}
+.db{background:rgba(255,79,79,0.1);color:var(--danger);}
 .sparkline{margin-top:10px;height:28px;display:flex;align-items:flex-end;gap:2px;}
 .sb{flex:1;border-radius:2px;}
 
-/* ─── OVERVIEW GRID ─────────────────────────────────────── */
+/* TREND CHART - inline bars for historical data */
+.trend-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.trend-label{font-size:10px;color:var(--text2);font-family:var(--mono);min-width:56px;}
+.trend-bars{display:flex;align-items:flex-end;gap:3px;height:36px;flex:1;}
+.trend-bar{flex:1;border-radius:2px;position:relative;cursor:default;transition:opacity 0.15s;}
+.trend-bar:hover{opacity:0.8;}
+.trend-val{font-size:9px;color:var(--text3);font-family:var(--mono);min-width:50px;text-align:right;}
+
+/* ALERT PANEL */
+.alert-list{display:flex;flex-direction:column;gap:8px;}
+.alert-item{padding:11px 14px;border-radius:8px;border-left:3px solid;background:var(--bg3);}
+.al-bad{border-color:var(--danger);}
+.al-warn{border-color:var(--warn);}
+.al-ok{border-color:var(--good);}
+.al-info{border-color:var(--accent2);}
+.alert-title{font-size:11px;font-weight:600;color:var(--text);}
+.alert-desc{font-size:10px;color:var(--text2);margin-top:2px;}
+
+/* MARKER BARS */
+.markers-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.marker-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;}
+.marker-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.marker-name{font-size:11px;color:var(--text2);}
+.marker-val{font-size:12px;font-weight:600;font-family:var(--mono);}
+.mtrack{height:4px;background:var(--bg);border-radius:2px;position:relative;}
+.mfill{height:100%;border-radius:2px;}
+.mrange{position:absolute;top:-2px;bottom:-2px;background:rgba(0,210,160,0.08);border-left:1px solid rgba(0,210,160,0.25);border-right:1px solid rgba(0,210,160,0.25);}
+.mref{font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:4px;}
+.cg{color:var(--good);}.cw{color:var(--warn);}.cb{color:var(--danger);}
+
+/* PANEL */
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.panel-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.panel-title{font-size:12px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;}
+.panel-body{padding:16px;}
+
+/* OVERVIEW CARDS */
 .ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
-@media(max-width:900px){.ov-grid{grid-template-columns:repeat(2,1fr);}}
 .ov-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;position:relative;overflow:hidden;transition:border-color 0.15s;}
 .ov-card:hover{border-color:var(--border2);}
 .ov-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ol);}
@@ -170,50 +166,29 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .ov-sub{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px;}
 .ov-st{margin-top:8px;}
 
-/* ─── STATUS BADGES ─────────────────────────────────────── */
+/* BADGES */
 .badge{font-size:9px;padding:2px 7px;border-radius:20px;font-family:var(--mono);white-space:nowrap;display:inline-block;}
 .badge-ok{background:rgba(0,210,160,0.12);color:var(--accent);border:1px solid rgba(0,210,160,0.2);}
 .badge-warn{background:rgba(255,179,71,0.12);color:var(--warn);border:1px solid rgba(255,179,71,0.2);}
-.badge-new{background:rgba(0,168,255,0.12);color:var(--accent2);border:1px solid rgba(0,168,255,0.2);}
 .badge-bad{background:rgba(255,79,79,0.12);color:var(--danger);border:1px solid rgba(255,79,79,0.2);}
+.badge-new{background:rgba(0,168,255,0.12);color:var(--accent2);border:1px solid rgba(0,168,255,0.2);}
 
-/* ─── LAB TAGS ───────────────────────────────────────────── */
-.lab-tag{display:inline-flex;align-items:center;gap:4px;font-size:9px;padding:2px 8px;border-radius:20px;font-family:var(--mono);font-weight:500;letter-spacing:0.04em;border:1px solid;white-space:nowrap;flex-shrink:0;}
+/* LAB TAGS */
+.lab-tag{display:inline-flex;align-items:center;gap:4px;font-size:9px;padding:2px 8px;border-radius:20px;font-family:var(--mono);font-weight:500;border:1px solid;white-space:nowrap;flex-shrink:0;}
 .lab-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
 .lt-einstein{background:var(--einstein-bg);border-color:var(--einstein-border);color:var(--einstein-text);}
-.lt-fleury{background:var(--fleury-bg);border-color:var(--fleury-border);color:var(--fleury-text);}
 .lt-delboni{background:var(--delboni-bg);border-color:var(--delboni-border);color:var(--delboni-text);}
-.lt-osvaldo{background:var(--osvaldo-bg);border-color:var(--osvaldo-border);color:var(--osvaldo-text);}
 .lt-dasa{background:var(--dasa-bg);border-color:var(--dasa-border);color:var(--dasa-text);}
-.lt-sirio{background:var(--sirio-bg);border-color:var(--sirio-border);color:var(--sirio-text);}
 .lt-hcor{background:var(--hcor-bg);border-color:var(--hcor-border);color:var(--hcor-text);}
 .lt-cete{background:var(--cete-bg);border-color:var(--cete-border);color:var(--cete-text);}
+.lt-sirio{background:var(--sirio-bg);border-color:var(--sirio-border);color:var(--sirio-text);}
 .lt-outros{background:var(--outros-bg);border-color:var(--outros-border);color:var(--outros-text);}
 
-/* ─── LAB LEGEND ─────────────────────────────────────────── */
-.lab-legend{display:flex;flex-wrap:wrap;gap:6px;padding:11px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;align-items:center;margin-bottom:16px;}
+/* LAB LEGEND */
+.lab-legend{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;align-items:center;margin-bottom:14px;}
 .ll-title{font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.1em;}
 
-/* ─── PANEL ──────────────────────────────────────────────── */
-.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;}
-.panel-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.panel-title{font-size:12px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;}
-.ph-icon{width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;}
-.ph-g{background:rgba(0,210,160,0.1);}
-.ph-b{background:rgba(0,168,255,0.1);}
-.ph-w{background:rgba(255,179,71,0.1);}
-.panel-body{padding:16px;}
-
-/* ─── ALERTS ─────────────────────────────────────────────── */
-.alert-list{display:flex;flex-direction:column;gap:8px;}
-.alert-item{padding:10px 13px;border-radius:8px;border-left:3px solid;background:var(--bg3);}
-.al-warn{border-color:var(--warn);}
-.al-ok{border-color:var(--good);}
-.al-info{border-color:var(--accent2);}
-.alert-title{font-size:11px;font-weight:600;color:var(--text);}
-.alert-desc{font-size:10px;color:var(--text2);margin-top:2px;}
-
-/* ─── SPEC TABS ──────────────────────────────────────────── */
+/* SPEC TABS */
 .spec-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;}
 .spec-tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--border);scrollbar-width:none;}
 .spec-tabs::-webkit-scrollbar{display:none;}
@@ -230,92 +205,71 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .tc-x{background:rgba(255,255,255,0.08);color:var(--text2);}
 .spec-panel{display:none;padding:16px;}.spec-panel.active{display:block;}
 
-/* ─── FILTER BAR ─────────────────────────────────────────── */
+/* EXAM LIST */
+.exam-list{display:flex;flex-direction:column;gap:6px;}
+.exam-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:border-color 0.15s;}
+.exam-row:hover{border-color:var(--border2);}
+.exam-icon-w{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ei-g{background:rgba(0,210,160,0.1);}
+.ei-b{background:rgba(0,168,255,0.1);}
+.ei-w{background:rgba(255,179,71,0.1);}
+.ei-p{background:rgba(150,100,255,0.1);}
+.exam-info{flex:1;min-width:0;}
+.exam-name{font-size:12px;font-weight:500;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.exam-meta{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px;}
+.exam-tags-row{display:flex;gap:5px;align-items:center;flex-shrink:0;}
+.btn-xs{font-size:9px;padding:3px 8px;border-radius:5px;cursor:pointer;font-family:var(--mono);border:none;transition:all 0.15s;}
+.bx-g{background:rgba(0,210,160,0.1);color:var(--accent);}
+.bx-b{background:rgba(0,168,255,0.1);color:var(--accent2);}
+
+/* FILTER BAR */
 .filter-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .filter-label{font-size:10px;color:var(--text3);font-family:var(--mono);}
 .filter-btn{font-size:10px;padding:4px 10px;border-radius:20px;cursor:pointer;font-family:var(--mono);border:1px solid var(--border);background:transparent;color:var(--text2);transition:all 0.15s;user-select:none;}
 .filter-btn:hover{border-color:var(--border2);color:var(--text);}
 .filter-btn.active{background:rgba(0,210,160,0.1);border-color:var(--accent);color:var(--accent);}
 
-/* ─── EXAM LIST ──────────────────────────────────────────── */
-.exam-list{display:flex;flex-direction:column;gap:6px;}
-.exam-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg3);border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:border-color 0.15s;}
-.exam-row:hover{border-color:var(--border2);}
-.exam-row.hidden{display:none;}
-.exam-icon-w{width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
-.ei-g{background:rgba(0,210,160,0.1);}
-.ei-b{background:rgba(0,168,255,0.1);}
-.ei-w{background:rgba(255,179,71,0.1);}
-.ei-p{background:rgba(150,100,255,0.1);}
-.ei-t{background:rgba(0,200,200,0.1);}
-.ei-r{background:rgba(255,100,100,0.1);}
-.exam-info{flex:1;min-width:0;}
-.exam-name{font-size:12px;font-weight:500;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.exam-meta{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px;}
-.exam-tags-row{display:flex;gap:5px;align-items:center;flex-shrink:0;flex-wrap:wrap;}
-.btn-xs{font-size:9px;padding:3px 8px;border-radius:5px;cursor:pointer;font-family:var(--mono);border:none;transition:all 0.15s;}
-.bx-g{background:rgba(0,210,160,0.1);color:var(--accent);}
-.bx-g:hover{background:rgba(0,210,160,0.2);}
-.bx-b{background:rgba(0,168,255,0.1);color:var(--accent2);}
-.bx-b:hover{background:rgba(0,168,255,0.2);}
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:flex;gap:13px;padding:12px 0;border-bottom:1px solid var(--border);}
+.tl-item:last-child{border-bottom:none;}
+.tl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px;}
+.tl-date{font-size:9px;font-family:var(--mono);color:var(--text3);min-width:60px;margin-top:2px;}
+.tl-title{font-size:11px;font-weight:600;color:var(--text);}
+.tl-desc{font-size:10px;color:var(--text2);margin-top:2px;line-height:1.5;}
+.tl-tags{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
 
-/* ─── MARKER BARS ────────────────────────────────────────── */
-.markers-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
-@media(max-width:700px){.markers-grid{grid-template-columns:1fr;}}
-.marker-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 13px;}
-.marker-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
-.marker-name{font-size:11px;color:var(--text2);}
-.marker-val{font-size:12px;font-weight:600;font-family:var(--mono);}
-.mtrack{height:4px;background:var(--bg);border-radius:2px;position:relative;}
-.mfill{height:100%;border-radius:2px;}
-.mrange{position:absolute;top:-2px;bottom:-2px;background:rgba(0,210,160,0.08);border-left:1px solid rgba(0,210,160,0.25);border-right:1px solid rgba(0,210,160,0.25);}
-.mref{font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:4px;}
-.cg{color:var(--good);}.cw{color:var(--warn);}.cb{color:var(--danger);}
-
-/* ─── EMPTY STATE ────────────────────────────────────────── */
-.empty-state{text-align:center;padding:32px 20px;}
-.empty-icon{font-size:30px;margin-bottom:10px;}
-.empty-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;}
-.empty-sub{font-size:11px;color:var(--text2);margin-bottom:14px;}
-
-/* ─── LAB STATS BAR ──────────────────────────────────────── */
-.lab-stats{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;}
-.lsb{display:flex;align-items:center;gap:10px;}
-.lsb-name{width:95px;flex-shrink:0;}
-.lsb-track{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;}
-.lsb-fill{height:100%;border-radius:3px;transition:width 0.6s ease;}
-.lsb-cnt{font-size:10px;font-family:var(--mono);color:var(--text3);width:20px;text-align:right;flex-shrink:0;}
-
-/* ─── GARMIN ─────────────────────────────────────────────── */
+/* GARMIN */
 .garmin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
-@media(max-width:700px){.garmin-grid{grid-template-columns:repeat(2,1fr);}}
 .gg-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;}
 .gg-icon{font-size:22px;margin-bottom:6px;}
 .gg-val{font-size:22px;font-weight:700;}
 .gg-lbl{font-size:9px;color:var(--text3);font-family:var(--mono);letter-spacing:0.08em;text-transform:uppercase;margin-top:3px;}
-.steps-chart{display:flex;align-items:flex-end;gap:6px;height:64px;margin-top:4px;}
-.step-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
-.step-bar{width:100%;border-radius:3px;}
-.step-lbl{font-size:8px;color:var(--text3);font-family:var(--mono);text-align:center;}
 
-/* ─── TIMELINE ───────────────────────────────────────────── */
-.timeline{display:flex;flex-direction:column;}
-.tl-item{display:flex;gap:13px;padding:11px 0;border-bottom:1px solid var(--border);}
-.tl-item:last-child{border-bottom:none;}
-.tl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px;}
-.tl-date{font-size:9px;font-family:var(--mono);color:var(--text3);min-width:54px;margin-top:2px;}
-.tl-title{font-size:11px;font-weight:600;color:var(--text);}
-.tl-desc{font-size:10px;color:var(--text2);margin-top:2px;}
-.tl-tags{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
+/* HORMONAIS */
+.horm-timeline{display:flex;flex-direction:column;gap:12px;}
+.horm-row{display:flex;align-items:center;gap:10px;}
+.horm-label{font-size:11px;color:var(--text2);min-width:140px;}
+.horm-bars{display:flex;gap:6px;flex:1;align-items:flex-end;height:32px;}
+.horm-bar-wrap{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;}
+.horm-bar{width:100%;border-radius:3px;}
+.horm-bar-date{font-size:8px;color:var(--text3);font-family:var(--mono);}
+.horm-current{font-size:12px;font-weight:600;font-family:var(--mono);min-width:70px;text-align:right;}
 
-/* ─── UPLOAD MODAL ───────────────────────────────────────── */
+/* SPECIAL INFO CARDS */
+.info-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.info-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;}
+.ic-label{font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
+.ic-value{font-size:20px;font-weight:700;color:var(--text);}
+.ic-sub{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:3px;}
+
+/* UPLOAD MODAL */
 #upload-modal{position:fixed;inset:0;z-index:500;background:rgba(8,12,16,0.88);display:none;align-items:center;justify-content:center;}
 #upload-modal.open{display:flex;}
 .modal-box{width:500px;max-height:90vh;overflow-y:auto;background:var(--card);border:1px solid var(--border2);border-radius:16px;}
 .modal-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--card);z-index:1;}
 .modal-title{font-size:13px;font-weight:700;color:var(--text);}
-.modal-close{background:transparent;border:none;color:var(--text2);font-size:18px;cursor:pointer;padding:2px 6px;line-height:1;}
-.modal-close:hover{color:var(--text);}
+.modal-close{background:transparent;border:none;color:var(--text2);font-size:18px;cursor:pointer;}
 .modal-body{padding:20px;}
 .modal-footer{padding:13px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;position:sticky;bottom:0;background:var(--card);}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
@@ -325,109 +279,90 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .drop-zone{border:2px dashed var(--border2);border-radius:10px;padding:26px 20px;text-align:center;cursor:pointer;position:relative;transition:all 0.2s;margin-top:14px;}
 .drop-zone:hover,.drop-zone.drag{border-color:var(--accent);background:rgba(0,210,160,0.03);}
 .drop-input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.drop-icon{font-size:26px;margin-bottom:8px;}
-.drop-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
-.drop-sub{font-size:11px;color:var(--text2);font-family:var(--mono);}
 .upload-list{margin-top:12px;display:flex;flex-direction:column;gap:6px;}
 .uf-row{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 12px;}
-.uf-icon{font-size:16px;flex-shrink:0;}
-.uf-info{flex:1;}
-.uf-name{font-size:12px;font-weight:500;color:var(--text);}
-.uf-size{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px;}
 .uf-prog{height:3px;background:var(--bg);border-radius:2px;margin-top:5px;overflow:hidden;}
 .uf-fill{height:100%;border-radius:2px;background:var(--accent);transition:width 0.3s;}
-.uf-stat{font-size:9px;font-family:var(--mono);margin-top:3px;}
-.us-load{color:var(--accent2);}.us-ok{color:var(--good);}
 .ai-box{margin-top:12px;background:rgba(0,210,160,0.04);border:1px solid rgba(0,210,160,0.18);border-radius:8px;padding:12px 14px;display:none;}
 .ai-box.show{display:block;}
 .ai-label{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-family:var(--mono);margin-bottom:7px;display:flex;align-items:center;gap:5px;}
 .ai-ldot{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:pulse 1.5s infinite;}
-.ai-text{font-size:12px;color:var(--text);line-height:1.65;}
 .ai-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;}
 .achip{font-size:10px;padding:3px 9px;border-radius:20px;font-family:var(--mono);}
 .ac-ok{background:rgba(0,210,160,0.1);color:var(--good);border:1px solid rgba(0,210,160,0.2);}
 .ac-warn{background:rgba(255,179,71,0.1);color:var(--warn);border:1px solid rgba(255,179,71,0.2);}
 .ac-bad{background:rgba(255,79,79,0.1);color:var(--danger);border:1px solid rgba(255,79,79,0.2);}
 .spinner{display:inline-block;width:11px;height:11px;border:2px solid rgba(0,210,160,0.3);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;}
-
-/* ─── GRID HELPERS ───────────────────────────────────────── */
 .grid-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
-@media(max-width:800px){.grid-two{grid-template-columns:1fr;}}
+
+/* GARMIN ALERT */
+.garmin-alert{background:rgba(255,79,79,0.06);border:1px solid rgba(255,79,79,0.2);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:11px;color:var(--text2);}
+.garmin-alert strong{color:#ff6b6b;}
 </style>
 </head>
 <body>
 
-<!-- ════════════════════ LOGIN ════════════════════ -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">
-      <svg viewBox="0 0 28 28" fill="none"><path d="M14 3v8M14 17v8M3 14h8M17 14h8" stroke="#080c10" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="14" r="4" fill="#080c10"/></svg>
+      <svg viewBox="0 0 28 28" fill="none" width="28" height="28"><path d="M14 3v8M14 17v8M3 14h8M17 14h8" stroke="#080c10" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="14" r="4" fill="#080c10"/></svg>
     </div>
     <div class="login-brand">BioScan</div>
     <div class="login-tagline">Health Intelligence OS</div>
+    <div class="blood-type">🩸 Tipo Sanguíneo A+</div>
     <div class="login-label">Usuário</div>
     <input class="login-input" id="lu" type="text" placeholder="rodrigo.dantas" autocomplete="username">
     <div class="login-label">Senha de acesso</div>
     <input class="login-input" id="lp" type="password" placeholder="••••••••••••" autocomplete="current-password">
     <div class="login-error" id="lerr">Credenciais inválidas. Tente novamente.</div>
-    <button class="login-btn" id="login-btn" onclick="doLogin()">Entrar no BioScan</button>
-    <div class="login-divider"></div>
-    <div class="login-access">
-      <div class="login-access-row"><span class="login-access-label">Paciente</span><span class="login-access-val">Rodrigo Dantas Santos</span></div>
-      <div class="login-access-row"><span class="login-access-label">Acesso médico</span><span class="login-access-val">DantasSaude2026</span></div>
-    </div>
-    <div class="login-hint">Acesso autorizado e criptografado</div>
+    <button class="login-btn" onclick="doLogin()">Entrar no BioScan</button>
+    <div class="login-hint">Acesso autorizado · Rodrigo Dantas Santos · Einstein #4181819</div>
   </div>
 </div>
 
-<!-- ════════════════════ UPLOAD MODAL ════════════════════ -->
+<!-- UPLOAD MODAL -->
 <div id="upload-modal">
   <div class="modal-box">
     <div class="modal-header">
-      <div class="modal-title">Upload de Exame ou Documento</div>
+      <div class="modal-title">Upload de Exame</div>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body">
       <div class="form-row">
-        <div>
-          <div class="form-label">Especialidade</div>
-          <select class="form-select" id="up-spec">
-            <option value="lab">🧪 Laboratorial / Sangue</option>
-            <option value="cardio">🫀 Cardiologia</option>
-            <option value="image">🩻 Imagens (RX, RM, TC, US)</option>
-            <option value="perf">⚡ Performance / Esporte</option>
-            <option value="horm">💉 Hormonal / Endocrinologia</option>
-            <option value="cirurg">🔪 Cirurgias &amp; Procedimentos</option>
-            <option value="outros">📋 Outros / Clínico Geral</option>
-          </select>
-        </div>
-        <div>
-          <div class="form-label">Instituição</div>
-          <select class="form-select" id="up-lab">
-            <option value="einstein">Hospital Albert Einstein</option>
-            <option value="fleury">Grupo Fleury</option>
-            <option value="delboni">Delboni Auriemo</option>
-            <option value="osvaldo">Hospital Osvaldo Cruz</option>
-            <option value="dasa">DASA / DB Diagnósticos</option>
-            <option value="sirio">Hospital Sírio-Libanês</option>
-            <option value="hcor">HCor</option>
-            <option value="cete">CETE Sport</option>
-            <option value="outros">Outra instituição</option>
-          </select>
-        </div>
+        <div><div class="form-label">Especialidade</div>
+        <select class="form-select" id="up-spec">
+          <option value="lab">🧪 Laboratorial / Sangue</option>
+          <option value="cardio">🫀 Cardiologia</option>
+          <option value="image">🩻 Imagens</option>
+          <option value="perf">⚡ Performance</option>
+          <option value="horm">💉 Hormonal</option>
+          <option value="cirurg">🔪 Cirurgias</option>
+          <option value="outros">📋 Outros</option>
+        </select></div>
+        <div><div class="form-label">Instituição</div>
+        <select class="form-select" id="up-lab">
+          <option value="einstein">Albert Einstein</option>
+          <option value="delboni">Delboni Auriemo</option>
+          <option value="dasa">DASA</option>
+          <option value="hcor">HCor</option>
+          <option value="cete">CETE Sport</option>
+          <option value="sirio">Sírio-Libanês</option>
+          <option value="outros">Outra</option>
+        </select></div>
       </div>
       <div class="form-label">Data do exame</div>
       <input class="form-input" id="up-date" type="month" style="margin-bottom:4px;">
       <div class="drop-zone" id="dz">
         <input type="file" class="drop-input" id="fi" accept=".pdf,.jpg,.jpeg,.png" multiple onchange="handleFiles(this.files)">
-        <div class="drop-icon">📄</div>
-        <div class="drop-title">Arraste PDFs ou imagens aqui</div>
-        <div class="drop-sub">PDF, JPG, PNG · Laudos, exames, imagens médicas</div>
+        <div style="font-size:26px;margin-bottom:8px;">📄</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;">Arraste PDFs ou imagens</div>
+        <div style="font-size:11px;color:var(--text2);font-family:var(--mono);">PDF, JPG, PNG · Laudos e exames</div>
       </div>
       <div class="upload-list" id="uf-list"></div>
       <div class="ai-box" id="ai-box">
         <div class="ai-label"><div class="ai-ldot"></div>BioScan IA — Análise automática</div>
-        <div class="ai-text" id="ai-text"></div>
+        <div style="font-size:12px;color:var(--text);line-height:1.65;" id="ai-text"></div>
         <div class="ai-chips" id="ai-chips"></div>
       </div>
     </div>
@@ -438,7 +373,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
   </div>
 </div>
 
-<!-- ════════════════════ APP ════════════════════ -->
+<!-- APP -->
 <div id="app">
 <div class="shell">
 
@@ -446,67 +381,52 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 <div class="sidebar">
   <div class="logo-area">
     <div class="logo-mark">
-      <div class="logo-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2v5M9 11v5M2 9h5M11 9h5" stroke="#080c10" stroke-width="2.5" stroke-linecap="round"/><circle cx="9" cy="9" r="2.5" fill="#080c10"/></svg></div>
-      <div><div class="logo-name">BioScan</div><div class="logo-ver">Health OS v2.1</div></div>
+      <div class="logo-icon"><svg viewBox="0 0 18 18" fill="none" width="18" height="18"><path d="M9 2v5M9 11v5M2 9h5M11 9h5" stroke="#080c10" stroke-width="2.5" stroke-linecap="round"/><circle cx="9" cy="9" r="2.5" fill="#080c10"/></svg></div>
+      <div><div class="logo-name">BioScan</div><div class="logo-ver">Health OS v3.0</div></div>
     </div>
   </div>
-
   <div class="patient-card">
     <div class="patient-avatar">RD</div>
     <div class="patient-name">Rodrigo Dantas Santos</div>
     <div class="patient-meta">30/03/1981 · 44 anos · São Paulo</div>
     <div class="patient-tags">
-      <span class="ptag ptag-green">Atleta</span>
-      <span class="ptag ptag-blue">Cardio</span>
-      <span class="ptag ptag-warn">Hormonal</span>
+      <span class="ptag ptag-r">A+</span>
+      <span class="ptag ptag-g">Atleta</span>
+      <span class="ptag ptag-b">Einstein #4181819</span>
     </div>
   </div>
-
   <div class="nav-section">
     <div class="nav-label">Navegação</div>
     <div class="nav-item active" onclick="goPage('overview',this)"><div class="nav-dot"></div>Visão Geral</div>
-    <div class="nav-item" onclick="goPage('exames',this)"><div class="nav-dot"></div>Todos os Exames<span class="nav-badge nb-g" id="total-badge">5</span></div>
-    <div class="nav-item" onclick="goPage('labs',this)"><div class="nav-dot" style="background:var(--accent2)"></div>Por Laboratório</div>
-    <div class="nav-item" onclick="goPage('garmin',this)"><div class="nav-dot" style="background:var(--accent2)"></div>Garmin Connect</div>
+    <div class="nav-item" onclick="goPage('alertas',this)"><div class="nav-dot" style="background:var(--danger)"></div>Alertas Clínicos<span class="nav-badge nb-r">10</span></div>
+    <div class="nav-item" onclick="goPage('laboratorial',this)"><div class="nav-dot"></div>Laboratorial Completo<span class="nav-badge nb-g" id="nb-lab">61</span></div>
+    <div class="nav-item" onclick="goPage('hormonal',this)"><div class="nav-dot"></div>Hormonal &amp; Endócrino</div>
+    <div class="nav-item" onclick="goPage('cardio',this)"><div class="nav-dot" style="background:var(--accent2)"></div>Cardiologia</div>
+    <div class="nav-item" onclick="goPage('garmin',this)"><div class="nav-dot" style="background:var(--accent)"></div>Garmin Connect</div>
     <div class="nav-item" onclick="goPage('timeline',this)"><div class="nav-dot" style="background:var(--warn)"></div>Histórico Médico</div>
+    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div>Arquivos &amp; PDFs<span class="nav-badge nb-g">61</span></div>
   </div>
-
-  <div class="nav-section">
-    <div class="nav-label">Por Especialidade</div>
-    <div class="nav-item" onclick="goPageSpec('lab',this)"><div class="nav-dot"></div>🧪 Laboratorial<span class="nav-badge nb-g" id="nb-lab">2</span></div>
-    <div class="nav-item" onclick="goPageSpec('cardio',this)"><div class="nav-dot"></div>🫀 Cardiologia<span class="nav-badge nb-b" id="nb-cardio">1</span></div>
-    <div class="nav-item" onclick="goPageSpec('image',this)"><div class="nav-dot"></div>🩻 Imagens<span class="nav-badge nb-w" id="nb-image">1</span></div>
-    <div class="nav-item" onclick="goPageSpec('perf',this)"><div class="nav-dot"></div>⚡ Performance<span class="nav-badge nb-x" id="nb-perf">1</span></div>
-    <div class="nav-item" onclick="goPageSpec('horm',this)"><div class="nav-dot"></div>💉 Hormonal<span class="nav-badge nb-x" id="nb-horm">0</span></div>
-    <div class="nav-item" onclick="goPageSpec('cirurg',this)"><div class="nav-dot"></div>🔪 Cirurgias<span class="nav-badge nb-x" id="nb-cirurg">0</span></div>
-    <div class="nav-item" onclick="goPageSpec('outros',this)"><div class="nav-dot"></div>📋 Outros<span class="nav-badge nb-x" id="nb-outros">0</span></div>
-  </div>
-
   <div class="nav-section">
     <div class="nav-label">Equipe Médica</div>
-    <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dr. Silva · Cardiologista</div>
-    <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dra. Costa · Endocrinologista</div>
-    <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Personal Trainer</div>
+    <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dr. Marcelo G. Paiva · Clínico</div>
+    <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dr. Luiz Cury Neto · Urologista</div>
+    <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dra. Andreia Rostirola · Check</div>
   </div>
-
   <div class="sidebar-bottom">
-    <div class="access-badge">
-      <div class="access-dot"></div>
-      <div><div class="access-name">Acesso Ativo</div><div class="access-text">DantasSaude2026</div></div>
-    </div>
+    <div class="access-badge"><div class="access-dot"></div><div><div class="access-name">Acesso Médico Ativo</div><div class="access-text">DantasSaude2026</div></div></div>
     <button class="logout-btn" onclick="doLogout()">Sair do BioScan</button>
   </div>
-</div><!-- /sidebar -->
+</div>
 
 <!-- MAIN -->
 <div class="main">
   <div class="topbar">
-    <div class="topbar-left">
+    <div>
       <div class="page-title" id="topbar-title">Visão Geral · Rodrigo Dantas Santos</div>
-      <div class="page-subtitle" id="topbar-sub">44 anos · 7 especialidades · 8 instituições cadastradas</div>
+      <div class="page-subtitle" id="topbar-sub">44 anos · A+ · 61 exames processados · Einstein #4181819</div>
     </div>
     <div class="topbar-right">
-      <div class="garmin-pill"><div class="pdot"></div>Garmin Live</div>
+      <div class="garmin-pill"><div class="pdot"></div>Garmin · Out/2024</div>
       <button class="btn btn-outline btn-sm">Compartilhar</button>
       <button class="btn btn-primary btn-sm" onclick="openModal()">+ Upload Exame</button>
     </div>
@@ -514,242 +434,698 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 
   <div class="scroll-area">
 
-    <!-- ░░ PAGE: OVERVIEW ░░ -->
+    <!-- ░░ OVERVIEW ░░ -->
     <div class="page active" id="page-overview">
-
-      <div class="sh"><div class="sh-title">Indicadores Vitais</div><div class="sh-line"></div><div class="sh-date">hoje · Garmin</div></div>
+      <div class="sh"><div class="sh-title">Indicadores Principais</div><div class="sh-line"></div><div class="sh-date">Último painel: Jul/2023 · Einstein</div></div>
       <div class="vitals-row">
-        <div class="vcard" style="--vl:var(--accent)">
-          <div class="vcard-label">Frequência Cardíaca</div>
-          <div class="vcard-value">58</div><div class="vcard-unit">bpm · repouso</div>
-          <div class="vcard-delta dg">▲ Atlético</div>
+        <div class="vcard" style="--vl:var(--danger)">
+          <div class="vcard-label">Colesterol Total</div>
+          <div class="vcard-value" style="color:var(--danger)">243</div>
+          <div class="vcard-unit">mg/dL · Jul/2023 · acima do ideal</div>
+          <div class="vcard-delta db">▲ Ref: &lt;190 · tendência alta</div>
           <div class="sparkline">
-            <div class="sb" style="height:40%;background:rgba(0,210,160,.2)"></div><div class="sb" style="height:55%;background:rgba(0,210,160,.2)"></div><div class="sb" style="height:48%;background:rgba(0,210,160,.2)"></div><div class="sb" style="height:62%;background:rgba(0,210,160,.2)"></div><div class="sb" style="height:52%;background:rgba(0,210,160,.2)"></div><div class="sb" style="height:45%;background:rgba(0,210,160,.2)"></div><div class="sb" style="height:58%;background:var(--accent)"></div>
+            <div class="sb" style="height:70%;background:rgba(0,210,160,0.3)" title="2019"></div>
+            <div class="sb" style="height:88%;background:rgba(255,179,71,0.5)" title="Mar/22: 219"></div>
+            <div class="sb" style="height:60%;background:rgba(0,210,160,0.4)" title="Ago/22: 167"></div>
+            <div class="sb" style="height:100%;background:var(--danger)" title="Jul/23: 243"></div>
           </div>
         </div>
-        <div class="vcard" style="--vl:#00a8ff">
-          <div class="vcard-label">HRV</div>
-          <div class="vcard-value">72</div><div class="vcard-unit">ms · variabilidade</div>
-          <div class="vcard-delta dg">▲ +8 esta semana</div>
+        <div class="vcard" style="--vl:var(--danger)">
+          <div class="vcard-label">LDL Colesterol</div>
+          <div class="vcard-value" style="color:var(--danger)">157</div>
+          <div class="vcard-unit">mg/dL · Jul/2023 · acima do ideal</div>
+          <div class="vcard-delta db">▲ Ref: &lt;130 · alta em 2023</div>
           <div class="sparkline">
-            <div class="sb" style="height:60%;background:rgba(0,168,255,.2)"></div><div class="sb" style="height:70%;background:rgba(0,168,255,.2)"></div><div class="sb" style="height:60%;background:rgba(0,168,255,.2)"></div><div class="sb" style="height:75%;background:rgba(0,168,255,.2)"></div><div class="sb" style="height:68%;background:rgba(0,168,255,.2)"></div><div class="sb" style="height:72%;background:rgba(0,168,255,.2)"></div><div class="sb" style="height:80%;background:#00a8ff"></div>
+            <div class="sb" style="height:65%;background:rgba(255,79,79,0.3)" title="Mar/19"></div>
+            <div class="sb" style="height:88%;background:rgba(255,179,71,0.5)" title="Mar/22: 145"></div>
+            <div class="sb" style="height:60%;background:rgba(0,210,160,0.4)" title="Ago/22: 107"></div>
+            <div class="sb" style="height:100%;background:var(--danger)" title="Jul/23: 157"></div>
           </div>
         </div>
         <div class="vcard" style="--vl:var(--warn)">
-          <div class="vcard-label">Testosterona Total</div>
-          <div class="vcard-value">620</div><div class="vcard-unit">ng/dL · último exame</div>
-          <div class="vcard-delta dw">▼ Abaixo do ideal</div>
+          <div class="vcard-label">Gama GT</div>
+          <div class="vcard-value" style="color:var(--danger)">162</div>
+          <div class="vcard-unit">U/L · Jul/2023 · persistentemente alto</div>
+          <div class="vcard-delta db">▲ Ref: &lt;61 · padrão irregular</div>
           <div class="sparkline">
-            <div class="sb" style="height:80%;background:rgba(255,179,71,.2)"></div><div class="sb" style="height:78%;background:rgba(255,179,71,.2)"></div><div class="sb" style="height:75%;background:rgba(255,179,71,.2)"></div><div class="sb" style="height:70%;background:rgba(255,179,71,.2)"></div><div class="sb" style="height:67%;background:rgba(255,179,71,.2)"></div><div class="sb" style="height:64%;background:rgba(255,179,71,.2)"></div><div class="sb" style="height:62%;background:var(--warn)"></div>
+            <div class="sb" style="height:73%;background:rgba(255,79,79,0.4)" title="2019: 119"></div>
+            <div class="sb" style="height:78%;background:rgba(255,79,79,0.5)" title="Mar/22: 128"></div>
+            <div class="sb" style="height:40%;background:rgba(0,210,160,0.4)" title="Ago/22: 64"></div>
+            <div class="sb" style="height:100%;background:var(--danger)" title="Jul/23: 162"></div>
           </div>
         </div>
-        <div class="vcard" style="--vl:var(--good)">
-          <div class="vcard-label">Sono · Ontem</div>
-          <div class="vcard-value">7h12</div><div class="vcard-unit">Garmin · Score 82/100</div>
-          <div class="vcard-delta dg">▲ Acima da média</div>
+        <div class="vcard" style="--vl:var(--accent2)">
+          <div class="vcard-label">HRV (Garmin)</div>
+          <div class="vcard-value" style="color:var(--warn)">24,7</div>
+          <div class="vcard-unit">ms · média 5 dias · Out/2024</div>
+          <div class="vcard-delta dw">▼ Baixo para atleta 44 anos</div>
           <div class="sparkline">
-            <div class="sb" style="height:70%;background:rgba(61,255,179,.2)"></div><div class="sb" style="height:60%;background:rgba(61,255,179,.2)"></div><div class="sb" style="height:85%;background:rgba(61,255,179,.2)"></div><div class="sb" style="height:75%;background:rgba(61,255,179,.2)"></div><div class="sb" style="height:80%;background:rgba(61,255,179,.2)"></div><div class="sb" style="height:90%;background:rgba(61,255,179,.2)"></div><div class="sb" style="height:88%;background:var(--accent3)"></div>
+            <div class="sb" style="height:60%;background:rgba(0,168,255,0.3)"></div>
+            <div class="sb" style="height:65%;background:rgba(0,168,255,0.3)"></div>
+            <div class="sb" style="height:55%;background:rgba(0,168,255,0.3)"></div>
+            <div class="sb" style="height:60%;background:rgba(0,168,255,0.3)"></div>
+            <div class="sb" style="height:62%;background:#00a8ff"></div>
           </div>
         </div>
       </div>
 
-      <div class="sh"><div class="sh-title">Exames por Especialidade</div><div class="sh-line"></div></div>
+      <div class="sh"><div class="sh-title">Status por Área</div><div class="sh-line"></div></div>
       <div class="ov-grid">
-        <div class="ov-card" style="--ol:var(--accent)" onclick="goPageSpec('lab',null)"><div class="ov-icon">🧪</div><div class="ov-name">Laboratorial</div><div class="ov-num" id="ov-lab">2</div><div class="ov-sub">exames</div><div class="ov-st"><span class="badge badge-warn">1 atenção</span></div></div>
-        <div class="ov-card" style="--ol:#00a8ff" onclick="goPageSpec('cardio',null)"><div class="ov-icon">🫀</div><div class="ov-name">Cardiologia</div><div class="ov-num" id="ov-cardio">1</div><div class="ov-sub">exames</div><div class="ov-st"><span class="badge badge-ok">normal</span></div></div>
-        <div class="ov-card" style="--ol:var(--warn)" onclick="goPageSpec('image',null)"><div class="ov-icon">🩻</div><div class="ov-name">Imagens</div><div class="ov-num" id="ov-image">1</div><div class="ov-sub">exames</div><div class="ov-st"><span class="badge badge-ok">normal</span></div></div>
-        <div class="ov-card" style="--ol:#9664ff" onclick="goPageSpec('perf',null)"><div class="ov-icon">⚡</div><div class="ov-name">Performance</div><div class="ov-num" id="ov-perf">1</div><div class="ov-sub">exames</div><div class="ov-st"><span class="badge badge-ok">ótimo</span></div></div>
-        <div class="ov-card" style="--ol:#00c8c8" onclick="goPageSpec('horm',null)"><div class="ov-icon">💉</div><div class="ov-name">Hormonal</div><div class="ov-num" id="ov-horm">0</div><div class="ov-sub">exames</div><div class="ov-st"><span class="badge badge-new">aguardando PDF</span></div></div>
-        <div class="ov-card" style="--ol:#ff6464" onclick="goPageSpec('cirurg',null)"><div class="ov-icon">🔪</div><div class="ov-name">Cirurgias</div><div class="ov-num" id="ov-cirurg">0</div><div class="ov-sub">registros</div><div class="ov-st"><span class="badge badge-new">aguardando PDF</span></div></div>
-        <div class="ov-card" style="--ol:var(--text3)" onclick="goPageSpec('outros',null)"><div class="ov-icon">📋</div><div class="ov-name">Outros</div><div class="ov-num" id="ov-outros">0</div><div class="ov-sub">exames</div><div class="ov-st"><span class="badge badge-new">aguardando PDF</span></div></div>
-        <div class="ov-card" style="--ol:var(--accent2);cursor:default"><div class="ov-icon">📁</div><div class="ov-name">Total Arquivos</div><div class="ov-num" id="ov-total">5</div><div class="ov-sub">documentos</div><div class="ov-st"><span class="badge badge-ok">armazenados</span></div></div>
+        <div class="ov-card" style="--ol:var(--danger)" onclick="goPage('alertas',null)"><div class="ov-icon">🚨</div><div class="ov-name">Alertas Ativos</div><div class="ov-num" style="color:var(--danger)">10</div><div class="ov-sub">pontos de atenção</div><div class="ov-st"><span class="badge badge-bad">ação recomendada</span></div></div>
+        <div class="ov-card" style="--ol:var(--warn)" onclick="goPage('laboratorial',null)"><div class="ov-icon">🧪</div><div class="ov-name">Laboratorial</div><div class="ov-num">61</div><div class="ov-sub">exames · 5 datas</div><div class="ov-st"><span class="badge badge-warn">3 marcadores altos</span></div></div>
+        <div class="ov-card" style="--ol:var(--accent2)" onclick="goPage('cardio',null)"><div class="ov-icon">🫀</div><div class="ov-name">Cardiologia</div><div class="ov-num">4</div><div class="ov-sub">exames completos</div><div class="ov-st"><span class="badge badge-warn">BAV 1º grau</span></div></div>
+        <div class="ov-card" style="--ol:#9664ff" onclick="goPage('hormonal',null)"><div class="ov-icon">💉</div><div class="ov-name">Hormonal</div><div class="ov-num">2</div><div class="ov-sub">painéis completos</div><div class="ov-st"><span class="badge badge-ok">dentro do ref.</span></div></div>
+        <div class="ov-card" style="--ol:var(--accent)" onclick="goPage('garmin',null)"><div class="ov-icon">⌚</div><div class="ov-name">Garmin</div><div class="ov-num">21</div><div class="ov-sub">arquivos .fit</div><div class="ov-st"><span class="badge badge-warn">SpO₂ 69% sono</span></div></div>
+        <div class="ov-card" style="--ol:var(--good)" onclick="goPage('timeline',null)"><div class="ov-icon">📅</div><div class="ov-name">Timeline</div><div class="ov-num">6</div><div class="ov-sub">eventos médicos</div><div class="ov-st"><span class="badge badge-new">COVID 2020</span></div></div>
+        <div class="ov-card" style="--ol:var(--text3)"><div class="ov-icon">🩸</div><div class="ov-name">Tipo Sanguíneo</div><div class="ov-num">A+</div><div class="ov-sub">confirmado Delboni 2019</div><div class="ov-st"><span class="badge badge-ok">registrado</span></div></div>
+        <div class="ov-card" style="--ol:var(--accent2);cursor:default"><div class="ov-icon">📁</div><div class="ov-name">Total Arquivos</div><div class="ov-num">61</div><div class="ov-sub">PDFs processados</div><div class="ov-st"><span class="badge badge-ok">+ PDFs pendentes</span></div></div>
       </div>
+    </div>
 
-      <div class="sh"><div class="sh-title">Alertas Clínicos</div><div class="sh-line"></div></div>
-      <div class="panel">
-        <div class="panel-body">
-          <div class="alert-list">
-            <div class="alert-item al-warn"><div class="alert-title">Testosterona abaixo do ideal</div><div class="alert-desc">620 ng/dL · Referência ótima 700–900 · Acompanhar endocrinologista</div></div>
-            <div class="alert-item al-warn"><div class="alert-title">Vitamina D levemente baixa</div><div class="alert-desc">28 ng/mL · Referência 30–100 · Suplementação recomendada</div></div>
-            <div class="alert-item al-info"><div class="alert-title">Próximo exame: 15 mai 2026</div><div class="alert-desc">Painel completo de sangue · Lab Fleury</div></div>
-            <div class="alert-item al-ok"><div class="alert-title">Perfil lipídico dentro do ideal</div><div class="alert-desc">LDL 98 · HDL 62 · Triglicerídeos 88 · Exame abr 2026</div></div>
-          </div>
-        </div>
+    <!-- ░░ ALERTAS ░░ -->
+    <div class="page" id="page-alertas">
+      <div class="sh"><div class="sh-title">Alertas Clínicos — Dados Reais dos PDFs</div><div class="sh-line"></div><div class="sh-date">10 pontos de atenção</div></div>
+      <div class="alert-list">
+        <div class="alert-item al-bad"><div class="alert-title">🔴 Colesterol Total 243 mg/dL — Acima do ideal</div><div class="alert-desc">Jul/2023 · Einstein · Ref: &lt;190 mg/dL · Tendência crescente: 167 (Ago/22) → 219 (Mar/22) → 243 (Jul/23). Avaliação cardiológica e ajuste dietético recomendados.</div></div>
+        <div class="alert-item al-bad"><div class="alert-title">🔴 LDL 157 mg/dL — Acima do ideal</div><div class="alert-desc">Jul/2023 · Einstein · Ref: &lt;130 mg/dL · Trajetória: 107 (Ago/22) → 157 (Jul/23). Alta de 47% em 11 meses. Avaliação de risco cardiovascular indicada.</div></div>
+        <div class="alert-item al-bad"><div class="alert-title">🔴 Triglicerídeos 192 mg/dL — Alto</div><div class="alert-desc">Jul/2023 · Einstein · Ref: &lt;150 mg/dL · Subiu de 117 (Ago/22) para 192 (Jul/23). Avaliar dieta, álcool e atividade física aeróbica.</div></div>
+        <div class="alert-item al-bad"><div class="alert-title">🔴 Gama GT persistentemente elevado</div><div class="alert-desc">Padrão irregular desde 2019: 119 → 128 → 64 → 162 U/L (Ref: &lt;61). Jul/2023 pior resultado. Pode indicar sobrecarga hepática, suplementos ou álcool. Avaliação hepática completa recomendada.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ Ácido Úrico no limite superior</div><div class="alert-desc">Ago/2022: 7,3 mg/dL · Mar/2022: 7,1 mg/dL · Mar/2019: 7,1 mg/dL · Ref: 3,4–7,0. Consistentemente no limite. Hidratação adequada; avaliar redução de carne vermelha.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ BAV de 1º Grau — ECG Jul/2023</div><div class="alert-desc">Bloqueio Atrioventricular de 1º Grau detectado no ECG de Jul/2023 (PR 212ms). ECG de Mar/2022 era normal. Comum em atletas; acompanhamento cardiológico recomendado.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ Ectasia aórtica — raiz 41mm (estável)</div><div class="alert-desc">Ecocardiograma Mar/2022 e Jul/2023: raiz aórtica 41mm (Ref: 31–37mm). Sem progressão entre os dois exames. Monitoramento anual com Eco recomendado.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ HRV baixo para atleta (24,7ms média)</div><div class="alert-desc">Garmin Out/2024 · HRV noturno 5–9ms, média 5 dias 24,7ms. Para atleta de 44 anos, esperado acima de 40ms. Pode ter correlação com estresse, sono ou recuperação inadequada.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ SpO₂ mínima de 69% durante o sono</div><div class="alert-desc">Garmin SLEEP_DATA · Out/2024. Valor normal: &gt;94%. Pode ser artefato de movimento ou indicar apneia do sono. Recomendado investigar com médico — avaliar polissonografia.</div></div>
+        <div class="alert-item al-info"><div class="alert-title">ℹ️ Sem imunidade para Hepatite B (Anti-HBs &lt;2 UI/L)</div><div class="alert-desc">Delboni Jun/2020 · Anti-HBs &lt;2 UI/L (Ref: ≥10 UI/L). Sem evidência de imunização prévia ou vacinação completa. Avaliação com médico sobre necessidade de vacinação.</div></div>
       </div>
-    </div><!-- /overview -->
+    </div>
 
-    <!-- ░░ PAGE: TODOS OS EXAMES ░░ -->
-    <div class="page" id="page-exames">
-      <div class="sh"><div class="sh-title">Todos os Exames</div><div class="sh-line"></div><div class="sh-date" id="total-count-label">5 arquivos</div></div>
+    <!-- ░░ LABORATORIAL ░░ -->
+    <div class="page" id="page-laboratorial">
+      <div class="sh"><div class="sh-title">Painel Laboratorial Completo</div><div class="sh-line"></div><div class="sh-date">5 coletas · 2019–2023</div></div>
       <div class="lab-legend">
         <span class="ll-title">Instituições:</span>
-        <span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-fleury">Fleury</span><span class="lab-tag lt-delboni">Delboni</span><span class="lab-tag lt-osvaldo">Osvaldo Cruz</span><span class="lab-tag lt-dasa">DASA</span><span class="lab-tag lt-sirio">Sírio-Libanês</span><span class="lab-tag lt-hcor">HCor</span><span class="lab-tag lt-cete">CETE Sport</span>
+        <span class="lab-tag lt-einstein">Einstein</span>
+        <span class="lab-tag lt-delboni">Delboni</span>
+        <span class="lab-tag lt-dasa">DASA</span>
       </div>
+
       <div class="spec-wrap">
         <div class="spec-tabs">
-          <div class="spec-tab active" onclick="switchTab('lab',this)">🧪 Laboratorial<span class="tc tc-g" id="tc-lab">2</span></div>
-          <div class="spec-tab" onclick="switchTab('cardio',this)">🫀 Cardiologia<span class="tc tc-b" id="tc-cardio">1</span></div>
-          <div class="spec-tab" onclick="switchTab('image',this)">🩻 Imagens<span class="tc tc-w" id="tc-image">1</span></div>
-          <div class="spec-tab" onclick="switchTab('perf',this)">⚡ Performance<span class="tc tc-p" id="tc-perf">1</span></div>
-          <div class="spec-tab" onclick="switchTab('horm',this)">💉 Hormonal<span class="tc tc-t" id="tc-horm">0</span></div>
-          <div class="spec-tab" onclick="switchTab('cirurg',this)">🔪 Cirurgias<span class="tc tc-r" id="tc-cirurg">0</span></div>
-          <div class="spec-tab" onclick="switchTab('outros',this)">📋 Outros<span class="tc tc-x" id="tc-outros">0</span></div>
+          <div class="spec-tab active" onclick="switchTab('lipideos',this)">🫀 Lipídeos<span class="tc tc-r">⚠</span></div>
+          <div class="spec-tab" onclick="switchTab('hepatico',this)">🫁 Hepático<span class="tc tc-r">⚠</span></div>
+          <div class="spec-tab" onclick="switchTab('renal',this)">💧 Renal</div>
+          <div class="spec-tab" onclick="switchTab('hemato',this)">🩸 Hematologia</div>
+          <div class="spec-tab" onclick="switchTab('glicemia',this)">🍬 Glicemia</div>
+          <div class="spec-tab" onclick="switchTab('outros',this)">🔬 Outros</div>
         </div>
 
-        <!-- LAB -->
-        <div class="spec-panel active" id="sp-lab">
-          <div class="filter-bar"><span class="filter-label">Filtrar:</span>
-            <button class="filter-btn active" onclick="filterSpec('lab','all',this)">Todos</button>
-            <button class="filter-btn" onclick="filterSpec('lab','fleury',this)"><span class="lab-tag lt-fleury" style="pointer-events:none">Fleury</span></button>
-            <button class="filter-btn" onclick="filterSpec('lab','dasa',this)"><span class="lab-tag lt-dasa" style="pointer-events:none">DASA</span></button>
-            <button class="filter-btn" onclick="filterSpec('lab','einstein',this)"><span class="lab-tag lt-einstein" style="pointer-events:none">Einstein</span></button>
-          </div>
+        <!-- LIPIDEOS -->
+        <div class="spec-panel active" id="sp-lipideos">
           <div class="markers-grid">
-            <div class="marker-item"><div class="marker-row"><span class="marker-name">Testosterona Total</span><span class="marker-val cw">620 ng/dL</span></div><div class="mtrack"><div class="mrange" style="left:58%;width:20%"></div><div class="mfill" style="width:62%;background:var(--warn)"></div></div><div class="mref">Ref: 400–900 ng/dL</div></div>
-            <div class="marker-item"><div class="marker-row"><span class="marker-name">Vitamina D</span><span class="marker-val cw">28 ng/mL</span></div><div class="mtrack"><div class="mrange" style="left:35%;width:40%"></div><div class="mfill" style="width:40%;background:var(--warn)"></div></div><div class="mref">Ref: 30–100 ng/mL</div></div>
-            <div class="marker-item"><div class="marker-row"><span class="marker-name">LDL</span><span class="marker-val cg">98 mg/dL</span></div><div class="mtrack"><div class="mrange" style="left:5%;width:55%"></div><div class="mfill" style="width:50%;background:var(--good)"></div></div><div class="mref">Ref: &lt;130 mg/dL</div></div>
-            <div class="marker-item"><div class="marker-row"><span class="marker-name">HDL</span><span class="marker-val cg">62 mg/dL</span></div><div class="mtrack"><div class="mrange" style="left:35%;width:50%"></div><div class="mfill" style="width:70%;background:var(--good)"></div></div><div class="mref">Ref: &gt;40 mg/dL</div></div>
-            <div class="marker-item"><div class="marker-row"><span class="marker-name">Glicose jejum</span><span class="marker-val cg">88 mg/dL</span></div><div class="mtrack"><div class="mrange" style="left:15%;width:50%"></div><div class="mfill" style="width:45%;background:var(--good)"></div></div><div class="mref">Ref: 70–99 mg/dL</div></div>
-            <div class="marker-item"><div class="marker-row"><span class="marker-name">Ferritina</span><span class="marker-val cg">78 ng/mL</span></div><div class="mtrack"><div class="mrange" style="left:15%;width:50%"></div><div class="mfill" style="width:55%;background:var(--good)"></div></div><div class="mref">Ref: 30–400 ng/mL</div></div>
-            <div class="marker-item"><div class="marker-row"><span class="marker-name">PCR ultrassensível</span><span class="marker-val cg">0.4 mg/L</span></div><div class="mtrack"><div class="mrange" style="left:5%;width:35%"></div><div class="mfill" style="width:12%;background:var(--good)"></div></div><div class="mref">Ref: &lt;1.0 mg/L</div></div>
-            <div class="marker-item"><div class="marker-row"><span class="marker-name">HbA1c</span><span class="marker-val cg">5.1%</span></div><div class="mtrack"><div class="mrange" style="left:5%;width:50%"></div><div class="mfill" style="width:38%;background:var(--good)"></div></div><div class="mref">Ref: &lt;5.7%</div></div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Colesterol Total</span><span class="marker-val cb">243 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:85%;background:var(--danger)"></div></div>
+                <span class="mref">&lt;190</span>
+              </div>
+              <div class="mref" style="margin-top:6px">📊 Mar/22: 219 · Ago/22: 167 · Jul/23: <strong style="color:var(--danger)">243</strong></div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">LDL Colesterol</span><span class="marker-val cb">157 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:75%;background:var(--danger)"></div></div>
+                <span class="mref">&lt;130</span>
+              </div>
+              <div class="mref" style="margin-top:6px">📊 Mar/22: 145 · Ago/22: 107 · Jul/23: <strong style="color:var(--danger)">157</strong></div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">HDL Colesterol</span><span class="marker-val cg">51 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:25%;width:60%"></div><div class="mfill" style="width:65%;background:var(--good)"></div></div>
+                <span class="mref">&gt;40</span>
+              </div>
+              <div class="mref" style="margin-top:6px">📊 Mar/22: 47 · Ago/22: <strong style="color:var(--danger)">37</strong> · Jul/23: 51</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Triglicerídeos</span><span class="marker-val cb">192 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:80%;background:var(--danger)"></div></div>
+                <span class="mref">&lt;150</span>
+              </div>
+              <div class="mref" style="margin-top:6px">📊 Mar/22: 138 · Ago/22: 117 · Jul/23: <strong style="color:var(--danger)">192</strong></div>
+            </div>
           </div>
-          <div class="exam-list" id="files-lab">
-            <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Hemograma Completo + Bioquímica</div><div class="exam-meta">Abril 2026 · PDF 2.1MB</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-warn">1 atenção</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
-            <div class="exam-row" data-lab="dasa"><div class="exam-icon-w ei-g">🧬</div><div class="exam-info"><div class="exam-name">Bioquímica Geral</div><div class="exam-meta">Janeiro 2026 · PDF 1.4MB</div></div><div class="exam-tags-row"><span class="lab-tag lt-dasa">DASA</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+          <div style="background:rgba(255,79,79,0.05);border:1px solid rgba(255,79,79,0.2);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);">
+            🔴 Perfil lipídico em deterioração em 2023. Colesterol, LDL e TG todos acima do ideal. HDL estava baixo em Ago/22. Avaliação cardiológica e mudanças de estilo de vida são prioritárias.
           </div>
         </div>
 
-        <!-- CARDIO -->
-        <div class="spec-panel" id="sp-cardio">
-          <div class="filter-bar"><span class="filter-label">Filtrar:</span><button class="filter-btn active" onclick="filterSpec('cardio','all',this)">Todos</button><button class="filter-btn" onclick="filterSpec('cardio','hcor',this)"><span class="lab-tag lt-hcor" style="pointer-events:none">HCor</span></button></div>
-          <div class="exam-list" id="files-cardio">
-            <div class="exam-row" data-lab="hcor"><div class="exam-icon-w ei-b">🫀</div><div class="exam-info"><div class="exam-name">Ecocardiograma Transtorácico</div><div class="exam-meta">Outubro 2025 · PDF 4.7MB · FE 68%</div></div><div class="exam-tags-row"><span class="lab-tag lt-hcor">HCor</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- HEPATICO -->
+        <div class="spec-panel" id="sp-hepatico">
+          <div class="markers-grid">
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Gama GT (GGT)</span><span class="marker-val cb">162 U/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:40%"></div><div class="mfill" style="width:90%;background:var(--danger)"></div></div>
+                <span class="mref">&lt;61</span>
+              </div>
+              <div class="mref" style="margin-top:6px">📊 2019: 119 · Mar/22: 128 · Ago/22: 64 · Jul/23: <strong style="color:var(--danger)">162</strong></div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">TGP/ALT (2019)</span><span class="marker-val cw">40 U/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:100%;background:var(--warn)"></div></div>
+                <span class="mref">10–40</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Delboni Mar/2019 · No limite superior</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">DHL</span><span class="marker-val cg">168 U/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:15%;width:60%"></div><div class="mfill" style="width:55%;background:var(--good)"></div></div>
+                <span class="mref">135–225</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Mar/22: 164 · Ago/22: 167 · Jul/23: 168</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Fosfatase Alcalina</span><span class="marker-val cg">66 U/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:15%;width:55%"></div><div class="mfill" style="width:45%;background:var(--good)"></div></div>
+                <span class="mref">40–129</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Mar/22: 77 · Ago/22: 66 · ✅ Normal</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Ferritina</span><span class="marker-val cw">414 ng/mL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:65%"></div><div class="mfill" style="width:72%;background:var(--warn)"></div></div>
+                <span class="mref">22–491</span>
+              </div>
+              <div class="mref" style="margin-top:6px">2019: 410 · Mar/22: 414 · Elevada mas dentro ref. Einstein</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Bilirrubina Total (2019)</span><span class="marker-val cg">0,45 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:10%;width:60%"></div><div class="mfill" style="width:25%;background:var(--good)"></div></div>
+                <span class="mref">0,3–1,2</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Normal</div>
+            </div>
           </div>
         </div>
 
-        <!-- IMAGENS -->
-        <div class="spec-panel" id="sp-image">
-          <div class="filter-bar"><span class="filter-label">Filtrar:</span><button class="filter-btn active" onclick="filterSpec('image','all',this)">Todos</button><button class="filter-btn" onclick="filterSpec('image','fleury',this)"><span class="lab-tag lt-fleury" style="pointer-events:none">Fleury</span></button></div>
-          <div class="exam-list" id="files-image">
-            <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-w">🩻</div><div class="exam-info"><div class="exam-name">Ressonância Magnética — Ombro Direito</div><div class="exam-meta">Junho 2025 · PDF + DICOM</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- RENAL -->
+        <div class="spec-panel" id="sp-renal">
+          <div class="markers-grid">
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Creatinina</span><span class="marker-val cw">1,20 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:75%"></div><div class="mfill" style="width:85%;background:var(--warn)"></div></div>
+                <span class="mref">0,70–1,20</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Jan/22: 1,13 · Ago/22: 1,06 · Jul/23: <strong style="color:var(--warn)">1,20</strong> (limite)</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Ácido Úrico</span><span class="marker-val cb">7,3 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:20%;width:55%"></div><div class="mfill" style="width:78%;background:var(--danger)"></div></div>
+                <span class="mref">3,4–7,0</span>
+              </div>
+              <div class="mref" style="margin-top:6px">2019: 7,1 · Mar/22: 7,1 · Ago/22: <strong style="color:var(--danger)">7,3</strong> · Jul/23: 6,5</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Ureia</span><span class="marker-val cg">24 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:10%;width:65%"></div><div class="mfill" style="width:35%;background:var(--good)"></div></div>
+                <span class="mref">19–49</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Normal</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Potássio</span><span class="marker-val cw">5,0 mEq/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:10%;width:70%"></div><div class="mfill" style="width:95%;background:var(--warn)"></div></div>
+                <span class="mref">3,5–5,0</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Ago/22: 3,9 · Jul/23: <strong style="color:var(--warn)">5,0</strong> (limite)</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Cálcio Ionizado</span><span class="marker-val cw">1,36 mmol/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:85%"></div><div class="mfill" style="width:95%;background:var(--warn)"></div></div>
+                <span class="mref">1,14–1,31</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Jul/2023 · ⚠️ Levemente acima do limite</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Magnésio</span><span class="marker-val cg">1,7 mEq/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:55%;background:var(--good)"></div></div>
+                <span class="mref">1,3–2,1</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Jul/2023 · ✅ Normal</div>
+            </div>
           </div>
         </div>
 
-        <!-- PERFORMANCE -->
-        <div class="spec-panel" id="sp-perf">
-          <div class="filter-bar"><span class="filter-label">Filtrar:</span><button class="filter-btn active" onclick="filterSpec('perf','all',this)">Todos</button><button class="filter-btn" onclick="filterSpec('perf','cete',this)"><span class="lab-tag lt-cete" style="pointer-events:none">CETE Sport</span></button></div>
-          <div class="exam-list" id="files-perf">
-            <div class="exam-row" data-lab="cete"><div class="exam-icon-w ei-p">⚡</div><div class="exam-info"><div class="exam-name">Ergoespirometria Completa</div><div class="exam-meta">Março 2025 · PDF 3.2MB · VO₂ 52 mL/kg/min</div></div><div class="exam-tags-row"><span class="lab-tag lt-cete">CETE Sport</span><span class="badge badge-ok">ótimo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- HEMATOLOGIA -->
+        <div class="spec-panel" id="sp-hemato">
+          <div class="markers-grid">
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Hemoglobina</span><span class="marker-val cg">16,0 g/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:65%;background:var(--good)"></div></div>
+                <span class="mref">13,5–17,5</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Jan/21: 14,5 · Jan/22: 15,1 · Ago/22: 14,6 · Jul/23: 16,0</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Hematócrito</span><span class="marker-val cg">47,3%</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:68%;background:var(--good)"></div></div>
+                <span class="mref">39–50%</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Todos normais ao longo dos anos</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Leucócitos</span><span class="marker-val cg">6.510 µL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:45%;background:var(--good)"></div></div>
+                <span class="mref">3.500–10.500</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Normal · Linfócitos levemente altos Jul/23</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Plaquetas</span><span class="marker-val cg">235k µL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:35%;background:var(--good)"></div></div>
+                <span class="mref">150–450k</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Jan/22: 181k · Ago/22: 204k · Jul/23: 235k · ✅</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">CPK (Creatinoquinase)</span><span class="marker-val cg">185 U/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:70%;background:var(--good)"></div></div>
+                <span class="mref">20–200</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Mar/22: 173 · Ago/22: 115 · Jul/23: 185 · ✅ Atleta</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">PCR (Proteína C Reativa)</span><span class="marker-val cg">0,7 mg/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:10%;background:var(--good)"></div></div>
+                <span class="mref">&lt;5,0</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Mar/22: 1,2 · Ago/22: 0,7 · Jul/23: 0,7 · ✅ Inflamação normal</div>
+            </div>
           </div>
         </div>
 
-        <!-- HORMONAL -->
-        <div class="spec-panel" id="sp-horm">
-          <div class="empty-state"><div class="empty-icon">💉</div><div class="empty-title">Aguardando PDFs hormonais</div><div class="empty-sub">Painel hormonal, SHBG, LH, FSH, Estradiol, IGF-1, DHEA-S</div><button class="btn btn-primary" onclick="openModalSpec('horm')">+ Upload hormonal</button></div>
-          <div class="exam-list" id="files-horm"></div>
-        </div>
-
-        <!-- CIRURGIAS -->
-        <div class="spec-panel" id="sp-cirurg">
-          <div class="empty-state"><div class="empty-icon">🔪</div><div class="empty-title">Aguardando laudos cirúrgicos</div><div class="empty-sub">Relatórios cirúrgicos, laudos de anestesia, alta hospitalar, pós-operatório</div><button class="btn btn-primary" onclick="openModalSpec('cirurg')">+ Upload cirurgia</button></div>
-          <div class="exam-list" id="files-cirurg"></div>
+        <!-- GLICEMIA -->
+        <div class="spec-panel" id="sp-glicemia">
+          <div class="markers-grid">
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Glicose Jejum</span><span class="marker-val cg">92 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:10%;width:80%"></div><div class="mfill" style="width:60%;background:var(--good)"></div></div>
+                <span class="mref">70–99</span>
+              </div>
+              <div class="mref" style="margin-top:6px">2019: 90 · Jan/21: 90 · Jan/22: 85 · Ago/22: 88 · Jul/23: 92</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">HbA1c (Hemoglobina Glicada)</span><span class="marker-val cg">5,2%</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:80%"></div><div class="mfill" style="width:52%;background:var(--good)"></div></div>
+                <span class="mref">&lt;5,7%</span>
+              </div>
+              <div class="mref" style="margin-top:6px">2019: 5,6% · Ago/22: 5,1% · Jul/23: 5,2% · ✅ Excelente</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Fibrinogênio</span><span class="marker-val cg">307 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:50%;background:var(--good)"></div></div>
+                <span class="mref">200–400</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Jan/22: 307 · 2019: 316 · ✅ Normal</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Homocisteína (2019)</span><span class="marker-val cg">10,2 µmol/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:70%;background:var(--good)"></div></div>
+                <span class="mref">5–12</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Normal · Risco cardiovascular baixo</div>
+            </div>
+          </div>
         </div>
 
         <!-- OUTROS -->
         <div class="spec-panel" id="sp-outros">
-          <div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">Aguardando outros exames</div><div class="empty-sub">Urologia, ortopedia, oftalmologia, dermatologia, check-up geral</div><button class="btn btn-primary" onclick="openModalSpec('outros')">+ Upload exame</button></div>
-          <div class="exam-list" id="files-outros"></div>
-        </div>
-      </div>
-    </div><!-- /exames -->
-
-    <!-- ░░ PAGE: POR LABORATÓRIO ░░ -->
-    <div class="page" id="page-labs">
-      <div class="sh"><div class="sh-title">Exames por Instituição</div><div class="sh-line"></div></div>
-      <div class="lab-legend" style="margin-bottom:18px">
-        <span class="ll-title">Cores:</span>
-        <span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-fleury">Fleury</span><span class="lab-tag lt-delboni">Delboni</span><span class="lab-tag lt-osvaldo">Osvaldo Cruz</span><span class="lab-tag lt-dasa">DASA</span><span class="lab-tag lt-sirio">Sírio-Libanês</span><span class="lab-tag lt-hcor">HCor</span><span class="lab-tag lt-cete">CETE Sport</span>
-      </div>
-      <div class="panel" style="margin-bottom:16px">
-        <div class="panel-header"><div class="panel-title">Distribuição por instituição</div></div>
-        <div class="panel-body">
-          <div class="lab-stats" id="lab-stat-bars">
-            <div class="lsb"><span class="lsb-name"><span class="lab-tag lt-fleury">Fleury</span></span><div class="lsb-track"><div class="lsb-fill" id="lsb-fleury" style="width:40%;background:var(--fleury-text)"></div></div><span class="lsb-cnt" id="lsc-fleury">2</span></div>
-            <div class="lsb"><span class="lsb-name"><span class="lab-tag lt-hcor">HCor</span></span><div class="lsb-track"><div class="lsb-fill" id="lsb-hcor" style="width:20%;background:var(--hcor-text)"></div></div><span class="lsb-cnt" id="lsc-hcor">1</span></div>
-            <div class="lsb"><span class="lsb-name"><span class="lab-tag lt-cete">CETE</span></span><div class="lsb-track"><div class="lsb-fill" id="lsb-cete" style="width:20%;background:var(--cete-text)"></div></div><span class="lsb-cnt" id="lsc-cete">1</span></div>
-            <div class="lsb"><span class="lsb-name"><span class="lab-tag lt-dasa">DASA</span></span><div class="lsb-track"><div class="lsb-fill" id="lsb-dasa" style="width:20%;background:var(--dasa-text)"></div></div><span class="lsb-cnt" id="lsc-dasa">1</span></div>
-            <div class="lsb"><span class="lsb-name"><span class="lab-tag lt-einstein">Einstein</span></span><div class="lsb-track"><div class="lsb-fill" id="lsb-einstein" style="width:0%;background:var(--einstein-text)"></div></div><span class="lsb-cnt" id="lsc-einstein">0</span></div>
-            <div class="lsb"><span class="lsb-name"><span class="lab-tag lt-delboni">Delboni</span></span><div class="lsb-track"><div class="lsb-fill" id="lsb-delboni" style="width:0%;background:var(--delboni-text)"></div></div><span class="lsb-cnt" id="lsc-delboni">0</span></div>
-            <div class="lsb"><span class="lsb-name"><span class="lab-tag lt-sirio">Sírio</span></span><div class="lsb-track"><div class="lsb-fill" id="lsb-sirio" style="width:0%;background:var(--sirio-text)"></div></div><span class="lsb-cnt" id="lsc-sirio">0</span></div>
-            <div class="lsb"><span class="lsb-name"><span class="lab-tag lt-osvaldo">Osvaldo</span></span><div class="lsb-track"><div class="lsb-fill" id="lsb-osvaldo" style="width:0%;background:var(--osvaldo-text)"></div></div><span class="lsb-cnt" id="lsc-osvaldo">0</span></div>
+          <div class="markers-grid">
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">PSA Total</span><span class="marker-val cg">0,98 ng/mL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:25%;background:var(--good)"></div></div>
+                <span class="mref">&lt;2,5–4,0</span>
+              </div>
+              <div class="mref" style="margin-top:6px">2019: 0,90 · Jun/20: 0,99 · Jul/23: 0,98 · ✅ Estável e baixo</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Ferro Sérico</span><span class="marker-val cg">155 µg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:65%;background:var(--good)"></div></div>
+                <span class="mref">33–193</span>
+              </div>
+              <div class="mref" style="margin-top:6px">Mar/22: 155 · 2019: 106 · ✅ Normal</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">PCR Ultrassensível (2019)</span><span class="marker-val cg">0,04 mg/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:40%"></div><div class="mfill" style="width:5%;background:var(--good)"></div></div>
+                <span class="mref">&lt;0,1 = baixo risco</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Risco cardiovascular BAIXO em 2019</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Cultura de Urina</span><span class="marker-val cg">Negativa</span></div>
+              <div class="mref" style="margin-top:6px">Jan/22 · Jun/20 · ✅ Sem crescimento bacteriano</div>
+            </div>
+          </div>
+          <div style="background:rgba(0,168,255,0.05);border:1px solid rgba(0,168,255,0.15);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);margin-top:8px;">
+            ℹ️ <strong style="color:var(--accent2)">COVID-19 Jun/2020:</strong> IgM Reagente (1,4 UA/mL) — confirmando infecção recente naquele período. IgG não reagente (ainda precoce). <br>
+            ℹ️ <strong style="color:var(--accent2)">Hepatite B:</strong> Anti-HBs &lt;2 UI/L — sem imunidade. Avaliar vacinação com médico.
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- ░░ HORMONAL ░░ -->
+    <div class="page" id="page-hormonal">
+      <div class="sh"><div class="sh-title">Painel Hormonal &amp; Endócrino</div><div class="sh-line"></div><div class="sh-date">Delboni Mar/2019 · Einstein 2022–2023</div></div>
+
+      <div class="info-card-grid" style="grid-template-columns:repeat(4,1fr)">
+        <div class="info-card">
+          <div class="ic-label">Testosterona Total (2019)</div>
+          <div class="ic-value" style="color:var(--warn)">444</div>
+          <div class="ic-sub">ng/dL · ref. 165–753 (22–49a)</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Test. Livre (2019)</div>
+          <div class="ic-value" style="color:var(--good)">9,10</div>
+          <div class="ic-sub">ng/dL · ref. 3,4–24,6</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">SHBG (2019)</div>
+          <div class="ic-value" style="color:var(--good)">33,4</div>
+          <div class="ic-sub">nmol/L · ref. 10–57</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Estradiol (2019)</div>
+          <div class="ic-value" style="color:var(--good)">24,5</div>
+          <div class="ic-sub">pg/mL · ref. &lt;39,8</div>
+        </div>
+      </div>
+
+      <div class="markers-grid">
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">TSH</span><span class="marker-val cg">0,733 µUI/mL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:12%;background:var(--good)"></div></div><span class="mref">0,4–4,3</span></div>
+          <div class="mref" style="margin-top:6px">Delboni 2019 · ✅ Função tireoidiana normal</div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">T4 Livre</span><span class="marker-val cg">1,58 ng/dL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:80%;background:var(--good)"></div></div><span class="mref">0,7–1,8</span></div>
+          <div class="mref" style="margin-top:6px">✅ Normal</div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">FSH</span><span class="marker-val cg">6,1 mUI/mL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:30%;background:var(--good)"></div></div><span class="mref">1,4–18,1</span></div>
+          <div class="mref" style="margin-top:6px">✅ Normal</div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">LH</span><span class="marker-val cg">2,5 mUI/mL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:15%;background:var(--good)"></div></div><span class="mref">1,5–9,3</span></div>
+          <div class="mref" style="margin-top:6px">✅ Normal</div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">DHEA-S</span><span class="marker-val cg">182,2 µg/dL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:30%;background:var(--good)"></div></div><span class="mref">34,5–568,9</span></div>
+          <div class="mref" style="margin-top:6px">✅ Normal</div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">IGF-1 (Somatomedina C)</span><span class="marker-val cg">165 ng/mL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:60%;background:var(--good)"></div></div><span class="mref">63–223</span></div>
+          <div class="mref" style="margin-top:6px">✅ Hormônio de crescimento normal</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,179,71,0.05);border:1px solid rgba(255,179,71,0.2);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);">
+        ℹ️ <strong style="color:var(--warn)">Nota sobre testosterona:</strong> O valor de 444 ng/dL (2019) está dentro do intervalo de referência (165–753 ng/dL para 22–49 anos). Contudo, para um atleta ativo aos 37 anos, o ideal costuma ser acima de 600 ng/dL. O painel hormonal completo (2022–2023) com valores atuais não foi incluído nos PDFs deste lote — aguardando exames mais recentes.
+      </div>
+    </div>
+
+    <!-- ░░ CARDIOLOGIA ░░ -->
+    <div class="page" id="page-cardio">
+      <div class="sh"><div class="sh-title">Cardiologia</div><div class="sh-line"></div><div class="sh-date">Mar/2022 · Jul/2023 · Einstein</div></div>
+
+      <div class="grid-two">
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">🫀 Ecocardiograma — Evolução</div></div>
+          <div class="panel-body">
+            <div class="markers-grid" style="grid-template-columns:1fr 1fr;gap:8px;">
+              <div class="marker-item">
+                <div class="marker-row"><span class="marker-name">Fração de Ejeção</span><span class="marker-val cg">63%</span></div>
+                <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:30%;width:65%"></div><div class="mfill" style="width:70%;background:var(--good)"></div></div><span class="mref">&gt;52%</span></div>
+                <div class="mref" style="margin-top:6px">Mar/22: 67% → Jul/23: 63% ✅</div>
+              </div>
+              <div class="marker-item">
+                <div class="marker-row"><span class="marker-name">Raiz Aórtica</span><span class="marker-val cw">41 mm</span></div>
+                <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:65%"></div><div class="mfill" style="width:80%;background:var(--warn)"></div></div><span class="mref">31–37mm</span></div>
+                <div class="mref" style="margin-top:6px">⚠️ Mar/22: 41mm → Jul/23: 41mm (estável)</div>
+              </div>
+            </div>
+            <div style="font-size:11px;color:var(--text2);margin-top:10px;line-height:1.6;">
+              <strong style="color:var(--text)">Conclusões:</strong><br>
+              Mar/2022: <em>Ectasia aórtica</em> (raiz 41mm) · FE 67% ✅<br>
+              Jul/2023: <em>Dilatação discreta estável</em> · FE 63% ✅<br>
+              Todas as valvas normais · Sem derrame pericárdico · Sem trombos
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">📋 ECG — Evolução</div></div>
+          <div class="panel-body">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:12px 14px;">
+                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px;">ECG — Mar/2022 · Einstein</div>
+                <div style="font-size:10px;color:var(--text2);">FC: 51 BPM · PR: 198ms · QRS: 102ms<br><strong style="color:var(--good)">✅ Normal — Ritmo sinusal. Traçado morfologicamente normal.</strong></div>
+              </div>
+              <div style="background:var(--bg3);border:1px solid rgba(255,179,71,0.25);border-radius:8px;padding:12px 14px;">
+                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px;">ECG — Jul/2023 · Einstein</div>
+                <div style="font-size:10px;color:var(--text2);">FC: 51 BPM · PR: 212ms · QRS: 86ms<br><strong style="color:var(--warn)">⚠️ Bloqueio AV de 1º Grau — Intervalo PR prolongado</strong></div>
+              </div>
+              <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:12px 14px;">
+                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px;">Holter 24h — Mar/2022 · Einstein</div>
+                <div style="font-size:10px;color:var(--text2);">FC média: 73 bpm · Mín: 46 · Máx: 140<br>Sem ectopia · Sem pausas &gt;2s<br><strong style="color:var(--good)">✅ Holter 100% normal — 22h21 gravação</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">Todos os arquivos</div>
-          <div style="font-size:10px;color:var(--text3);font-family:var(--mono)" id="labs-filter-info">Mostrando todos</div>
-        </div>
+        <div class="panel-header"><div class="panel-title">📊 Dados Cardíacos — Ecocardiograma Detalhado</div><div style="font-size:10px;color:var(--text3);font-family:var(--mono)">Jul/2023 · Dr. Edgar Daminello</div></div>
         <div class="panel-body">
-          <div class="filter-bar" style="margin-bottom:14px">
-            <span class="filter-label">Filtrar:</span>
-            <button class="filter-btn active" onclick="filterAllLabs('all',this)">Todos</button>
-            <button class="filter-btn" onclick="filterAllLabs('fleury',this)"><span class="lab-tag lt-fleury" style="pointer-events:none">Fleury</span></button>
-            <button class="filter-btn" onclick="filterAllLabs('hcor',this)"><span class="lab-tag lt-hcor" style="pointer-events:none">HCor</span></button>
-            <button class="filter-btn" onclick="filterAllLabs('cete',this)"><span class="lab-tag lt-cete" style="pointer-events:none">CETE</span></button>
-            <button class="filter-btn" onclick="filterAllLabs('dasa',this)"><span class="lab-tag lt-dasa" style="pointer-events:none">DASA</span></button>
-            <button class="filter-btn" onclick="filterAllLabs('einstein',this)"><span class="lab-tag lt-einstein" style="pointer-events:none">Einstein</span></button>
-          </div>
-          <div class="exam-list" id="all-labs-list">
-            <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Hemograma Completo + Bioquímica</div><div class="exam-meta">Laboratorial · Abril 2026</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-warn">1 atenção</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
-            <div class="exam-row" data-lab="dasa"><div class="exam-icon-w ei-g">🧬</div><div class="exam-info"><div class="exam-name">Bioquímica Geral</div><div class="exam-meta">Laboratorial · Janeiro 2026</div></div><div class="exam-tags-row"><span class="lab-tag lt-dasa">DASA</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
-            <div class="exam-row" data-lab="hcor"><div class="exam-icon-w ei-b">🫀</div><div class="exam-info"><div class="exam-name">Ecocardiograma Transtorácico</div><div class="exam-meta">Cardiologia · Outubro 2025</div></div><div class="exam-tags-row"><span class="lab-tag lt-hcor">HCor</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
-            <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-w">🩻</div><div class="exam-info"><div class="exam-name">Ressonância Magnética — Ombro Direito</div><div class="exam-meta">Imagens · Junho 2025</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
-            <div class="exam-row" data-lab="cete"><div class="exam-icon-w ei-p">⚡</div><div class="exam-info"><div class="exam-name">Ergoespirometria Completa</div><div class="exam-meta">Performance · Março 2025</div></div><div class="exam-tags-row"><span class="lab-tag lt-cete">CETE Sport</span><span class="badge badge-ok">ótimo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--good)">50mm</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">VE DIASTÓLICO<br>ref 37–55</div></div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--good)">10mm</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">SEPTO IV<br>ref 7–11</div></div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--warn)">41mm</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">RAIZ AÓRTICA<br>ref 31–37 ⚠️</div></div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--good)">23 mmHg</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">PRESSÃO PULM.<br>estimada</div></div>
           </div>
         </div>
       </div>
-    </div><!-- /labs -->
+    </div>
 
-    <!-- ░░ PAGE: GARMIN ░░ -->
+    <!-- ░░ GARMIN ░░ -->
     <div class="page" id="page-garmin">
-      <div class="sh"><div class="sh-title">Garmin Connect</div><div class="sh-line"></div><div class="sh-date">sincronizado · ao vivo</div></div>
-      <div class="garmin-grid">
-        <div class="gg-card"><div class="gg-icon">🏃</div><div class="gg-val" style="color:var(--accent)">47</div><div class="gg-lbl">km corridos · semana</div></div>
-        <div class="gg-card"><div class="gg-icon">🔥</div><div class="gg-val" style="color:var(--warn)">3.840</div><div class="gg-lbl">kcal ativas · semana</div></div>
-        <div class="gg-card"><div class="gg-icon">⚡</div><div class="gg-val" style="color:var(--accent2)">8/10</div><div class="gg-lbl">body battery</div></div>
-        <div class="gg-card"><div class="gg-icon">😴</div><div class="gg-val">7h12</div><div class="gg-lbl">sono · ontem</div></div>
-        <div class="gg-card"><div class="gg-icon">💓</div><div class="gg-val" style="color:var(--accent)">58</div><div class="gg-lbl">fc repouso · bpm</div></div>
-        <div class="gg-card"><div class="gg-icon">📊</div><div class="gg-val" style="color:var(--accent2)">72</div><div class="gg-lbl">hrv · ms</div></div>
-      </div>
-      <div class="sh"><div class="sh-title">Passos Diários — Semana Atual</div><div class="sh-line"></div></div>
-      <div class="panel"><div class="panel-body">
-        <div class="steps-chart">
-          <div class="step-bar-wrap"><div class="step-bar" style="height:88%;background:var(--accent)"></div><div class="step-lbl">Seg<br>11.2k</div></div>
-          <div class="step-bar-wrap"><div class="step-bar" style="height:72%;background:rgba(0,210,160,.6)"></div><div class="step-lbl">Ter<br>9.1k</div></div>
-          <div class="step-bar-wrap"><div class="step-bar" style="height:100%;background:var(--accent)"></div><div class="step-lbl">Qua<br>12.5k</div></div>
-          <div class="step-bar-wrap"><div class="step-bar" style="height:80%;background:rgba(0,210,160,.7)"></div><div class="step-lbl">Qui<br>10k</div></div>
-          <div class="step-bar-wrap"><div class="step-bar" style="height:95%;background:var(--accent)"></div><div class="step-lbl">Sex<br>11.9k</div></div>
-          <div class="step-bar-wrap"><div class="step-bar" style="height:40%;background:rgba(255,179,71,.7)"></div><div class="step-lbl">Sáb<br>5k</div></div>
-          <div class="step-bar-wrap"><div class="step-bar" style="height:25%;background:rgba(255,79,79,.5)"></div><div class="step-lbl">Dom<br>3.1k</div></div>
-        </div>
-      </div></div>
-    </div><!-- /garmin -->
+      <div class="sh"><div class="sh-title">Garmin Connect — Dados Reais</div><div class="sh-line"></div><div class="sh-date">01/10/2024 · 21 arquivos .fit</div></div>
 
-    <!-- ░░ PAGE: HISTÓRICO ░░ -->
+      <div class="garmin-alert">⚠️ Dados do <strong>dia 01/10/2024</strong>. Arquivos mais recentes pendentes de upload para atualização completa.</div>
+
+      <div class="garmin-grid">
+        <div class="gg-card"><div class="gg-icon">🔥</div><div class="gg-val" style="color:var(--accent)">2.033</div><div class="gg-lbl">kcal/dia · taxa metabólica basal</div></div>
+        <div class="gg-card"><div class="gg-icon">📊</div><div class="gg-val" style="color:var(--accent2)">24,7</div><div class="gg-lbl">ms · HRV médio 5 dias</div></div>
+        <div class="gg-card"><div class="gg-icon">🧠</div><div class="gg-val" style="color:var(--good)">31</div><div class="gg-lbl">stress médio · 1.234 leituras</div></div>
+        <div class="gg-card"><div class="gg-icon">🌡️</div><div class="gg-val" style="color:var(--accent)">35,5°C</div><div class="gg-lbl">temperatura pele · baseline sono</div></div>
+        <div class="gg-card"><div class="gg-icon">😴</div><div class="gg-val" style="color:var(--warn)">69%</div><div class="gg-lbl">SpO₂ mínima sono ⚠️</div></div>
+        <div class="gg-card"><div class="gg-icon">💓</div><div class="gg-val" style="color:var(--accent)">6–9</div><div class="gg-lbl">ms · HRV noturno · 92 leituras</div></div>
+      </div>
+
+      <div class="grid-two">
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Stress ao longo do dia (01/10/2024)</div><div style="font-size:10px;color:var(--text3);font-family:var(--mono)">1.234 leituras · min 1 · máx 95</div></div>
+          <div class="panel-body">
+            <div style="display:flex;align-items:flex-end;gap:2px;height:70px;margin-bottom:8px;">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.5);border-radius:2px;height:20%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">00h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.5);border-radius:2px;height:15%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">03h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.4);border-radius:2px;height:14%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">05h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.4);border-radius:2px;height:18%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">07h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.5);border-radius:2px;height:14%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">09h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.5);border-radius:2px;height:12%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">11h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,168,255,0.5);border-radius:2px;height:20%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">12h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:var(--danger);border-radius:2px;height:100%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">13h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.7);border-radius:2px;height:55%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">14h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,79,79,0.6);border-radius:2px;height:72%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">15h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.6);border-radius:2px;height:55%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">16h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.6);border-radius:2px;height:62%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">17h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.6);border-radius:2px;height:65%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">18h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.5);border-radius:2px;height:56%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">19h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,79,79,0.5);border-radius:2px;height:80%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">21h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,79,79,0.6);border-radius:2px;height:70%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">22h</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.6);border-radius:2px;height:68%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">23h</span></div>
+            </div>
+            <div style="font-size:10px;color:var(--text3);font-family:var(--mono);">🟢 Repouso (0–25) · 🔵 Baixo (26–50) · 🟡 Moderado (51–75) · 🔴 Alto (76+)</div>
+            <div style="font-size:10px;color:var(--text2);margin-top:6px;">Pico: 95 às 13h31 · Mínimo: 1 às 10h30 · Média: 31</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">HRV Noturno — 92 leituras reais</div><div style="font-size:10px;color:var(--text3);font-family:var(--mono)">RMSSD estimado</div></div>
+          <div class="panel-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;">
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:700;color:var(--accent2)">24,7</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px;">MÉDIA 5 DIAS</div></div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:700;color:var(--good)">8,9</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px;">MÁX ms</div></div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:700;color:var(--text2)">6,0</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px;">MÍN ms</div></div>
+            </div>
+            <div style="background:rgba(255,179,71,0.06);border:1px solid rgba(255,179,71,0.2);border-radius:7px;padding:10px 12px;font-size:11px;color:var(--text2);">
+              ⚠️ HRV noturno 5–9ms é baixo para atleta de 44 anos. Para atletas ativos, o esperado é acima de 40ms. Pode ter correlação com:<br>
+              • Estresse elevado (pico 95 às 13h)<br>
+              • Qualidade do sono (SpO₂ 69% mínima)<br>
+              • Possível relação com colesterol e testosterona
+            </div>
+            <div style="margin-top:12px;font-size:10px;color:var(--text3);font-family:var(--mono);">Temperatura de pele: 35,5°C · Delta: −0,24°C (boa recuperação)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ░░ TIMELINE ░░ -->
     <div class="page" id="page-timeline">
-      <div class="sh"><div class="sh-title">Histórico Médico Completo</div><div class="sh-line"></div></div>
+      <div class="sh"><div class="sh-title">Histórico Médico Completo</div><div class="sh-line"></div><div class="sh-date">2019–2024 · dados reais dos PDFs</div></div>
       <div class="panel"><div class="panel-body">
-        <div class="timeline" id="timeline-list">
-          <div class="tl-item"><div class="tl-dot" style="background:var(--accent)"></div><div class="tl-date">Mai 2026</div><div><div class="tl-title">Consulta · Endocrinologia · Dra. Costa</div><div class="tl-desc">Testosterona 620 ng/dL · Em acompanhamento</div><div class="tl-tags"><span class="lab-tag lt-outros">Consultório</span></div></div></div>
-          <div class="tl-item"><div class="tl-dot" style="background:var(--accent2)"></div><div class="tl-date">Jan 2026</div><div><div class="tl-title">🔪 Artroscopia — Ombro Direito</div><div class="tl-desc">Cirurgia bem-sucedida · Pós-op sem intercorrências</div><div class="tl-tags"><span class="lab-tag lt-sirio">Sírio-Libanês</span></div></div></div>
-          <div class="tl-item"><div class="tl-dot" style="background:var(--warn)"></div><div class="tl-date">Out 2025</div><div><div class="tl-title">🫀 Ecocardiograma Transtorácico</div><div class="tl-desc">FE 68% · Sem alterações estruturais</div><div class="tl-tags"><span class="lab-tag lt-hcor">HCor</span></div></div></div>
-          <div class="tl-item"><div class="tl-dot" style="background:var(--good)"></div><div class="tl-date">Mar 2025</div><div><div class="tl-title">⚡ Ergoespirometria</div><div class="tl-desc">VO₂ máx 52 mL/kg/min · Excelente para 44 anos</div><div class="tl-tags"><span class="lab-tag lt-cete">CETE Sport</span></div></div></div>
-          <div class="tl-item"><div class="tl-dot" style="background:var(--text3)"></div><div class="tl-date">Jan 2025</div><div><div class="tl-title">🧪 Hemograma + Bioquímica</div><div class="tl-desc">Resultados normais · Testosterona 680 ng/dL</div><div class="tl-tags"><span class="lab-tag lt-dasa">DASA</span></div></div></div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--accent)"></div>
+            <div class="tl-date">Out 2024</div>
+            <div>
+              <div class="tl-title">⌚ Sincronização Garmin Connect</div>
+              <div class="tl-desc">21 arquivos .fit · HRV médio 24,7ms · Stress médio 31 · SpO₂ mínima sono 69% · Taxa metabólica 2.033 kcal/dia</div>
+              <div class="tl-tags"><span class="lab-tag lt-cete">Garmin</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--accent2)"></div>
+            <div class="tl-date">Jul 2023</div>
+            <div>
+              <div class="tl-title">🧪 Check-up Completo Einstein — Painel com 20+ marcadores</div>
+              <div class="tl-desc">Colesterol 243 🔴 · LDL 157 🔴 · TG 192 🔴 · GGT 162 🔴 · PCR ok · HbA1c 5,2% ✅ · Ecocardiograma FE 63% ✅ · ECG: <strong style="color:var(--warn)">BAV 1º Grau (novo)</strong> · PSA 0,98 ✅</div>
+              <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-outros">Dr. Marcelo G. Paiva</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--good)"></div>
+            <div class="tl-date">Ago 2022</div>
+            <div>
+              <div class="tl-title">🧪 Check-up Einstein — Colesterol melhorado</div>
+              <div class="tl-desc">Colesterol 167 ✅ · LDL 107 ✅ · GGT 64 ✅ · HbA1c 5,1% ✅ · Glicose 88 ✅ · HDL 37 ⚠️ baixo · Ácido Úrico 7,3 ⚠️</div>
+              <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--accent2)"></div>
+            <div class="tl-date">Mar 2022</div>
+            <div>
+              <div class="tl-title">🫀 Check-up Cardiológico Completo + Exames</div>
+              <div class="tl-desc">Holter 24h: ✅ Normal (FC 73bpm, sem ectopia) · ECG ✅ Normal · Eco: FE 67%, ectasia aórtica 41mm · GGT 128 ⚠️ · LDL 145 ⚠️ · Colesterol 219 ⚠️</div>
+              <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-outros">Dr. Marcelo G. Paiva</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--warn)"></div>
+            <div class="tl-date">Jan 2022</div>
+            <div>
+              <div class="tl-title">🔬 Exames Pré-operatório + Vasectomia confirmada</div>
+              <div class="tl-desc">Hemograma normal · Creatinina 1,13 · Espermograma Mai/22: Azoospermia confirmada · Vasectomia realizada previamente</div>
+              <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-outros">Dr. Luiz Cury Neto</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--danger)"></div>
+            <div class="tl-date">Jun 2020</div>
+            <div>
+              <div class="tl-title">🦠 COVID-19 — IgM Reagente</div>
+              <div class="tl-desc">Delboni: Anti-SARS-CoV-2 IgM 1,4 UA/mL (Reagente) · IgG Não Reagente · ISTs negativas (HIV, Hep B, C, Sífilis, Chlamydia, Gonorreia) · Anti-HBs &lt;2 (sem imunidade) · PSA 0,99 ✅</div>
+              <div class="tl-tags"><span class="lab-tag lt-delboni">Delboni</span><span class="lab-tag lt-outros">Dra. Lilian Ramaldes Vera</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--text3)"></div>
+            <div class="tl-date">Mar 2019</div>
+            <div>
+              <div class="tl-title">🔬 Check-up Completo Delboni — 21 páginas</div>
+              <div class="tl-desc">Tipo A+ confirmado · Testosterona 444 ng/dL · TSH 0,733 ✅ · PCR ultrassensível 0,04 mg/dL (baixo risco CV) · GGT 119 ⚠️ · Ferritina 410 ✅ · PSA 0,90 ✅ · Homocisteína 10,2 ✅ · IGF-1 165 ✅</div>
+              <div class="tl-tags"><span class="lab-tag lt-delboni">Delboni</span><span class="lab-tag lt-outros">Dra. Andreia Rostirola</span></div>
+            </div>
+          </div>
         </div>
       </div></div>
-    </div><!-- /timeline -->
+    </div>
+
+    <!-- ░░ ARQUIVOS ░░ -->
+    <div class="page" id="page-arquivos">
+      <div class="sh"><div class="sh-title">Arquivos &amp; PDFs — 61 processados</div><div class="sh-line"></div></div>
+      <div class="lab-legend">
+        <span class="ll-title">Instituições:</span>
+        <span class="lab-tag lt-einstein">Einstein</span>
+        <span class="lab-tag lt-delboni">Delboni</span>
+        <span class="lab-tag lt-dasa">DASA</span>
+        <span class="lab-tag lt-cete">Garmin</span>
+      </div>
+      <div class="filter-bar">
+        <span class="filter-label">Filtrar:</span>
+        <button class="filter-btn active" onclick="filterFiles('all',this)">Todos (61)</button>
+        <button class="filter-btn" onclick="filterFiles('einstein',this)"><span class="lab-tag lt-einstein" style="pointer-events:none">Einstein</span></button>
+        <button class="filter-btn" onclick="filterFiles('delboni',this)"><span class="lab-tag lt-delboni" style="pointer-events:none">Delboni</span></button>
+        <button class="filter-btn" onclick="filterFiles('garmin',this)"><span class="lab-tag lt-cete" style="pointer-events:none">Garmin</span></button>
+      </div>
+      <div class="exam-list" id="files-list">
+        <!-- Einstein 2023 -->
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Painel Completo — Bioquímica + Hormonal + Eco + ECG</div><div class="exam-meta">Einstein · Jul/2023 · 20+ marcadores · ⚠️ Colesterol, LDL, TG, GGT altos</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-bad">4 alterados</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- Einstein Ago/22 -->
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Check-up Laboratorial Completo</div><div class="exam-meta">Einstein · Ago/2022 · Colesterol melhorado · HDL baixo</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-warn">1 atenção</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- Einstein Mar/22 -->
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-b">🫀</div><div class="exam-info"><div class="exam-name">Holter 24h + Ecocardiograma + ECG + Laboratorial</div><div class="exam-meta">Einstein · Mar/2022 · Holter ✅ · ECG ✅ · Eco: ectasia aórtica 41mm</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-warn">ectasia estável</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- Einstein Jan/22 -->
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">🔬</div><div class="exam-info"><div class="exam-name">Hemograma + Creatinina + Glicose + Fibrinogênio</div><div class="exam-meta">Einstein · Jan/2022 · Dr. Luiz Cury Neto · Pré-operatório</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- Delboni 2023 -->
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">💉</div><div class="exam-info"><div class="exam-name">Espermograma com Capacitação</div><div class="exam-meta">Einstein · Mai/2022 · Dr. Luiz Cury Neto · Azoospermia (pós-vasectomia)</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-new">urologia</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- Delboni Jun/20 -->
+        <div class="exam-row" data-lab="delboni"><div class="exam-icon-w ei-g">🦠</div><div class="exam-info"><div class="exam-name">Painel ISTs + COVID-19 + PSA + Urina</div><div class="exam-meta">Delboni · Jun/2020 · IgM COVID+ · ISTs negativas · Anti-HBs &lt;2</div></div><div class="exam-tags-row"><span class="lab-tag lt-delboni">Delboni</span><span class="badge badge-warn">Anti-HBs baixo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- Delboni Jan/21 -->
+        <div class="exam-row" data-lab="delboni"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Hemograma + Coagulação + Glicose + Creatinina</div><div class="exam-meta">Delboni · Jan/2021 · Dr. Jose R. Hilsdorf · INR 1,01 · TTPA 1,13</div></div><div class="exam-tags-row"><span class="lab-tag lt-delboni">Delboni</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- Delboni 2019 -->
+        <div class="exam-row" data-lab="delboni"><div class="exam-icon-w ei-p">🔬</div><div class="exam-info"><div class="exam-name">Check-up Completo 21 páginas — Tipo A+ · Hormonal Completo</div><div class="exam-meta">Delboni · Mar/2019 · Dra. Andreia Rostirola · Testosterona, TSH, IGF-1, PCR, PSA...</div></div><div class="exam-tags-row"><span class="lab-tag lt-delboni">Delboni</span><span class="badge badge-new">mais antigo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- COVID -->
+        <div class="exam-row" data-lab="delboni"><div class="exam-icon-w ei-g">🦠</div><div class="exam-info"><div class="exam-name">Sorologia COVID-19 IgM/IgG — CLIA</div><div class="exam-meta">Delboni · Jun/2020 · IgM Reagente 1,4 UA/mL · Infecção recente confirmada</div></div><div class="exam-tags-row"><span class="lab-tag lt-delboni">Delboni</span><span class="badge badge-bad">IgM positivo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- Garmin -->
+        <div class="exam-row" data-lab="garmin"><div class="exam-icon-w ei-g">⌚</div><div class="exam-info"><div class="exam-name">Garmin Connect — 21 arquivos .fit</div><div class="exam-meta">Garmin · Out/2024 · WELLNESS, SLEEP, METRICS, HRV_STATUS, SKIN_TEMP</div></div><div class="exam-tags-row"><span class="lab-tag lt-cete">Garmin</span><span class="badge badge-warn">SpO₂ 69%</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+      </div>
+      <div style="margin-top:16px;padding:12px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;font-size:11px;color:var(--text2);">
+        📎 <strong style="color:var(--accent)">PDFs adicionais pendentes</strong> — você mencionou que há mais exames para enviar. Quando chegar o próximo lote, atualizo esta lista e os marcadores automaticamente.
+      </div>
+    </div>
 
   </div><!-- /scroll-area -->
 </div><!-- /main -->
@@ -757,268 +1133,148 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 </div><!-- /app -->
 
 <script>
-// ─── CONFIG ───────────────────────────────────────────────
-const VALID_USERS = ['rodrigo.dantas','rodrigo','dantas','admin'];
-const VALID_PASS  = 'DantasSaude2026';
+const VALID_USERS=['rodrigo.dantas','rodrigo','dantas','admin'];
+const VALID_PASS='DantasSaude2026';
+let uploadedFiles=[];
 
-const LAB_LABELS = {einstein:'Einstein',fleury:'Fleury',delboni:'Delboni',osvaldo:'Osvaldo Cruz',dasa:'DASA',sirio:'Sírio-Libanês',hcor:'HCor',cete:'CETE Sport',outros:'Outros'};
-const SPEC_NAMES  = {lab:'Laboratorial',cardio:'Cardiologia',image:'Imagens',perf:'Performance',horm:'Hormonal',cirurg:'Cirurgias',outros:'Outros'};
-const SPEC_ICONS  = {lab:'🧪',cardio:'🫀',image:'🩻',perf:'⚡',horm:'💉',cirurg:'📋',outros:'📋'};
-const SPEC_EI     = {lab:'ei-g',cardio:'ei-b',image:'ei-w',perf:'ei-p',horm:'ei-t',cirurg:'ei-r',outros:'ei-t'};
-const PAGE_TITLES = {overview:'Visão Geral · Rodrigo Dantas Santos',exames:'Todos os Exames',labs:'Exames por Laboratório',garmin:'Garmin Connect',timeline:'Histórico Médico'};
+const LAB_LABELS={einstein:'Einstein',delboni:'Delboni',dasa:'DASA',hcor:'HCor',cete:'CETE Sport',sirio:'Sírio-Libanês',outros:'Outros'};
+const SPEC_NAMES={lab:'Laboratorial',cardio:'Cardiologia',image:'Imagens',perf:'Performance',horm:'Hormonal',cirurg:'Cirurgias',outros:'Outros'};
+const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos · 10 pontos de atenção',laboratorial:'Painel Laboratorial Completo',hormonal:'Hormonal &amp; Endócrino',cardio:'Cardiologia · Eco · ECG · Holter',garmin:'Garmin Connect · Out/2024',timeline:'Histórico Médico · 2019–2024',arquivos:'Arquivos &amp; PDFs · 61 processados'};
 
-const counts    = {lab:2,cardio:1,image:1,perf:1,horm:0,cirurg:0,outros:0};
-const labCounts = {fleury:2,hcor:1,cete:1,dasa:1,einstein:0,delboni:0,sirio:0,osvaldo:0,outros:0};
-let uploadedFiles = [];
-
-// ─── AUTH ─────────────────────────────────────────────────
-function doLogin() {
-  const u = document.getElementById('lu').value.trim().toLowerCase();
-  const p = document.getElementById('lp').value;
-  if (VALID_USERS.includes(u) && p === VALID_PASS) {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    document.getElementById('lerr').style.display = 'none';
+function doLogin(){
+  const u=document.getElementById('lu').value.trim().toLowerCase();
+  const p=document.getElementById('lp').value;
+  if(VALID_USERS.includes(u)&&p===VALID_PASS){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').style.display='block';
+    document.getElementById('lerr').style.display='none';
   } else {
-    document.getElementById('lerr').style.display = 'block';
-    document.getElementById('lp').value = '';
-    document.getElementById('lp').focus();
+    document.getElementById('lerr').style.display='block';
+    document.getElementById('lp').value='';
   }
 }
-function doLogout() {
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('lu').value = '';
-  document.getElementById('lp').value = '';
+function doLogout(){
+  document.getElementById('app').style.display='none';
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('lu').value='';
+  document.getElementById('lp').value='';
 }
-document.getElementById('lu').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('lp').focus(); });
-document.getElementById('lp').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+document.getElementById('lu').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('lp').focus();});
+document.getElementById('lp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 
-// ─── NAVIGATION ───────────────────────────────────────────
-function goPage(id, el) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  if (el) el.classList.add('active');
-  document.getElementById('topbar-title').textContent = PAGE_TITLES[id] || 'BioScan';
-  const subtitles = {
-    overview: '44 anos · 7 especialidades · 8 instituições',
-    exames:   totalFiles() + ' arquivos · 7 especialidades',
-    labs:     'Distribuição por instituição',
-    garmin:   'Sincronizado ao vivo · Garmin Connect',
-    timeline: 'Linha do tempo médica completa'
-  };
-  document.getElementById('topbar-sub').textContent = subtitles[id] || '';
-}
-function goPageSpec(spec, el) {
-  goPage('exames', null);
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  if (el) el.classList.add('active');
-  switchTabByKey(spec);
-}
-function switchTab(key, el) {
-  document.querySelectorAll('.spec-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.spec-panel').forEach(p => p.classList.remove('active'));
-  if (el) el.classList.add('active');
-  document.getElementById('sp-' + key).classList.add('active');
-}
-function switchTabByKey(key) {
-  const keys = ['lab','cardio','image','perf','horm','cirurg','outros'];
-  const tabs = document.querySelectorAll('.spec-tab');
-  document.querySelectorAll('.spec-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.spec-panel').forEach(p => p.classList.remove('active'));
-  const i = keys.indexOf(key);
-  if (i >= 0 && tabs[i]) tabs[i].classList.add('active');
-  document.getElementById('sp-' + key).classList.add('active');
+function goPage(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.getElementById('topbar-title').textContent=PAGE_TITLES[id]?.replace('&amp;','&')||'BioScan';
+  const subs={overview:'44 anos · A+ · 61 exames processados · Einstein #4181819',alertas:'10 pontos de atenção identificados nos exames reais',laboratorial:'5 coletas · Mar/2019 a Jul/2023 · Einstein + Delboni',hormonal:'Painel completo Mar/2019 · Delboni + Dra. Andreia Rostirola',cardio:'Holter + 2x Eco + 2x ECG · Einstein · 2022–2023',garmin:'01/10/2024 · 21 arquivos .fit · dados reais extraídos',timeline:'Linha do tempo médica real · 6 eventos · 2019–2024',arquivos:'61 PDFs processados · Einstein · Delboni · Garmin'};
+  document.getElementById('topbar-sub').textContent=subs[id]||'';
 }
 
-// ─── FILTERS ──────────────────────────────────────────────
-function filterSpec(spec, lab, btn) {
-  document.querySelectorAll(`#sp-${spec} .filter-btn`).forEach(b => b.classList.remove('active'));
+function switchTab(key,el){
+  document.querySelectorAll('.spec-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.spec-panel').forEach(p=>p.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.getElementById('sp-'+key).classList.add('active');
+}
+
+function filterFiles(lab,btn){
+  document.querySelectorAll('.filter-bar .filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll(`#files-${spec} .exam-row`).forEach(row => {
-    row.classList.toggle('hidden', lab !== 'all' && row.dataset.lab !== lab);
+  document.querySelectorAll('#files-list .exam-row').forEach(row=>{
+    row.style.display=(lab==='all'||row.dataset.lab===lab)?'flex':'none';
   });
 }
-function filterAllLabs(lab, btn) {
-  document.querySelectorAll('#page-labs .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('#all-labs-list .exam-row').forEach(row => {
-    row.classList.toggle('hidden', lab !== 'all' && row.dataset.lab !== lab);
-  });
-  document.getElementById('labs-filter-info').textContent =
-    lab === 'all' ? 'Mostrando todos' : 'Filtrando: ' + LAB_LABELS[lab];
-}
 
-// ─── MODAL ────────────────────────────────────────────────
-function openModal() { document.getElementById('upload-modal').classList.add('open'); }
-function openModalSpec(spec) { openModal(); document.getElementById('up-spec').value = spec; }
-function closeModal() {
+function openModal(){document.getElementById('upload-modal').classList.add('open');}
+function closeModal(){
   document.getElementById('upload-modal').classList.remove('open');
-  document.getElementById('uf-list').innerHTML = '';
+  document.getElementById('uf-list').innerHTML='';
   document.getElementById('ai-box').classList.remove('show');
-  document.getElementById('save-btn').style.display = 'none';
-  uploadedFiles = [];
+  document.getElementById('save-btn').style.display='none';
+  uploadedFiles=[];
 }
-const dz = document.getElementById('dz');
-dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag'); });
-dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
-dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('drag'); handleFiles(e.dataTransfer.files); });
+const dz=document.getElementById('dz');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag');});
+dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag');handleFiles(e.dataTransfer.files);});
 
-// ─── FILE UPLOAD ──────────────────────────────────────────
-function fmtSz(b) {
-  if (b < 1048576) return (b/1024).toFixed(1) + 'KB';
-  return (b/1048576).toFixed(1) + 'MB';
-}
-function handleFiles(files) {
-  if (!files || !files.length) return;
-  uploadedFiles = Array.from(files);
-  const ul = document.getElementById('uf-list');
-  ul.innerHTML = '';
-  uploadedFiles.forEach((f, i) => {
-    const ext = f.name.split('.').pop().toLowerCase();
-    const icon = ext === 'pdf' ? '📄' : ['jpg','jpeg','png'].includes(ext) ? '🖼️' : '📎';
-    const row = document.createElement('div');
-    row.className = 'uf-row';
-    row.innerHTML = `<div class="uf-icon">${icon}</div><div class="uf-info"><div class="uf-name">${f.name}</div><div class="uf-size">${fmtSz(f.size)}</div><div class="uf-prog"><div class="uf-fill" id="p${i}" style="width:0%"></div></div><div class="uf-stat us-load" id="s${i}">Processando...</div></div>`;
+function fmtSz(b){if(b<1048576)return(b/1024).toFixed(1)+'KB';return(b/1048576).toFixed(1)+'MB';}
+
+function handleFiles(files){
+  if(!files||!files.length)return;
+  uploadedFiles=Array.from(files);
+  const ul=document.getElementById('uf-list');ul.innerHTML='';
+  uploadedFiles.forEach((f,i)=>{
+    const ext=f.name.split('.').pop().toLowerCase();
+    const icon=ext==='pdf'?'📄':['jpg','jpeg','png'].includes(ext)?'🖼️':'📎';
+    const row=document.createElement('div');row.className='uf-row';
+    row.innerHTML=`<div style="font-size:15px;flex-shrink:0">${icon}</div><div style="flex:1"><div style="font-size:12px;font-weight:500;color:var(--text)">${f.name}</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px">${fmtSz(f.size)}</div><div class="uf-prog"><div class="uf-fill" id="p${i}" style="width:0%"></div></div><div style="font-size:9px;font-family:var(--mono);margin-top:3px;color:var(--accent2)" id="s${i}">Processando...</div></div>`;
     ul.appendChild(row);
-    animUpload(i, f);
+    animUpload(i,f);
   });
 }
-function animUpload(i, f) {
-  let p = 0;
-  const iv = setInterval(() => {
-    p += Math.random() * 20 + 8;
-    if (p >= 100) {
-      p = 100; clearInterval(iv);
-      document.getElementById('p' + i).style.width = '100%';
-      document.getElementById('s' + i).className = 'uf-stat us-ok';
-      document.getElementById('s' + i).textContent = '✓ Carregado com sucesso';
-      if (i === uploadedFiles.length - 1) runAI(uploadedFiles);
+function animUpload(i,f){
+  let p=0;const iv=setInterval(()=>{
+    p+=Math.random()*20+8;
+    if(p>=100){p=100;clearInterval(iv);
+      document.getElementById('p'+i).style.width='100%';
+      document.getElementById('s'+i).style.color='var(--good)';
+      document.getElementById('s'+i).textContent='✓ Carregado';
+      if(i===uploadedFiles.length-1)runAI(uploadedFiles);
+    } else document.getElementById('p'+i).style.width=p.toFixed(0)+'%';
+  },100);
+}
+
+async function runAI(files){
+  const box=document.getElementById('ai-box'),txt=document.getElementById('ai-text'),chips=document.getElementById('ai-chips');
+  box.classList.add('show');txt.innerHTML='<span class="spinner"></span> BioScan IA analisando documento...';chips.innerHTML='';
+  const spec=document.getElementById('up-spec').value;
+  const lab=document.getElementById('up-lab').value;
+  const f=files[0];const isImg=['jpg','jpeg','png'].some(e=>f.name.toLowerCase().endsWith(e));
+  try{
+    let msgs;
+    if(isImg){
+      const b64=(await toB64(f)).split(',')[1];
+      msgs=[{role:'user',content:[{type:'image',source:{type:'base64',media_type:f.type||'image/jpeg',data:b64}},{type:'text',text:`Médico assistente analisando exame de ${SPEC_NAMES[spec]} de ${LAB_LABELS[lab]} do paciente Rodrigo Dantas Santos, 44 anos, atleta, tipo A+.\nAnalise esta imagem médica. Responda SOMENTE JSON sem markdown:\n{"summary":"resumo clínico 2 frases português","values":[{"name":"marcador","value":"valor","status":"ok|warn|bad"}],"alert":""}\nMáximo 4 valores.`}]}];
     } else {
-      document.getElementById('p' + i).style.width = p.toFixed(0) + '%';
+      msgs=[{role:'user',content:`Médico assistente analisando exame de ${SPEC_NAMES[spec]} de ${LAB_LABELS[lab]} do paciente Rodrigo Dantas Santos, 44 anos, atleta, tipo sanguíneo A+.\nArquivo: ${f.name}\nSimule análise clínica realista. Responda SOMENTE JSON sem markdown:\n{"summary":"resumo clínico 2 frases português","values":[{"name":"marcador","value":"valor","status":"ok|warn|bad"}],"alert":""}\nMáximo 4 valores.`}];
     }
-  }, 100);
-}
-
-// ─── AI ANALYSIS ─────────────────────────────────────────
-async function runAI(files) {
-  const box   = document.getElementById('ai-box');
-  const txt   = document.getElementById('ai-text');
-  const chips = document.getElementById('ai-chips');
-  box.classList.add('show');
-  txt.innerHTML = '<span class="spinner"></span> BioScan IA analisando documento...';
-  chips.innerHTML = '';
-  const spec   = document.getElementById('up-spec').value;
-  const lab    = document.getElementById('up-lab').value;
-  const f      = files[0];
-  const isImg  = ['jpg','jpeg','png'].some(e => f.name.toLowerCase().endsWith(e));
-  try {
-    let messages;
-    if (isImg) {
-      const b64 = (await toB64(f)).split(',')[1];
-      messages = [{role:'user', content:[
-        {type:'image', source:{type:'base64', media_type: f.type || 'image/jpeg', data: b64}},
-        {type:'text', text:`Médico assistente analisando exame de ${SPEC_NAMES[spec]} de ${LAB_LABELS[lab]} do paciente Rodrigo Dantas Santos, 44 anos, atleta. Analise esta imagem médica. Responda SOMENTE JSON sem markdown:\n{"summary":"resumo clínico 2 frases português","values":[{"name":"marcador","value":"valor","status":"ok|warn|bad"}],"alert":""}\nMáximo 4 valores.`}
-      ]}];
-    } else {
-      messages = [{role:'user', content:`Médico assistente analisando exame de ${SPEC_NAMES[spec]} de ${LAB_LABELS[lab]} do paciente Rodrigo Dantas Santos, 44 anos, atleta.\nArquivo: ${f.name}\nSimule análise clínica realista. Responda SOMENTE JSON sem markdown:\n{"summary":"resumo clínico 2 frases português","values":[{"name":"marcador","value":"valor","status":"ok|warn|bad"}],"alert":""}\nMáximo 4 valores.`}];
-    }
-    const resp   = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({model:'claude-sonnet-4-20250514', max_tokens:1000, messages})
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:msgs})});
+    const data=await resp.json();
+    const raw=data.content.filter(b=>b.type==='text').map(b=>b.text).join('');
+    const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    txt.textContent=parsed.summary||'Documento processado com sucesso.';
+    (parsed.values||[]).forEach(v=>{
+      const c=document.createElement('span');
+      c.className='achip '+(v.status==='ok'?'ac-ok':v.status==='warn'?'ac-warn':'ac-bad');
+      c.textContent=`${v.name}: ${v.value}`;chips.appendChild(c);
     });
-    const data   = await resp.json();
-    const raw    = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
-    const parsed = JSON.parse(raw.replace(/```json|```/g, '').trim());
-    txt.textContent = parsed.summary || 'Documento processado com sucesso.';
-    (parsed.values || []).forEach(v => {
-      const c = document.createElement('span');
-      c.className = 'achip ' + (v.status === 'ok' ? 'ac-ok' : v.status === 'warn' ? 'ac-warn' : 'ac-bad');
-      c.textContent = `${v.name}: ${v.value}`;
-      chips.appendChild(c);
-    });
-  } catch(e) {
-    txt.textContent = 'Documento carregado. Clique em Salvar para registrar no BioScan.';
-  }
-  document.getElementById('save-btn').style.display = 'block';
+  } catch(e){txt.textContent='Documento carregado. Clique em Salvar para registrar no BioScan.';}
+  document.getElementById('save-btn').style.display='block';
 }
-function toB64(f) {
-  return new Promise((r, j) => {
-    const rd = new FileReader();
-    rd.onload = () => r(rd.result);
-    rd.onerror = j;
-    rd.readAsDataURL(f);
+function toB64(f){return new Promise((r,j)=>{const rd=new FileReader();rd.onload=()=>r(rd.result);rd.onerror=j;rd.readAsDataURL(f);});}
+
+function saveFiles(){
+  const spec=document.getElementById('up-spec').value;
+  const lab=document.getElementById('up-lab').value;
+  const dateVal=document.getElementById('up-date').value;
+  const MONTHS=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  let dateStr='';
+  if(dateVal){const[y,m]=dateVal.split('-');dateStr=MONTHS[parseInt(m)-1]+' '+y;}
+  else{const n=new Date();dateStr=MONTHS[n.getMonth()]+' '+n.getFullYear();}
+  const labTagHTML=`<span class="lab-tag lt-${lab}">${LAB_LABELS[lab]}</span>`;
+  const list=document.getElementById('files-list');
+  uploadedFiles.forEach(f=>{
+    const r=document.createElement('div');r.className='exam-row';r.dataset.lab=lab;
+    r.style.borderColor='var(--border2)';
+    r.innerHTML=`<div class="exam-icon-w ei-g">📄</div><div class="exam-info"><div class="exam-name">${f.name.replace(/\.[^/.]+$/,'')}</div><div class="exam-meta">${SPEC_NAMES[spec]} · ${dateStr} · ${fmtSz(f.size)}</div></div><div class="exam-tags-row">${labTagHTML}<span class="badge badge-new">novo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div>`;
+    list.insertBefore(r,list.firstChild);
+    setTimeout(()=>r.style.borderColor='',2500);
   });
-}
-
-// ─── SAVE FILES ───────────────────────────────────────────
-function saveFiles() {
-  const spec    = document.getElementById('up-spec').value;
-  const lab     = document.getElementById('up-lab').value;
-  const dateVal = document.getElementById('up-date').value;
-  const MONTHS  = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  let dateStr   = '';
-  if (dateVal) {
-    const [y, m] = dateVal.split('-');
-    dateStr = MONTHS[parseInt(m) - 1] + ' ' + y;
-  } else {
-    const n = new Date();
-    dateStr = MONTHS[n.getMonth()] + ' ' + n.getFullYear();
-  }
-  const labTagHTML = `<span class="lab-tag lt-${lab}">${LAB_LABELS[lab]}</span>`;
-
-  uploadedFiles.forEach(f => {
-    counts[spec] = (counts[spec] || 0) + 1;
-    labCounts[lab] = (labCounts[lab] || 0) + 1;
-
-    const makeRow = (metaSub) => {
-      const r = document.createElement('div');
-      r.className = 'exam-row';
-      r.dataset.lab = lab;
-      r.style.borderColor = 'var(--border2)';
-      r.innerHTML = `<div class="exam-icon-w ${SPEC_EI[spec]}">${SPEC_ICONS[spec]}</div><div class="exam-info"><div class="exam-name">${f.name.replace(/\.[^/.]+$/, '')}</div><div class="exam-meta">${metaSub} · ${dateStr} · ${fmtSz(f.size)}</div></div><div class="exam-tags-row">${labTagHTML}<span class="badge badge-new">novo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div>`;
-      setTimeout(() => r.style.borderColor = '', 2500);
-      return r;
-    };
-
-    const specList = document.getElementById('files-' + spec);
-    if (specList) specList.insertBefore(makeRow(SPEC_NAMES[spec]), specList.firstChild);
-
-    const allList = document.getElementById('all-labs-list');
-    if (allList) allList.insertBefore(makeRow(SPEC_NAMES[spec]), allList.firstChild);
-  });
-
-  updateCounts();
   closeModal();
-  goPageSpec(spec, null);
-}
-
-// ─── COUNT SYNC ───────────────────────────────────────────
-function totalFiles() { return Object.values(counts).reduce((a, b) => a + b, 0); }
-function updateCounts() {
-  const total = totalFiles();
-  Object.keys(counts).forEach(s => {
-    ['nb-', 'tc-', 'ov-'].forEach(pre => {
-      const el = document.getElementById(pre + s);
-      if (el) el.textContent = counts[s];
-    });
-  });
-  ['total-badge','ov-total'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = total;
-  });
-  const lbl = document.getElementById('total-count-label');
-  if (lbl) lbl.textContent = total + ' arquivos';
-
-  const maxLab = Math.max(...Object.values(labCounts), 1);
-  Object.keys(labCounts).forEach(lab => {
-    const fill = document.getElementById('lsb-' + lab);
-    const cnt  = document.getElementById('lsc-' + lab);
-    if (fill) fill.style.width = ((labCounts[lab] / maxLab) * 100).toFixed(0) + '%';
-    if (cnt)  cnt.textContent  = labCounts[lab];
-  });
+  goPage('arquivos',null);
 }
 </script>
 </body>
