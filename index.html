@@ -470,87 +470,156 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
   /* Layout principal: sidebar vira nav inferior */
   #app{height:100dvh;}
   .shell{flex-direction:column;}
+
+  /* ── BOTTOM NAV BAR ─────────────────── */
   .sidebar{
     width:100%;min-width:unset;height:auto;
-    border-right:none;border-bottom:1px solid var(--border);
+    border-right:none;border-top:1px solid var(--border);
     flex-direction:row;overflow-x:auto;overflow-y:hidden;
     padding:0;flex-shrink:0;order:2;
-    position:fixed;bottom:0;left:0;right:0;z-index:100;
+    position:fixed;bottom:0;left:0;right:0;z-index:200;
     background:var(--bg2);
     scrollbar-width:none;
+    /* Gradient right edge hints that more items exist */
+    -webkit-mask-image:linear-gradient(to right,black calc(100% - 32px),transparent 100%);
+    mask-image:linear-gradient(to right,black calc(100% - 32px),transparent 100%);
+    box-shadow:0 -1px 0 var(--border),0 -4px 20px rgba(0,0,0,0.06);
   }
   .sidebar::-webkit-scrollbar{display:none;}
-  .logo-area,.patient-card,.insurance-card,.nav-label,.sidebar-bottom{display:none;}
-  .nav-section{display:flex;flex-direction:row;gap:0;margin-top:0;padding:0;overflow-x:auto;scrollbar-width:none;}
-  .nav-section::-webkit-scrollbar{display:none;}
-  .nav-item{
-    flex-direction:column;align-items:center;gap:2px;
-    padding:8px 10px;border-radius:0;border:none;border-top:2px solid transparent;
-    font-size:8px;white-space:nowrap;min-width:56px;
+
+  /* Scroll indicator arrow — always visible on right */
+  .sidebar::after{
+    content:'›';
+    position:fixed;
+    bottom:calc(8px + env(safe-area-inset-bottom,0px));
+    right:4px;
+    width:24px;height:44px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;color:var(--text3);
+    pointer-events:none;z-index:201;
+    animation:nudge 2s ease-in-out infinite;
   }
-  .nav-item.active{border-top-color:var(--accent);background:rgba(0,119,204,0.06);}
+  @keyframes nudge{
+    0%,100%{transform:translateX(0);opacity:0.5;}
+    50%{transform:translateX(3px);opacity:1;}
+  }
+
+  .logo-area,.patient-card,.insurance-card,.nav-label,.sidebar-bottom{display:none;}
+
+  .nav-section{
+    display:flex;flex-direction:row;gap:0;
+    margin-top:0;padding:0;padding-bottom:env(safe-area-inset-bottom,0);
+    overflow-x:auto;scrollbar-width:none;
+    min-width:max-content; /* force horizontal layout */
+  }
+  .nav-section::-webkit-scrollbar{display:none;}
+
+  .nav-item{
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:3px;padding:6px 14px 8px;
+    border-radius:0;border:none;
+    border-top:2px solid transparent;
+    font-size:9px;font-weight:600;
+    white-space:nowrap;
+    min-width:64px;height:56px;
+    letter-spacing:0.02em;
+    color:var(--text3);
+    transition:color 0.15s,background 0.15s,border-color 0.15s;
+  }
+  .nav-item:hover{color:var(--text2);background:rgba(0,0,0,0.03);}
+  .nav-item.active{
+    border-top-color:var(--accent);
+    color:var(--accent);
+    background:rgba(0,119,204,0.06);
+  }
+  [data-theme="dark"] .nav-item.active{
+    background:rgba(0,210,160,0.06);
+    border-top-color:var(--accent);
+    color:var(--accent);
+  }
+
+  /* Emoji icons — make them bigger */
+  .nav-item span:first-of-type{
+    font-size:18px;line-height:1;display:block;
+    margin-bottom:1px;
+  }
+
+  /* Hide decorative elements */
   .nav-dot{display:none;}
-  .nav-badge{display:none;}
-  .main{order:1;overflow-y:auto;padding-bottom:68px;}
-  .sidebar{padding-bottom:env(safe-area-inset-bottom,0);}
-  body{padding-bottom:env(safe-area-inset-bottom,0);}
-  .topbar{padding:10px 14px;min-height:48px;}
-  .page-title{font-size:12px;}
+  .nav-badge{
+    display:flex;
+    position:absolute;top:4px;right:8px;
+    font-size:8px;padding:1px 4px;min-width:14px;
+    border-radius:20px;
+  }
+  .nav-item{position:relative;}
+
+  /* ── MAIN AREA ──────────────────────── */
+  .main{order:1;overflow-hidden;padding-bottom:0;}
+  .scroll-area{
+    padding:12px 14px;
+    padding-bottom:calc(68px + env(safe-area-inset-bottom,0px));
+  }
+
+  /* ── TOPBAR MOBILE ──────────────────── */
+  .topbar{padding:8px 14px;min-height:44px;height:44px;}
+  .page-title{font-size:12px;font-weight:700;}
   .page-subtitle{display:none;}
   .topbar-right .btn{display:none;}
-  .garmin-pill{display:none;}
-  .scroll-area{padding:12px 14px;}
+  .garmin-pill{font-size:9px;padding:3px 8px;}
+  .theme-toggle{padding:4px 8px;font-size:9px;}
+  .toggle-track{width:24px;height:14px;}
+  .toggle-thumb{width:10px;height:10px;}
+  [data-theme="dark"] .toggle-thumb{transform:translateX(10px);}
 
-  /* Grids: colapsar para 1 coluna */
+  /* ── GRIDS ──────────────────────────── */
   .vitals-row{grid-template-columns:repeat(2,1fr);gap:8px;}
   .grid-two{grid-template-columns:1fr!important;gap:10px;}
   .garmin-grid{grid-template-columns:1fr 1fr;gap:8px;}
   .info-card-grid{grid-template-columns:repeat(2,1fr)!important;}
   .markers-grid{grid-template-columns:1fr!important;}
+  .ov-grid{grid-template-columns:repeat(2,1fr)!important;}
 
-  /* Cards */
+  /* ── CARDS ──────────────────────────── */
   .vcard{padding:10px 12px;}
   .vcard-value{font-size:20px;}
   .panel-body{padding:12px;}
   .panel-header{padding:10px 12px;}
 
-  /* Overview cards */
-  .ov-grid{grid-template-columns:repeat(2,1fr)!important;}
-
-  /* Spec tabs: scroll horizontal */
+  /* ── SPEC TABS ──────────────────────── */
   .spec-tabs{-webkit-overflow-scrolling:touch;}
   .spec-tab{padding:9px 12px;font-size:10px;}
   .spec-panel{padding:12px;}
 
-  /* Tabelas: scroll horizontal */
+  /* ── TABLES ─────────────────────────── */
   table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap;}
 
-  /* Charts: altura menor */
+  /* ── CHARTS ─────────────────────────── */
   canvas{max-height:200px!important;}
 
-  /* Alerts */
+  /* ── ALERTS ─────────────────────────── */
   .alert-item{padding:9px 12px;}
   .alert-title{font-size:12px;}
   .alert-desc{font-size:10px;}
 
-  /* Timeline */
+  /* ── TIMELINE ───────────────────────── */
   .tl-item{gap:8px;}
   .tl-date{font-size:9px;min-width:52px;}
 
-  /* Surg cards */
+  /* ── MISC ───────────────────────────── */
   .surg-card{padding:12px;}
-
-  /* Login */
   .login-box{width:92vw;padding:28px 20px;}
-
-  /* Upload modal */
   .modal-box{width:94vw;max-height:92vh;overflow-y:auto;}
 
-  /* Garmin strips */
+  /* ── GARMIN GRIDS ───────────────────── */
   [style*="grid-template-columns:repeat(6"]{grid-template-columns:repeat(3,1fr)!important;}
   [style*="grid-template-columns:repeat(4"]{grid-template-columns:repeat(2,1fr)!important;}
   [style*="grid-template-columns:repeat(3"]{grid-template-columns:repeat(2,1fr)!important;}
   [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+
+  /* ── FILTER BARS ────────────────────── */
+  .filter-bar{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+  .filter-bar::-webkit-scrollbar{display:none;}
 }
 
 /* Telas pequenas: 480px */
@@ -559,6 +628,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
   .ov-grid{grid-template-columns:repeat(2,1fr)!important;}
   .vcard-value{font-size:18px;}
   .spec-tab{font-size:9px;padding:8px 9px;}
+  .nav-item{min-width:56px;padding:6px 10px 8px;font-size:8px;}
+  .nav-item span:first-of-type{font-size:16px;}
 }
 </style>
 </head>
@@ -695,17 +766,17 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
   </div>
   <div class="nav-section">
     <div class="nav-label">Navegação</div>
-    <div class="nav-item active" onclick="goPage('overview',this)"><div class="nav-dot"></div><span>🏠</span>Visão Geral</div>
+    <div class="nav-item active" onclick="goPage('overview',this)"><div class="nav-dot"></div><span>🏠</span>Início</div>
     <div class="nav-item" onclick="goPage('alertas',this)"><div class="nav-dot" style="background:var(--danger)"></div><span>🚨</span>Alertas<span class="nav-badge nb-r">11</span></div>
     <div class="nav-item" onclick="goPage('laboratorial',this)"><div class="nav-dot"></div><span>🧪</span>Lab<span class="nav-badge nb-g" id="nb-lab">89</span></div>
-    <div class="nav-item" onclick="goPage('hormonal',this)"><div class="nav-dot"></div><span>💉</span>Hormonal</div>
+    <div class="nav-item" onclick="goPage('hormonal',this)"><div class="nav-dot"></div><span>⚗️</span>Hormonal</div>
     <div class="nav-item" onclick="goPage('cardio',this)"><div class="nav-dot" style="background:var(--accent2)"></div><span>🫀</span>Cardio</div>
     <div class="nav-item" onclick="goPage('cirurgias',this)"><div class="nav-dot" style="background:#ff6464"></div><span>🔪</span>Cirurgias<span class="nav-badge nb-r" id="surg-badge">3</span></div>
     <div class="nav-item" onclick="goPage('medicamentos',this)"><div class="nav-dot" style="background:#b57aff"></div><span>💊</span>Meds<span class="nav-badge" style="background:rgba(150,80,255,0.15);color:#b57aff">3</span></div>
     <div class="nav-item" onclick="goPage('garmin',this)"><div class="nav-dot" style="background:var(--accent)"></div><span>⌚</span>Garmin</div>
-    <div class="nav-item" onclick="goPage('timeline',this)"><div class="nav-dot" style="background:var(--warn)"></div><span>📅</span>Timeline</div>
+    <div class="nav-item" onclick="goPage('timeline',this)"><div class="nav-dot" style="background:var(--warn)"></div><span>📅</span>Histórico</div>
     <div class="nav-item" onclick="goPage('vacinas',this)"><div class="nav-dot" style="background:#00c896"></div><span>💉</span>Vacinas<span class="nav-badge" style="background:rgba(0,200,150,0.15);color:#00c896">8</span></div>
-    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div><span>📂</span>Exames & Laudos<span class="nav-badge nb-g">89</span></div>
+    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div><span>📂</span>Exames<span class="nav-badge nb-g">89</span></div>
   </div>
   <div class="nav-section">
     <div class="nav-label">Equipe Médica</div>
@@ -2092,17 +2163,22 @@ function goPage(id,el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const pg=document.getElementById('page-'+id);if(pg)pg.classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  if(el)el.classList.add('active');
+  if(el){
+    el.classList.add('active');
+    // Mobile: scroll nav item into view centered
+    if(window.innerWidth<=768){
+      el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+    }
+  }
   document.getElementById('topbar-title').textContent=PAGE_TITLES[id]?.replace('&amp;','&')||'BioScan';
   if(id==='garmin'){setTimeout(initGarminCharts,100);}
-  const subs={overview:'Empresário · 45 anos · A+ · 77kg · 1,77m · Einstein #4181819',alertas:'11 pontos de atenção · PSA 4,9 prioridade urgente',laboratorial:'8 coletas · Mar/2019 a Mar/2026 · Einstein + Delboni + Fleury',hormonal:'Fleury Out/2024 · Abr/2026 · Dra. Gabriela Guimarães',cardio:'Eco ✅ + Holter ✅ + Ergométrico ✅ · Fleury Out/2024',cirurgias:'3 cirurgias registradas com CID-10',medicamentos:'3 medicamentos em uso desde 29/04/2026',garmin:'477 atividades · Jun/2024–Abr/2026 · dados reais JSON',timeline:'Histórico médico · 2003–2026',vacinas:'8 vacinas registradas · Meu SUS Digital · Mai/2026',arquivos:'89 PDFs · Einstein · Delboni · Fleury · Garmin'};
+  const subs={overview:'Empresário · 45 anos · A+ · 77kg · 1,77m · Einstein #4181819',alertas:'11 pontos de atenção · PSA 4,9 prioridade urgente',laboratorial:'8 coletas · Mar/2019 a Mar/2026 · Einstein + Delboni + Fleury',hormonal:'Fleury Out/2024 · Abr/2026 · Dra. Gabriela Guimarães',cardio:'Eco ✅ + Holter ✅ + Ergométrico ✅ · Fleury Out/2024',cirurgias:'3 cirurgias registradas com CID-10',medicamentos:'3 medicamentos em uso desde 29/04/2026',garmin:'525 atividades · Mar/2024–Abr/2026 · dados reais Garmin',timeline:'Histórico médico · 2003–2026',vacinas:'8 vacinas registradas · Meu SUS Digital · Mai/2026',arquivos:'89 exames e laudos · Einstein + Delboni + Fleury + Garmin'};
   document.getElementById('topbar-sub').textContent=subs[id]||'';
-  // Reset active tab within the newly shown page to avoid cross-contamination
+  // Reset active tab within the newly shown page
   if(pg){
     pg.querySelectorAll('.spec-wrap').forEach(wrap=>{
       const tabs=wrap.querySelectorAll('.spec-tab');
       const panels=wrap.querySelectorAll('.spec-panel');
-      // Only reset if no tab is currently active (avoid resetting user's tab selection)
       const hasActive=[...tabs].some(t=>t.classList.contains('active'));
       if(!hasActive && tabs.length){
         tabs[0].classList.add('active');
@@ -2110,7 +2186,23 @@ function goPage(id,el){
       }
     });
   }
+  // Scroll page to top
+  const sa=document.querySelector('.scroll-area');
+  if(sa) sa.scrollTop=0;
 }
+
+// Mobile nav: hide scroll arrow when fully scrolled to end
+(function setupMobileNav(){
+  const sidebar=document.querySelector('.sidebar');
+  if(!sidebar) return;
+  sidebar.addEventListener('scroll',function(){
+    const atEnd=sidebar.scrollLeft+sidebar.clientWidth>=sidebar.scrollWidth-8;
+    sidebar.style.webkitMaskImage=atEnd
+      ?'none'
+      :'linear-gradient(to right,black calc(100% - 32px),transparent 100%)';
+    sidebar.style.maskImage=sidebar.style.webkitMaskImage;
+  },{passive:true});
+})();
 
 function switchTab(key,el){
   const wrap=el?el.closest('.spec-wrap'):document.getElementById('sp-'+key)?.closest('.spec-wrap');
