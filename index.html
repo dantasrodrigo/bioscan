@@ -28,6 +28,111 @@
   --outros-bg:rgba(80,90,100,0.07);--outros-border:rgba(80,90,100,0.18);--outros-text:#4a5560;
   --fleury-bg:rgba(90,40,180,0.07);--fleury-border:rgba(90,40,180,0.22);--fleury-text:#5228b4;
 }
+
+/* ── DARK THEME ─────────────────────────────── */
+[data-theme="dark"]{
+  --bg:#080c10;--bg2:#0d1318;--bg3:#111820;--card:#111820;--card2:#162030;
+  --border:rgba(0,210,160,0.12);--border2:rgba(0,210,160,0.28);
+  --accent:#00d2a0;--accent2:#00d2a0;--accent3:#3dffb3;
+  --text:#e8f4f0;--text2:#7fa99a;--text3:#3d6b5e;
+  --danger:#ff4f4f;--warn:#ffb347;--good:#00d2a0;
+  --shadow:0 1px 4px rgba(0,0,0,0.3),0 4px 16px rgba(0,0,0,0.2);
+  --shadow-hover:0 2px 8px rgba(0,0,0,0.4),0 8px 24px rgba(0,0,0,0.3);
+  --einstein-bg:rgba(0,140,255,0.12);--einstein-border:rgba(0,140,255,0.3);--einstein-text:#4db8ff;
+  --delboni-bg:rgba(255,150,0,0.12);--delboni-border:rgba(255,150,0,0.3);--delboni-text:#ffb74d;
+  --dasa-bg:rgba(0,200,150,0.12);--dasa-border:rgba(0,200,150,0.3);--dasa-text:#00c896;
+  --hcor-bg:rgba(255,80,140,0.12);--hcor-border:rgba(255,80,140,0.3);--hcor-text:#ff6eb0;
+  --cete-bg:rgba(0,220,220,0.12);--cete-border:rgba(0,220,220,0.3);--cete-text:#00dcdc;
+  --sirio-bg:rgba(255,200,0,0.12);--sirio-border:rgba(255,200,0,0.3);--sirio-text:#ffd740;
+  --outros-bg:rgba(150,150,150,0.12);--outros-border:rgba(150,150,150,0.3);--outros-text:#aaa;
+  --fleury-bg:rgba(180,100,255,0.12);--fleury-border:rgba(180,100,255,0.3);--fleury-text:#c47aff;
+}
+[data-theme="dark"] .topbar{box-shadow:none;}
+[data-theme="dark"] .panel-header{background:var(--bg3);}
+[data-theme="dark"] .patient-card{background:var(--card2);background-image:none;}
+[data-theme="dark"] .login-box{box-shadow:none;}
+[data-theme="dark"] .garmin-pill{background:rgba(0,210,160,0.08);border-color:rgba(0,210,160,0.2);color:var(--accent);}
+[data-theme="dark"] .pdot{background:var(--accent);}
+[data-theme="dark"] .btn-primary{color:#080c10;}
+[data-theme="dark"] .login-btn{color:#080c10;}
+[data-theme="dark"] .nav-item.active{background:rgba(0,210,160,0.08);color:var(--accent);border-color:rgba(0,210,160,0.15);}
+[data-theme="dark"] .nb-g{background:rgba(0,210,160,0.15);color:var(--accent);}
+[data-theme="dark"] .nb-b{background:rgba(0,168,255,0.15);color:#00a8ff;}
+[data-theme="dark"] .access-badge{background:rgba(0,168,255,0.06);border-color:rgba(0,168,255,0.15);}
+[data-theme="dark"] .access-name{color:#00a8ff;}
+[data-theme="dark"] .dg{background:rgba(0,210,160,0.1);color:var(--good);}
+[data-theme="dark"] .dw{background:rgba(255,179,71,0.1);color:var(--warn);}
+[data-theme="dark"] .db{background:rgba(255,79,79,0.1);color:var(--danger);}
+[data-theme="dark"] .badge-ok{background:rgba(0,210,160,0.12);color:var(--accent);border-color:rgba(0,210,160,0.2);}
+[data-theme="dark"] .badge-warn{background:rgba(255,179,71,0.12);color:var(--warn);border-color:rgba(255,179,71,0.2);}
+[data-theme="dark"] .badge-bad{background:rgba(255,79,79,0.12);color:var(--danger);border-color:rgba(255,79,79,0.2);}
+[data-theme="dark"] .badge-new{background:rgba(0,168,255,0.12);color:#00a8ff;border-color:rgba(0,168,255,0.2);}
+[data-theme="dark"] .mrange{background:rgba(0,210,160,0.08);border-color:rgba(0,210,160,0.25);}
+[data-theme="dark"] .filter-btn{background:transparent;box-shadow:none;}
+[data-theme="dark"] .filter-btn.active{background:rgba(0,210,160,0.1);border-color:var(--accent);color:var(--accent);}
+[data-theme="dark"] .spec-tab:hover{background:rgba(255,255,255,0.02);}
+[data-theme="dark"] .spec-tab.active{background:rgba(0,210,160,0.04);border-bottom-color:var(--accent);color:var(--accent);}
+[data-theme="dark"] .spec-tabs{background:var(--bg2);}
+[data-theme="dark"] .tc-g{background:rgba(0,210,160,0.15);color:var(--accent);}
+[data-theme="dark"] .tc-b{background:rgba(0,168,255,0.15);color:#00a8ff;}
+[data-theme="dark"] .tc-w{background:rgba(255,179,71,0.15);color:var(--warn);}
+[data-theme="dark"] .tc-p{background:rgba(150,100,255,0.15);color:#9664ff;}
+[data-theme="dark"] .tc-t{background:rgba(0,200,200,0.15);color:#00c8c8;}
+[data-theme="dark"] .tc-r{background:rgba(255,100,100,0.15);color:#ff6464;}
+[data-theme="dark"] .tc-x{background:rgba(255,255,255,0.08);color:var(--text2);}
+[data-theme="dark"] .ei-g{background:rgba(0,210,160,0.1);}
+[data-theme="dark"] .ei-b{background:rgba(0,168,255,0.1);}
+[data-theme="dark"] .ei-w{background:rgba(255,179,71,0.1);}
+[data-theme="dark"] .ei-p{background:rgba(150,100,255,0.1);}
+[data-theme="dark"] .bx-g{background:rgba(0,210,160,0.1);color:var(--accent);}
+[data-theme="dark"] .bx-b{background:rgba(0,168,255,0.1);color:#00a8ff;}
+[data-theme="dark"] .ptag-g{background:rgba(0,210,160,0.12);color:var(--accent);border-color:rgba(0,210,160,0.2);}
+[data-theme="dark"] .ptag-b{background:rgba(0,168,255,0.12);color:#00a8ff;border-color:rgba(0,168,255,0.2);}
+[data-theme="dark"] .ptag-r{background:rgba(255,79,79,0.12);color:#ff6b6b;border-color:rgba(255,79,79,0.2);}
+[data-theme="dark"] .exam-row{background:var(--bg3);box-shadow:none;}
+[data-theme="dark"] .marker-item{background:var(--bg3);box-shadow:none;}
+[data-theme="dark"] .alert-item{box-shadow:none;}
+[data-theme="dark"] .lab-legend{background:var(--bg3);box-shadow:none;}
+[data-theme="dark"] .vcard{box-shadow:none;}
+[data-theme="dark"] .panel{box-shadow:none;}
+[data-theme="dark"] .ov-card{box-shadow:none;}
+[data-theme="dark"] .filter-btn{box-shadow:none;}
+[data-theme="dark"] .blood-type{background:rgba(255,79,79,0.1);border-color:rgba(255,79,79,0.3);color:#ff6b6b;}
+[data-theme="dark"] .login-input{background:var(--bg3);border-color:var(--border);}
+[data-theme="dark"] #login-screen{background-image:radial-gradient(ellipse at 20% 50%,rgba(0,210,160,0.05) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(0,168,255,0.05) 0%,transparent 60%);}
+[data-theme="dark"] .doc-avatar{color:#080c10;}
+
+/* ── GLOBAL TRANSITION ──────────────────────── */
+*,*::before,*::after{
+  transition:background-color 0.25s ease,border-color 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
+}
+/* Exclude transitions that break animations/charts */
+.pdot,.access-dot,.nav-dot,canvas,input,button{transition:background-color 0.25s ease,border-color 0.2s ease,color 0.2s ease,box-shadow 0.15s ease;}
+
+/* ── THEME TOGGLE BUTTON ─────────────────────── */
+.theme-toggle{
+  display:flex;align-items:center;gap:7px;
+  padding:5px 11px;border-radius:20px;cursor:pointer;
+  border:1px solid var(--border2);background:transparent;
+  font-family:var(--mono);font-size:10px;color:var(--text2);
+  transition:all 0.15s;flex-shrink:0;
+}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.toggle-track{
+  width:30px;height:16px;border-radius:8px;
+  background:var(--border2);
+  position:relative;transition:background 0.25s;flex-shrink:0;
+}
+[data-theme="dark"] .toggle-track{background:var(--accent);}
+.toggle-thumb{
+  position:absolute;top:2px;left:2px;
+  width:12px;height:12px;border-radius:50%;
+  background:#fff;transition:transform 0.25s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 1px 3px rgba(0,0,0,0.3);
+}
+[data-theme="dark"] .toggle-thumb{transform:translateX(14px);}
+.toggle-icon{font-size:13px;line-height:1;}
+
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;line-height:1.5;}
 
 /* LOGIN */
@@ -616,12 +721,16 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 <!-- MAIN -->
 <div class="main">
   <div class="topbar">
-    <div>
+    <div class="topbar-left">
       <div class="page-title" id="topbar-title">Visão Geral · Rodrigo Dantas Santos</div>
       <div class="page-subtitle" id="topbar-sub">Empresário · 44 anos · A+ · 77kg · 1,77m · IMC 24,6 · Einstein #4181819</div>
     </div>
     <div class="topbar-right">
       <div class="garmin-pill"><div class="pdot"></div>Garmin · Abr/2026</div>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Alternar tema">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+      </button>
       <button class="btn btn-outline btn-sm">Compartilhar</button>
       <button class="btn btn-primary btn-sm" onclick="openModal()">+ Upload Exame</button>
     </div>
@@ -2151,6 +2260,63 @@ function showApp(){
   setTimeout(initCharts,200);
   setTimeout(initGarminCharts,400);
 }
+
+// ── THEME TOGGLE ──────────────────────────────────────
+const THEME_KEY='bioscan-theme';
+let isDark=false;
+
+function applyTheme(dark){
+  isDark=dark;
+  document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+  const icon=document.getElementById('theme-icon');
+  if(icon)icon.textContent=dark?'🌙':'☀️';
+  try{localStorage.setItem(THEME_KEY,dark?'dark':'light');}catch(e){}
+  // Update all existing Chart.js instances with new theme colors
+  updateChartsTheme(dark);
+}
+
+function toggleTheme(){
+  applyTheme(!isDark);
+}
+
+function updateChartsTheme(dark){
+  const gridColor=dark?'rgba(0,210,160,0.06)':'rgba(0,60,120,0.05)';
+  const tickColor=dark?'#3d6b5e':'#8aa0b0';
+  const legendColor=dark?'#7fa99a':'#4a6070';
+  const tooltipBg=dark?'rgba(13,19,24,0.95)':'rgba(255,255,255,0.97)';
+  const tooltipBorder=dark?'rgba(0,210,160,0.2)':'rgba(0,60,120,0.15)';
+  const tooltipTitle=dark?'#e8f4f0':'#0d1f2d';
+  const tooltipBody=dark?'#7fa99a':'#4a6070';
+  Chart.instances&&Object.values(Chart.instances).forEach(chart=>{
+    if(!chart?.options)return;
+    // Tooltip
+    if(chart.options.plugins?.tooltip){
+      chart.options.plugins.tooltip.backgroundColor=tooltipBg;
+      chart.options.plugins.tooltip.borderColor=tooltipBorder;
+      chart.options.plugins.tooltip.titleColor=tooltipTitle;
+      chart.options.plugins.tooltip.bodyColor=tooltipBody;
+    }
+    // Legend
+    if(chart.options.plugins?.legend?.labels)
+      chart.options.plugins.legend.labels.color=legendColor;
+    // Scales
+    ['x','y'].forEach(ax=>{
+      const scale=chart.options.scales?.[ax];
+      if(!scale)return;
+      if(scale.grid)scale.grid.color=gridColor;
+      if(scale.ticks)scale.ticks.color=tickColor;
+    });
+    try{chart.update('none');}catch(e){}
+  });
+}
+
+// Init theme from localStorage or system preference
+(function initTheme(){
+  let saved;
+  try{saved=localStorage.getItem(THEME_KEY);}catch(e){}
+  const prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
+  applyTheme(saved?saved==='dark':prefersDark);
+})();
 
 function doLogin(){
   const u=document.getElementById('lu').value.trim().toLowerCase();
