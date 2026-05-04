@@ -86,10 +86,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 
 /* MAIN */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
-.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;min-height:56px;}
-.page-title{font-size:14px;font-weight:700;color:var(--text);}
-.page-subtitle{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px;}
-.topbar-right{display:flex;align-items:center;gap:8px;}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;min-height:56px;}
+.topbar-left{min-width:0;flex:1;}
+.page-title{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.page-subtitle{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.topbar-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
 .garmin-pill{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--accent);font-family:var(--mono);background:rgba(0,210,160,0.08);border:1px solid rgba(0,210,160,0.2);padding:4px 10px;border-radius:20px;}
 .pdot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
 .btn{font-size:11px;padding:7px 14px;border-radius:7px;cursor:pointer;font-family:var(--font);font-weight:500;border:none;transition:all 0.15s;}
@@ -612,7 +613,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 <!-- MAIN -->
 <div class="main">
   <div class="topbar">
-    <div>
+    <div class="topbar-left">
       <div class="page-title" id="topbar-title">Visão Geral · Rodrigo Dantas Santos</div>
       <div class="page-subtitle" id="topbar-sub">Empresário · 44 anos · A+ · 77kg · 1,77m · IMC 24,6 · Einstein #4181819</div>
     </div>
