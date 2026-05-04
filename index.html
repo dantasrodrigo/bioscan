@@ -592,7 +592,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div class="alert-item al-warn"><div class="alert-title">⚠️ Ectasia aórtica — raiz 40mm (limite superior)</div><div class="alert-desc">Ecocardiograma Out/2024 Fleury: Aorta seios de Valsalva 40mm (ref: 28–40mm). Aorta ascendente 35mm (normal). Melhora em relação ao Einstein 2023 (41mm). Monitoramento anual com Eco recomendado.</div></div>
         <div class="alert-item al-warn"><div class="alert-title">⚠️ RM Ombro Direito — Tendinopatia + Capsulite Adesiva (Mar/2026)</div><div class="alert-desc">Fleury · Mar/2026 · Dra. Gabriela Guimarães. Tendinopatia do manguito rotador sem roturas. Fissura intrassubstancial no subescapular. Sinais sugestivos de capsulite adesiva glenoumeral. Fissura no lábio da glenóide. Avaliação fisioterápica/ortopédica indicada.</div></div>
         <div class="alert-item al-warn"><div class="alert-title">⚠️ Eosinófilos elevados — 490/mm³ (Mar/2026)</div><div class="alert-desc">Fleury · Mar/2026 · Ref: 34–420/mm³. Leve eosinofilia. Pode ser reação alérgica, parasitária ou relacionada a medicamentos (Finasterida). Investigar se persistir nos próximos exames.</div></div>
-        <div class="alert-item al-warn"><div class="alert-title">⚠️ HRV baixo para atleta (24,7ms média)</div><div class="alert-desc">Garmin Out/2024 · HRV noturno 5–9ms, média 5 dias 24,7ms. Para atleta de 44 anos, esperado acima de 40ms. Pode ter correlação com estresse, sono ou recuperação inadequada.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ HRV noturno baixo em Out/2024 — melhorou em 2025/26</div><div class="alert-desc">Garmin Out/2024 · HRV 5–9ms (média 24,7ms). A partir de Set/2025 (dados healthStatus), HRV estabilizou em 44–46ms — dentro do esperado para atleta 44 anos. Dez/2025 mostrou queda (41ms) correlacionada com pior score de sono (66). Monitorar continuidade.</div></div>
         <div class="alert-item al-warn"><div class="alert-title">⚠️ SpO₂ mínima de 69% durante o sono</div><div class="alert-desc">Garmin SLEEP_DATA · Out/2024. Valor normal: &gt;94%. Pode ser artefato de movimento ou indicar apneia do sono. Recomendado investigar com médico — avaliar polissonografia.</div></div>
         <div class="alert-item al-ok"><div class="alert-title">🟢 Lipídeos normalizados em Mar/2026</div><div class="alert-desc">Fleury · Mar/2026 · Dra. Gabriela Guimarães. Col. Total 161 ✅ · LDL 100 ✅ · TG 116 ✅ · HDL 40 (no limite). Melhora expressiva em relação ao pico de Jul/2023 (Col. 243, LDL 157, TG 192). GGT 69 U/L — quase normal (era 162).</div></div>
         <div class="alert-item al-ok"><div class="alert-title">🟢 Testosterona 647 ng/dL — melhor valor histórico</div><div class="alert-desc">Fleury · Abr/2026 · Dra. Gabriela Guimarães. Evolução: 444 (2019) → 571 (Out/24) → 439 (Out/24b) → 647 (Abr/2026). Dentro da referência 240–816 ng/dL. Boa resposta.</div></div>
@@ -1352,6 +1352,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
           <div class="spec-tab active" onclick="switchTab('gv-ativ',this)">🏃 Atividades por Modalidade</div>
           <div class="spec-tab" onclick="switchTab('gv-evolucao',this)">📈 Evolução Mensal</div>
           <div class="spec-tab" onclick="switchTab('gv-sono',this)">😴 Sono &amp; HRV</div>
+          <div class="spec-tab" onclick="switchTab('gv-fitage',this)">🧬 Idade Biológica</div>
           <div class="spec-tab" onclick="switchTab('gv-stress',this)">🧠 Stress</div>
         </div>
 
@@ -1479,29 +1480,310 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 
         <!-- ABA: SONO & HRV -->
         <div class="spec-panel" id="sp-gv-sono">
-          <div class="grid-two" style="margin-bottom:0">
-            <div class="panel" style="margin-bottom:0"><div class="panel-header"><div class="panel-title">HRV Noturno · Out/2024</div></div><div class="panel-body">
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--accent2)">24,7</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">MÉDIA 5D</div></div>
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--good)">8,9</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">MÁX ms</div></div>
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--text2)">6,0</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">MÍN ms</div></div>
+
+          <!-- RESUMO GERAL SONO -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px">
+            <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:9px;padding:12px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">Média Total Sono</div>
+              <div style="font-size:22px;font-weight:700;color:var(--accent)">7,6h</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">737 noites · Abr/24–Abr/26</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(0,168,255,0.2);border-radius:9px;padding:12px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">Score Médio Sono</div>
+              <div style="font-size:22px;font-weight:700;color:var(--accent2)">75</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">/100 · Garmin</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(255,179,71,0.2);border-radius:9px;padding:12px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">Recovery Médio</div>
+              <div style="font-size:22px;font-weight:700;color:var(--warn)">67</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">/100 · abaixo do ideal</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:9px;padding:12px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">Sono Profundo Médio</div>
+              <div style="font-size:22px;font-weight:700;color:var(--accent)">1,3h</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">REM médio: 1,6h</div>
+            </div>
+          </div>
+
+          <!-- TABELA MENSAL DE SONO -->
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px;overflow-x:auto">
+            <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:10px">📊 Evolução Mensal do Sono — Abr/2024 a Abr/2026</div>
+            <table style="width:100%;border-collapse:collapse;font-size:10px;font-family:var(--mono)">
+              <thead>
+                <tr style="color:var(--text3)">
+                  <th style="text-align:left;padding:4px 8px;border-bottom:1px solid var(--border)">Mês</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">Total</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">Profundo</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">REM</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">Score</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">Recovery</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Abr/2024</td><td style="text-align:center;color:var(--warn)">7,1h</td><td style="text-align:center">1,2h</td><td style="text-align:center">1,4h</td><td style="text-align:center">73</td><td style="text-align:center">69</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Mai/2024</td><td style="text-align:center;color:var(--good)">8,0h</td><td style="text-align:center">1,4h</td><td style="text-align:center">1,7h</td><td style="text-align:center">77</td><td style="text-align:center">70</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Jun/2024</td><td style="text-align:center;color:var(--good)">8,0h</td><td style="text-align:center">1,2h</td><td style="text-align:center">1,7h</td><td style="text-align:center">74</td><td style="text-align:center">64</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Jul/2024</td><td style="text-align:center;color:var(--good)">8,4h</td><td style="text-align:center">1,3h</td><td style="text-align:center">1,8h</td><td style="text-align:center">75</td><td style="text-align:center">68</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Ago/2024</td><td style="text-align:center;color:var(--warn)">7,3h</td><td style="text-align:center">1,4h</td><td style="text-align:center">1,5h</td><td style="text-align:center">75</td><td style="text-align:center">68</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Set/2024</td><td style="text-align:center;color:var(--warn)">7,6h</td><td style="text-align:center">1,2h</td><td style="text-align:center">1,4h</td><td style="text-align:center">72</td><td style="text-align:center">64</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Out/2024</td><td style="text-align:center;color:var(--warn)">7,5h</td><td style="text-align:center">1,3h</td><td style="text-align:center">1,5h</td><td style="text-align:center">76</td><td style="text-align:center">70</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Nov/2024</td><td style="text-align:center;color:var(--warn)">7,7h</td><td style="text-align:center">1,3h</td><td style="text-align:center">1,6h</td><td style="text-align:center">71</td><td style="text-align:center">60</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Dez/2024</td><td style="text-align:center;color:var(--warn)">7,1h</td><td style="text-align:center">1,2h</td><td style="text-align:center">1,5h</td><td style="text-align:center">73</td><td style="text-align:center">65</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Jan/2025</td><td style="text-align:center;color:var(--warn)">7,2h</td><td style="text-align:center">1,4h</td><td style="text-align:center">1,5h</td><td style="text-align:center">78</td><td style="text-align:center">70</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Fev/2025</td><td style="text-align:center;color:var(--warn)">7,5h</td><td style="text-align:center">1,3h</td><td style="text-align:center">1,4h</td><td style="text-align:center">74</td><td style="text-align:center">63</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Mar/2025</td><td style="text-align:center;color:var(--warn)">7,6h</td><td style="text-align:center">1,1h</td><td style="text-align:center">1,7h</td><td style="text-align:center">73</td><td style="text-align:center">67</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Abr/2025</td><td style="text-align:center;color:var(--warn)">7,6h</td><td style="text-align:center">1,2h</td><td style="text-align:center">1,7h</td><td style="text-align:center">72</td><td style="text-align:center">64</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Jun/2025</td><td style="text-align:center;color:var(--good)">8,0h</td><td style="text-align:center">1,5h</td><td style="text-align:center">1,6h</td><td style="text-align:center">76</td><td style="text-align:center">71</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Jul/2025</td><td style="text-align:center;color:var(--warn)">7,7h</td><td style="text-align:center">1,4h</td><td style="text-align:center">1,6h</td><td style="text-align:center">75</td><td style="text-align:center">66</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Ago/2025</td><td style="text-align:center;color:var(--good)">8,0h</td><td style="text-align:center">1,3h</td><td style="text-align:center">1,9h</td><td style="text-align:center">79</td><td style="text-align:center">71</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Set/2025</td><td style="text-align:center;color:var(--good)">8,1h</td><td style="text-align:center">1,3h</td><td style="text-align:center">1,7h</td><td style="text-align:center">75</td><td style="text-align:center">69</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Out/2025</td><td style="text-align:center;color:var(--good)">8,0h</td><td style="text-align:center">1,5h</td><td style="text-align:center">1,6h</td><td style="text-align:center">79</td><td style="text-align:center">72</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Nov/2025</td><td style="text-align:center;color:var(--warn)">7,0h</td><td style="text-align:center">1,6h</td><td style="text-align:center">1,4h</td><td style="text-align:center">78</td><td style="text-align:center">74</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Dez/2025</td><td style="text-align:center;color:var(--warn)">7,5h</td><td style="text-align:center">1,4h</td><td style="text-align:center">1,2h</td><td style="text-align:center;color:var(--danger)">66</td><td style="text-align:center;color:var(--danger)">53</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Jan/2026</td><td style="text-align:center;color:var(--good)">8,3h ★</td><td style="text-align:center">1,6h</td><td style="text-align:center">1,8h</td><td style="text-align:center;color:var(--good)">81 ★</td><td style="text-align:center">74</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Fev/2026</td><td style="text-align:center;color:var(--warn)">7,7h</td><td style="text-align:center">1,4h</td><td style="text-align:center">1,5h</td><td style="text-align:center">73</td><td style="text-align:center">64</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Mar/2026</td><td style="text-align:center;color:var(--warn)">7,3h</td><td style="text-align:center">1,4h</td><td style="text-align:center">1,4h</td><td style="text-align:center">73</td><td style="text-align:center">64</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Abr/2026</td><td style="text-align:center;color:var(--warn)">7,5h</td><td style="text-align:center">1,5h</td><td style="text-align:center">1,5h</td><td style="text-align:center">78</td><td style="text-align:center">69</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- HRV & FC REPOUSO NOTURNO -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+            <div style="background:var(--bg3);border:1px solid rgba(0,168,255,0.2);border-radius:10px;padding:14px">
+              <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:10px">📊 HRV Noturno — Set/2025 a Abr/2026</div>
+              <div style="display:flex;flex-direction:column;gap:5px;font-size:10px;color:var(--text2);font-family:var(--mono)">
+                <div style="display:flex;justify-content:space-between"><span>Set/2025</span><span style="color:var(--accent2)">45 ms</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Out/2025</span><span style="color:var(--accent2)">45 ms</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Nov/2025</span><span style="color:var(--accent2)">45 ms</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Dez/2025</span><span style="color:var(--warn)">41 ms ↓</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Jan/2026</span><span style="color:var(--accent2)">45 ms ↑</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Fev/2026</span><span style="color:var(--accent2)">45 ms</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Mar/2026</span><span style="color:var(--accent2)">44 ms</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Abr/2026</span><span style="color:var(--accent2)">46 ms</span></div>
               </div>
-              <div style="background:rgba(255,179,71,0.06);border:1px solid rgba(255,179,71,0.2);border-radius:7px;padding:9px 12px;font-size:10px;color:var(--text2)">
-                ⚠️ HRV 5–9ms noturno é baixo para atleta 44a (esperado &gt;40ms).<br>Pico stress 95 às 13h pode correlacionar.
+              <div style="background:rgba(0,210,160,0.06);border:1px solid rgba(0,210,160,0.2);border-radius:6px;padding:8px 10px;font-size:10px;color:var(--text2);margin-top:10px">
+                ✅ <strong style="color:var(--good)">HRV melhorou substancialmente</strong> vs Out/2024 (24,7ms). Agora consistente em 44–46ms — dentro do esperado para atleta de 44 anos.
               </div>
-              <div style="margin-top:10px;font-size:10px;color:var(--text3);font-family:var(--mono)">Temp. pele: 35,5°C · Delta: −0,24°C</div>
-            </div></div>
-            <div class="panel" style="margin-bottom:0"><div class="panel-header"><div class="panel-title">Score do Sono · Out/2024</div></div><div class="panel-body">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--good)">100</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">SCORE GERAL</div></div>
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--accent2)">84</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">HRV SCORE</div></div>
-                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--warn)">82</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">STRESS SONO</div></div>
-                <div style="background:var(--bg3);border:1px solid rgba(255,79,79,0.3);border-radius:8px;padding:10px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--danger)">69%</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">SpO₂ MÍN ⚠️</div></div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:10px;padding:14px">
+              <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:10px">❤️ FC Repouso Noturno — Evolução</div>
+              <div style="display:flex;flex-direction:column;gap:5px;font-size:10px;color:var(--text2);font-family:var(--mono)">
+                <div style="display:flex;justify-content:space-between"><span>Set/2025</span><span style="color:var(--good)">54 bpm</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Out/2025</span><span style="color:var(--good)">53 bpm</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Nov/2025</span><span style="color:var(--good)">53 bpm</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Dez/2025</span><span style="color:var(--warn)">58 bpm ↑</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Jan/2026</span><span style="color:var(--good)">54 bpm ↓</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Fev/2026</span><span style="color:var(--warn)">56 bpm</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Mar/2026</span><span style="color:var(--warn)">56 bpm</span></div>
+                <div style="display:flex;justify-content:space-between"><span>Abr/2026</span><span style="color:var(--warn)">56 bpm</span></div>
               </div>
-              <div style="font-size:10px;color:var(--danger);background:rgba(255,79,79,0.05);border:1px solid rgba(255,79,79,0.2);padding:8px 10px;border-radius:6px">
-                🔴 SpO₂ 69% durante sono — investigar apneia com polissonografia
+              <div style="background:rgba(0,210,160,0.06);border:1px solid rgba(0,210,160,0.2);border-radius:6px;padding:8px 10px;font-size:10px;color:var(--text2);margin-top:10px">
+                ✅ FC repouso noturno 53–56 bpm — boa para atleta. Pico Dez/25 coincide com pior score de sono (66) e recovery baixo (53).
               </div>
-            </div></div>
+            </div>
+          </div>
+
+          <!-- EVENTOS DE FC ANORMAL -->
+          <div style="background:rgba(255,179,71,0.05);border:1px solid rgba(255,179,71,0.2);border-radius:9px;padding:12px 14px;margin-bottom:10px">
+            <div style="font-size:11px;font-weight:700;color:var(--warn);margin-bottom:8px">⚠️ Eventos de FC Anormal em Repouso (threshold: 100 bpm)</div>
+            <div style="font-size:10px;color:var(--text2);font-family:var(--mono);display:flex;flex-direction:column;gap:3px">
+              <div>Abr/2024: 3 eventos (max 112 bpm em 19/04) · Jul/2024: 1 evento</div>
+              <div>Jul/2024: 2 eventos (29/07 · max 105) · Ago/2024: 1 evento noturno (100 bpm)</div>
+              <div>Ago/2024 (21/08): 5 eventos consecutivos (101→110→105 bpm) — dia de atividade intensa</div>
+              <div style="color:var(--good);margin-top:4px">✅ Nenhum evento registrado após Out/2024 nos arquivos disponíveis</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(255,79,79,0.05);border:1px solid rgba(255,79,79,0.2);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--text2);">
+            🔴 <strong style="color:var(--danger)">SpO₂ 69% durante sono (Out/2024):</strong> Valor anormalmente baixo. Pode ser artefato de movimento ou indicar apneia obstrutiva. Recomendado avaliar polissonografia com médico.
+          </div>
+        </div>
+
+        <!-- ABA: IDADE BIOLÓGICA -->
+        <div class="spec-panel" id="sp-gv-fitage">
+
+          <!-- MÉTRICAS DE PERFORMANCE -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
+            <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.25);border-radius:10px;padding:14px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">Idade Biológica</div>
+              <div style="font-size:28px;font-weight:700;color:var(--accent)">40,3</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">anos · Abr/2026</div>
+              <div style="font-size:9px;color:var(--accent);margin-top:4px">Crono: 45 anos ✅ −4,7</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(0,168,255,0.25);border-radius:10px;padding:14px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">VO₂ Máx (corrida)</div>
+              <div style="font-size:28px;font-weight:700;color:var(--accent2)">47</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">ml/kg/min · Mar/2026</div>
+              <div style="font-size:9px;color:var(--accent2);margin-top:4px">Classificação: Excelente ✅</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.25);border-radius:10px;padding:14px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">Limiar Láctico (corrida)</div>
+              <div style="font-size:28px;font-weight:700;color:var(--accent)">166</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">bpm · autodetectado</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:4px">Pace: ~5:19/km</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(255,179,71,0.25);border-radius:10px;padding:14px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">FTP Ciclismo</div>
+              <div style="font-size:28px;font-weight:700;color:var(--warn)">214</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">watts · Garmin</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:4px">FTP Corrida: 345W</div>
+            </div>
+          </div>
+
+          <!-- EVOLUÇÃO VO2MAX E BIOAGE -->
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:12px">📈 Evolução VO₂ Máx + Idade Biológica — Abr/2024 a Abr/2026</div>
+            <table style="width:100%;border-collapse:collapse;font-size:10px;font-family:var(--mono)">
+              <thead>
+                <tr style="color:var(--text3)">
+                  <th style="text-align:left;padding:4px 8px;border-bottom:1px solid var(--border)">Mês</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">VO₂ Máx</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">Idade Bio.</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">FC Repouso</th>
+                  <th style="text-align:center;padding:4px 8px;border-bottom:1px solid var(--border)">Δ (Bio−Crono)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Abr/2024</td><td style="text-align:center">43,5</td><td style="text-align:center">40,8</td><td style="text-align:center">61</td><td style="text-align:center;color:var(--good)">−2,2</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Set/2024</td><td style="text-align:center">45,2</td><td style="text-align:center">39,7</td><td style="text-align:center">58</td><td style="text-align:center;color:var(--good)">−3,3</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Out/2024</td><td style="text-align:center;color:var(--good)">46,5</td><td style="text-align:center;color:var(--good)">38,8</td><td style="text-align:center;color:var(--good)">50</td><td style="text-align:center;color:var(--good)">−4,2</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Mar/2025</td><td style="text-align:center">45,0</td><td style="text-align:center">40,6</td><td style="text-align:center">50</td><td style="text-align:center;color:var(--good)">−3,4</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Jun/2025</td><td style="text-align:center;color:var(--good)">47,0</td><td style="text-align:center;color:var(--good)">39,2</td><td style="text-align:center">49</td><td style="text-align:center;color:var(--good)">−4,8</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Set/2025</td><td style="text-align:center;color:var(--good)">47,9 ★</td><td style="text-align:center;color:var(--good)">38,5 ★</td><td style="text-align:center">49</td><td style="text-align:center;color:var(--good)">−5,5 ★</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Nov/2025</td><td style="text-align:center">47,2</td><td style="text-align:center">39,1</td><td style="text-align:center">48</td><td style="text-align:center;color:var(--good)">−4,9</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Jan/2026</td><td style="text-align:center">46,8</td><td style="text-align:center">39,3</td><td style="text-align:center">50</td><td style="text-align:center;color:var(--good)">−4,7</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Mar/2026</td><td style="text-align:center">46,5</td><td style="text-align:center">40,3</td><td style="text-align:center">50</td><td style="text-align:center;color:var(--good)">−4,7</td></tr>
+                <tr style="color:var(--text2)"><td style="padding:3px 8px">Abr/2026</td><td style="text-align:center">46,5</td><td style="text-align:center">40,3</td><td style="text-align:center">50</td><td style="text-align:center;color:var(--good)">−4,7</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ZONAS DE TREINO -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px">
+              <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:10px">❤️ Zonas de FC (Corrida)</div>
+              <div style="display:flex;flex-direction:column;gap:5px;font-size:10px;font-family:var(--mono)">
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--accent)">Z1 Suave</span><span style="color:var(--text2)">&lt; 112 bpm</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--good)">Z2 Aeróbico</span><span style="color:var(--text2)">112–131 bpm</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--warn)">Z3 Tempo</span><span style="color:var(--text2)">131–150 bpm</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--danger)">Z4 Limiar</span><span style="color:var(--text2)">150–168 bpm</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0"><span style="color:#ff6b6b">Z5 VO₂ Máx</span><span style="color:var(--text2)">&gt; 168 bpm · FC max 187</span></div>
+              </div>
+              <div style="font-size:9px;color:var(--text3);margin-top:8px;font-family:var(--mono)">Limiar láctico: 166 bpm (autodetectado)</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px">
+              <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:10px">⚡ Zonas de Potência (Corrida · FTP 345W)</div>
+              <div style="display:flex;flex-direction:column;gap:5px;font-size:10px;font-family:var(--mono)">
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--accent)">Z1</span><span style="color:var(--text2)">&lt; 224 W</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--good)">Z2</span><span style="color:var(--text2)">224–276 W</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--warn)">Z3</span><span style="color:var(--text2)">276–310 W</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)"><span style="color:var(--danger)">Z4 (FTP)</span><span style="color:var(--text2)">310–345 W</span></div>
+                <div style="display:flex;justify-content:space-between;padding:4px 0"><span style="color:#ff6b6b">Z5</span><span style="color:var(--text2)">&gt; 345 W</span></div>
+              </div>
+              <div style="font-size:9px;color:var(--text3);margin-top:8px;font-family:var(--mono)">Ciclismo FTP: 214W · Cross-country FTP: 128W</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(0,210,160,0.05);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);">
+            🟢 <strong style="color:var(--accent)">Performance excelente para 44 anos:</strong> VO₂ Máx 47 ml/kg/min coloca Rodrigo no percentil superior para homens 40–44 anos. Idade biológica 4–5 anos abaixo da cronológica desde Jun/2025. Melhor marca: Set/2025 (VO₂ 47,9 · BioAge 38,5 · delta −5,5 anos). FC repouso noturna 48–56 bpm.
+          </div>
+
+          <!-- ENDURANCE SCORE -->
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:14px;margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:4px">🏅 Endurance Score — Evolução Abr/2024 a Mai/2026</div>
+            <div style="font-size:10px;color:var(--text3);font-family:var(--mono);margin-bottom:12px">Escala Garmin: Iniciante &lt;5.000 · Recreativo 5.000–6.499 · Intermediário 6.500–7.999 · Avançado 8.000+</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px">
+              <div style="background:var(--bg);border:1px solid rgba(0,168,255,0.2);border-radius:8px;padding:10px;text-align:center">
+                <div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-bottom:3px">MELHOR (Set/2025)</div>
+                <div style="font-size:20px;font-weight:700;color:var(--accent2)">5.602</div>
+                <div style="font-size:9px;color:var(--accent2)">Recreativo ✅</div>
+              </div>
+              <div style="background:var(--bg);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:10px;text-align:center">
+                <div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-bottom:3px">ATUAL (Mai/2026)</div>
+                <div style="font-size:20px;font-weight:700;color:var(--warn)">4.927</div>
+                <div style="font-size:9px;color:var(--warn)">Iniciante ↓</div>
+              </div>
+              <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
+                <div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-bottom:3px">MÁXIMO HISTÓRICO</div>
+                <div style="font-size:20px;font-weight:700;color:var(--text)">5.965</div>
+                <div style="font-size:9px;color:var(--text3)">Abr/2024</div>
+              </div>
+              <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
+                <div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-bottom:3px">HILL SCORE (atual)</div>
+                <div style="font-size:20px;font-weight:700;color:var(--text)">28</div>
+                <div style="font-size:9px;color:var(--text3)">Recreativo · estável</div>
+              </div>
+            </div>
+            <table style="width:100%;border-collapse:collapse;font-size:10px;font-family:var(--mono)">
+              <thead>
+                <tr style="color:var(--text3)">
+                  <th style="text-align:left;padding:3px 8px;border-bottom:1px solid var(--border)">Mês</th>
+                  <th style="text-align:center;padding:3px 8px;border-bottom:1px solid var(--border)">Score</th>
+                  <th style="text-align:center;padding:3px 8px;border-bottom:1px solid var(--border)">Classe</th>
+                  <th style="text-align:left;padding:3px 8px;border-bottom:1px solid var(--border)">Mês</th>
+                  <th style="text-align:center;padding:3px 8px;border-bottom:1px solid var(--border)">Score</th>
+                  <th style="text-align:center;padding:3px 8px;border-bottom:1px solid var(--border)">Classe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Abr/2024</td><td style="text-align:center;color:var(--good)">5.433</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                  <td style="padding:2px 8px">Abr/2025</td><td style="text-align:center;color:var(--accent2)">5.129</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Mai/2024</td><td style="text-align:center">5.239</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                  <td style="padding:2px 8px">Mai/2025</td><td style="text-align:center">5.219</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Jun/2024</td><td style="text-align:center">5.217</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                  <td style="padding:2px 8px">Jun/2025</td><td style="text-align:center">5.312</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Jul/2024</td><td style="text-align:center">5.285</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                  <td style="padding:2px 8px">Jul/2025</td><td style="text-align:center">5.197</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Ago/2024</td><td style="text-align:center">5.270</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                  <td style="padding:2px 8px">Ago/2025</td><td style="text-align:center">5.293</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Set/2024</td><td style="text-align:center;color:var(--warn)">4.705</td><td style="text-align:center;color:var(--warn)">Iniciante ↓</td>
+                  <td style="padding:2px 8px">Set/2025</td><td style="text-align:center;color:var(--good)">5.602 ★</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Out/2024</td><td style="text-align:center;color:var(--warn)">4.706</td><td style="text-align:center;color:var(--warn)">Iniciante</td>
+                  <td style="padding:2px 8px">Out/2025</td><td style="text-align:center">5.295</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Nov/2024</td><td style="text-align:center;color:var(--warn)">4.831</td><td style="text-align:center;color:var(--warn)">Iniciante</td>
+                  <td style="padding:2px 8px">Nov/2025</td><td style="text-align:center">5.323</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Dez/2024</td><td style="text-align:center;color:var(--warn)">4.858</td><td style="text-align:center;color:var(--warn)">Iniciante</td>
+                  <td style="padding:2px 8px">Dez/2025</td><td style="text-align:center">5.242</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Jan/2025</td><td style="text-align:center;color:var(--warn)">4.839</td><td style="text-align:center;color:var(--warn)">Iniciante</td>
+                  <td style="padding:2px 8px">Jan/2026</td><td style="text-align:center">5.212</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Fev/2025</td><td style="text-align:center;color:var(--warn)">4.966</td><td style="text-align:center;color:var(--warn)">Iniciante</td>
+                  <td style="padding:2px 8px">Fev/2026</td><td style="text-align:center">5.155</td><td style="text-align:center;color:var(--accent2)">Recreativo</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px">Mar/2025</td><td style="text-align:center;color:var(--warn)">4.980</td><td style="text-align:center;color:var(--warn)">Iniciante</td>
+                  <td style="padding:2px 8px">Mar/2026</td><td style="text-align:center;color:var(--warn)">4.970</td><td style="text-align:center;color:var(--warn)">Iniciante ↓</td>
+                </tr>
+                <tr style="color:var(--text2)">
+                  <td style="padding:2px 8px"></td><td></td><td></td>
+                  <td style="padding:2px 8px">Abr/2026</td><td style="text-align:center;color:var(--warn)">4.927</td><td style="text-align:center;color:var(--warn)">Iniciante</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="background:rgba(255,179,71,0.05);border:1px solid rgba(255,179,71,0.2);border-radius:7px;padding:9px 12px;font-size:10px;color:var(--text2);margin-top:10px">
+              ⚠️ <strong style="color:var(--warn)">Queda no Endurance Score:</strong> Set/2024 a Mar/2025 — queda de Recreativo → Iniciante, coincidindo com redução de atividades. Recuperou para Recreativo em Abr/2025 e manteve até Fev/2026. Nova queda em Mar/2026 — monitorar. Hill Score estável em ~28 (Recreativo) — poucas atividades com desnível significativo.
+            </div>
           </div>
         </div>
 
