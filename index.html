@@ -103,11 +103,11 @@
 [data-theme="dark"] .doc-avatar{color:#080c10;}
 
 /* ── GLOBAL TRANSITION ──────────────────────── */
-*,*::before,*::after{
+.sidebar,.main,.topbar,.scroll-area,.page,.panel,.card,.nav-item,.btn,
+.spec-tab,.vcard,.ov-card,.alert-item,.marker-item,.exam-row,.filter-btn,
+.badge,.lab-tag,.patient-card,.access-badge,.login-box,.modal-box{
   transition:background-color 0.25s ease,border-color 0.2s ease,color 0.2s ease,box-shadow 0.2s ease;
 }
-/* Exclude transitions that break animations/charts */
-.pdot,.access-dot,.nav-dot,canvas,input,button{transition:background-color 0.25s ease,border-color 0.2s ease,color 0.2s ease,box-shadow 0.15s ease;}
 
 /* ── THEME TOGGLE BUTTON ─────────────────────── */
 .theme-toggle{
@@ -192,8 +192,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 @keyframes spin{to{transform:rotate(360deg);}}
 
 /* MAIN */
-.main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
-.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;min-height:56px;box-shadow:0 1px 3px rgba(0,40,80,0.06);}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;min-height:52px;box-shadow:0 1px 3px rgba(0,40,80,0.06);position:relative;z-index:10;}
 .topbar-left{min-width:0;flex:1;overflow:hidden;}
 .page-title{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .page-subtitle{font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -206,8 +206,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
 .btn-primary{background:var(--accent);color:#ffffff;font-weight:700;}
 .btn-primary:hover{background:var(--accent3);}
-.scroll-area{flex:1;overflow-y:auto;overflow-x:hidden;padding:22px 24px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
-.page{display:none;}.page.active{display:block;}
+.scroll-area{flex:1;overflow-y:auto;overflow-x:hidden;padding:20px 22px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.page{display:none;max-width:100%;}.page.active{display:block;}
 
 /* SECTION HEADER */
 .sh{display:flex;align-items:center;gap:10px;margin:0 0 14px;min-width:0;overflow:hidden;}
@@ -1184,8 +1184,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
             ✅ <strong style="color:var(--good)">Nódulo Hepático (USG 2019 → Revisado):</strong> O laudo Delboni/2019 levantou hipótese de hemangioma (19×10mm). Os laudos Einstein Jan/2022 e Jul/2023 confirmam que se trata de <strong>esteatose focal</strong> no lobo direito — achado benigno sem necessidade de controle por RM. Estável em 2 exames subsequentes.
           </div>
         </div>
-      </div>
-    </div>
 
     <!-- ░░ HORMONAL ░░ -->
     <div class="page" id="page-hormonal">
@@ -1956,7 +1954,7 @@ let uploadedFiles=[];
 
 const LAB_LABELS={einstein:'Einstein',fleury:'Fleury',delboni:'Delboni',dasa:'DASA',hcor:'HCor',cete:'CETE Sport',sirio:'Sírio-Libanês',outros:'Outros'};
 const SPEC_NAMES={lab:'Laboratorial',cardio:'Cardiologia',image:'Imagens',perf:'Performance',horm:'Hormonal',cirurg:'Cirurgias',outros:'Outros'};
-const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos',laboratorial:'Laboratorial Completo',hormonal:'Hormonal & Endócrino',cardio:'Cardiologia',garmin:'Garmin Connect',cirurgias:'Cirurgias & Procedimentos',medicamentos:'Medicamentos',timeline:'Histórico Médico · 2003–2026',arquivos:'Exames & Laudos'};
+const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos',laboratorial:'Laboratorial Completo',hormonal:'Hormonal & Endócrino',cardio:'Cardiologia',garmin:'Garmin Connect',cirurgias:'Cirurgias & Procedimentos',medicamentos:'Medicamentos',timeline:'Histórico Médico · 2003–2026',vacinas:'Carteira de Vacinação',arquivos:'Exames & Laudos'};
 
 const SESSION_KEY='bioscan_sess_v4';
 const SESSION_DAYS=3;
