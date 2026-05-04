@@ -24,6 +24,7 @@
   --cete-bg:rgba(0,220,220,0.12);--cete-border:rgba(0,220,220,0.3);--cete-text:#00dcdc;
   --sirio-bg:rgba(255,200,0,0.12);--sirio-border:rgba(255,200,0,0.3);--sirio-text:#ffd740;
   --outros-bg:rgba(150,150,150,0.12);--outros-border:rgba(150,150,150,0.3);--outros-text:#aaa;
+  --fleury-bg:rgba(180,100,255,0.12);--fleury-border:rgba(180,100,255,0.3);--fleury-text:#c47aff;
 }
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:13px;line-height:1.5;}
 
@@ -184,6 +185,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .lt-cete{background:var(--cete-bg);border-color:var(--cete-border);color:var(--cete-text);}
 .lt-sirio{background:var(--sirio-bg);border-color:var(--sirio-border);color:var(--sirio-text);}
 .lt-outros{background:var(--outros-bg);border-color:var(--outros-border);color:var(--outros-text);}
+.lt-fleury{background:var(--fleury-bg);border-color:var(--fleury-border);color:var(--fleury-text);}
 
 /* LAB LEGEND */
 .lab-legend{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;align-items:center;margin-bottom:14px;}
@@ -413,6 +415,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div><div class="form-label">Instituição</div>
         <select class="form-select" id="up-lab">
           <option value="einstein">Albert Einstein</option>
+          <option value="fleury">Fleury Medicina e Saúde</option>
           <option value="delboni">Delboni Auriemo</option>
           <option value="dasa">DASA</option>
           <option value="hcor">HCor</option>
@@ -481,21 +484,22 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
   <div class="nav-section">
     <div class="nav-label">Navegação</div>
     <div class="nav-item active" onclick="goPage('overview',this)"><div class="nav-dot"></div>Visão Geral</div>
-    <div class="nav-item" onclick="goPage('alertas',this)"><div class="nav-dot" style="background:var(--danger)"></div>Alertas Clínicos<span class="nav-badge nb-r">10</span></div>
-    <div class="nav-item" onclick="goPage('laboratorial',this)"><div class="nav-dot"></div>Laboratorial Completo<span class="nav-badge nb-g" id="nb-lab">61</span></div>
+    <div class="nav-item" onclick="goPage('alertas',this)"><div class="nav-dot" style="background:var(--danger)"></div>Alertas Clínicos<span class="nav-badge nb-r">11</span></div>
+    <div class="nav-item" onclick="goPage('laboratorial',this)"><div class="nav-dot"></div>Laboratorial Completo<span class="nav-badge nb-g" id="nb-lab">81</span></div>
     <div class="nav-item" onclick="goPage('hormonal',this)"><div class="nav-dot"></div>Hormonal &amp; Endócrino</div>
     <div class="nav-item" onclick="goPage('cardio',this)"><div class="nav-dot" style="background:var(--accent2)"></div>Cardiologia</div>
     <div class="nav-item" onclick="goPage('cirurgias',this)"><div class="nav-dot" style="background:#ff6464"></div>Cirurgias<span class="nav-badge nb-r" id="surg-badge">3</span></div>
     <div class="nav-item" onclick="goPage('medicamentos',this)"><div class="nav-dot" style="background:#b57aff"></div>Medicamentos<span class="nav-badge" style="background:rgba(150,80,255,0.15);color:#b57aff">3</span></div>
     <div class="nav-item" onclick="goPage('garmin',this)"><div class="nav-dot" style="background:var(--accent)"></div>Garmin Connect</div>
     <div class="nav-item" onclick="goPage('timeline',this)"><div class="nav-dot" style="background:var(--warn)"></div>Histórico Médico</div>
-    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div>Arquivos &amp; PDFs<span class="nav-badge nb-g">61</span></div>
+    <div class="nav-item" onclick="goPage('vacinas',this)"><div class="nav-dot" style="background:#00c896"></div>Vacinação<span class="nav-badge" style="background:rgba(0,200,150,0.15);color:#00c896">8</span></div>
+    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div>Arquivos &amp; PDFs<span class="nav-badge nb-g">81</span></div>
   </div>
   <div class="nav-section">
     <div class="nav-label">Equipe Médica</div>
+    <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dra. Gabriela Guimarães · Clínica</div>
     <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dr. Marcelo G. Paiva · Clínico</div>
     <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dr. Luiz Cury Neto · Urologista</div>
-    <div class="nav-item"><div class="nav-dot" style="background:var(--accent2)"></div>Dra. Andreia Rostirola · Check</div>
   </div>
   <div class="sidebar-bottom">
     <div class="access-badge"><div class="access-dot"></div><div><div class="access-name">Acesso Médico Ativo</div><div class="access-text">DantasSaude2026</div></div></div>
@@ -511,7 +515,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       <div class="page-subtitle" id="topbar-sub">Empresário · 44 anos · A+ · 77kg · 1,77m · IMC 24,6 · Einstein #4181819</div>
     </div>
     <div class="topbar-right">
-      <div class="garmin-pill"><div class="pdot"></div>Garmin · Out/2024</div>
+      <div class="garmin-pill"><div class="pdot"></div>Garmin · Abr/2026</div>
       <button class="btn btn-outline btn-sm">Compartilhar</button>
       <button class="btn btn-primary btn-sm" onclick="openModal()">+ Upload Exame</button>
     </div>
@@ -524,25 +528,25 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       <div class="sh"><div class="sh-title">Indicadores Principais</div><div class="sh-line"></div><div class="sh-date">Último painel: Jul/2023 · Einstein</div></div>
       <!-- KPI CARDS WITH CHART.JS LINE CHARTS -->
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-        <div class="vcard" style="--vl:var(--danger)">
+        <div class="vcard" style="--vl:var(--good)">
           <div class="vcard-label">Colesterol Total</div>
-          <div class="vcard-value" style="color:var(--danger)">243</div>
-          <div class="vcard-unit">mg/dL · Jul/2023</div>
-          <div class="vcard-delta db">▲ ref &lt;190 · tendência alta</div>
+          <div class="vcard-value" style="color:var(--good)">161</div>
+          <div class="vcard-unit">mg/dL · Mar/2026 Fleury</div>
+          <div class="vcard-delta dg">▼ era 243 em Jul/23 · normalizado ✅</div>
           <div class="kpi-chart"><canvas id="chart-col"></canvas></div>
         </div>
-        <div class="vcard" style="--vl:var(--danger)">
+        <div class="vcard" style="--vl:var(--good)">
           <div class="vcard-label">LDL Colesterol</div>
-          <div class="vcard-value" style="color:var(--danger)">157</div>
-          <div class="vcard-unit">mg/dL · Jul/2023</div>
-          <div class="vcard-delta db">▲ +47% em 11 meses · ref &lt;130</div>
+          <div class="vcard-value" style="color:var(--good)">100</div>
+          <div class="vcard-unit">mg/dL · Mar/2026 Fleury</div>
+          <div class="vcard-delta dg">▼ era 157 em Jul/23 · normalizado ✅</div>
           <div class="kpi-chart"><canvas id="chart-ldl"></canvas></div>
         </div>
         <div class="vcard" style="--vl:var(--warn)">
           <div class="vcard-label">Gama GT</div>
-          <div class="vcard-value" style="color:var(--danger)">162</div>
-          <div class="vcard-unit">U/L · Jul/2023</div>
-          <div class="vcard-delta db">🔴 persistente · ref &lt;61</div>
+          <div class="vcard-value" style="color:var(--warn)">69</div>
+          <div class="vcard-unit">U/L · Mar/2026 Fleury</div>
+          <div class="vcard-delta dw">▼ era 162 em Jul/23 · quase normal</div>
           <div class="kpi-chart"><canvas id="chart-ggt"></canvas></div>
         </div>
         <div class="vcard" style="--vl:var(--accent2)">
@@ -566,8 +570,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 
       <div class="sh"><div class="sh-title">Status por Área</div><div class="sh-line"></div></div>
       <div class="ov-grid">
-        <div class="ov-card" style="--ol:var(--danger)" onclick="goPage('alertas',null)"><div class="ov-icon">🚨</div><div class="ov-name">Alertas Ativos</div><div class="ov-num" style="color:var(--danger)">10</div><div class="ov-sub">pontos de atenção</div><div class="ov-st"><span class="badge badge-bad">ação recomendada</span></div></div>
-        <div class="ov-card" style="--ol:var(--warn)" onclick="goPage('laboratorial',null)"><div class="ov-icon">🧪</div><div class="ov-name">Laboratorial</div><div class="ov-num">61</div><div class="ov-sub">exames · 5 datas</div><div class="ov-st"><span class="badge badge-warn">3 marcadores altos</span></div></div>
+        <div class="ov-card" style="--ol:var(--danger)" onclick="goPage('alertas',null)"><div class="ov-icon">🚨</div><div class="ov-name">Alertas Ativos</div><div class="ov-num" style="color:var(--danger)">11</div><div class="ov-sub">pontos de atenção</div><div class="ov-st"><span class="badge badge-bad">PSA ⚠️ prioridade</span></div></div>
+        <div class="ov-card" style="--ol:var(--warn)" onclick="goPage('laboratorial',null)"><div class="ov-icon">🧪</div><div class="ov-name">Laboratorial</div><div class="ov-num">81</div><div class="ov-sub">exames · 8 coletas</div><div class="ov-st"><span class="badge badge-ok">lipídeos normalizados</span></div></div>
         <div class="ov-card" style="--ol:var(--accent2)" onclick="goPage('cardio',null)"><div class="ov-icon">🫀</div><div class="ov-name">Cardiologia</div><div class="ov-num">4</div><div class="ov-sub">exames completos</div><div class="ov-st"><span class="badge badge-warn">BAV 1º grau</span></div></div>
         <div class="ov-card" style="--ol:#9664ff" onclick="goPage('hormonal',null)"><div class="ov-icon">💉</div><div class="ov-name">Hormonal</div><div class="ov-num">2</div><div class="ov-sub">painéis completos</div><div class="ov-st"><span class="badge badge-ok">dentro do ref.</span></div></div>
         <div class="ov-card" style="--ol:var(--accent)" onclick="goPage('garmin',null)"><div class="ov-icon">⌚</div><div class="ov-name">Garmin</div><div class="ov-num">21</div><div class="ov-sub">arquivos .fit</div><div class="ov-st"><span class="badge badge-warn">SpO₂ 69% sono</span></div></div>
@@ -582,27 +586,29 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
     <div class="page" id="page-alertas">
       <div class="sh"><div class="sh-title">Alertas Clínicos — Dados Reais dos PDFs</div><div class="sh-line"></div><div class="sh-date">10 pontos de atenção</div></div>
       <div class="alert-list">
-        <div class="alert-item al-bad"><div class="alert-title">🔴 Colesterol Total 243 mg/dL — Acima do ideal</div><div class="alert-desc">Jul/2023 · Einstein · Ref: &lt;190 mg/dL · Tendência crescente: 167 (Ago/22) → 219 (Mar/22) → 243 (Jul/23). Avaliação cardiológica e ajuste dietético recomendados.</div></div>
-        <div class="alert-item al-bad"><div class="alert-title">🔴 LDL 157 mg/dL — Acima do ideal</div><div class="alert-desc">Jul/2023 · Einstein · Ref: &lt;130 mg/dL · Trajetória: 107 (Ago/22) → 157 (Jul/23). Alta de 47% em 11 meses. Avaliação de risco cardiovascular indicada.</div></div>
-        <div class="alert-item al-bad"><div class="alert-title">🔴 Triglicerídeos 192 mg/dL — Alto</div><div class="alert-desc">Jul/2023 · Einstein · Ref: &lt;150 mg/dL · Subiu de 117 (Ago/22) para 192 (Jul/23). Avaliar dieta, álcool e atividade física aeróbica.</div></div>
-        <div class="alert-item al-bad"><div class="alert-title">🔴 Gama GT persistentemente elevado</div><div class="alert-desc">Padrão irregular desde 2019: 119 → 128 → 64 → 162 U/L (Ref: &lt;61). Jul/2023 pior resultado. Pode indicar sobrecarga hepática, suplementos ou álcool. Avaliação hepática completa recomendada.</div></div>
-        <div class="alert-item al-warn"><div class="alert-title">⚠️ Ácido Úrico no limite superior</div><div class="alert-desc">Ago/2022: 7,3 mg/dL · Mar/2022: 7,1 mg/dL · Mar/2019: 7,1 mg/dL · Ref: 3,4–7,0. Consistentemente no limite. Hidratação adequada; avaliar redução de carne vermelha.</div></div>
-        <div class="alert-item al-warn"><div class="alert-title">⚠️ BAV de 1º Grau — ECG Jul/2023</div><div class="alert-desc">Bloqueio Atrioventricular de 1º Grau detectado no ECG de Jul/2023 (PR 212ms). ECG de Mar/2022 era normal. Comum em atletas; acompanhamento cardiológico recomendado.</div></div>
-        <div class="alert-item al-warn"><div class="alert-title">⚠️ Ectasia aórtica — raiz 41mm (estável)</div><div class="alert-desc">Ecocardiograma Mar/2022 e Jul/2023: raiz aórtica 41mm (Ref: 31–37mm). Sem progressão entre os dois exames. Monitoramento anual com Eco recomendado.</div></div>
+        <div class="alert-item al-bad"><div class="alert-title">🔴 PSA 4,9 ng/mL — Salto expressivo (era 1,1 em Out/2024)</div><div class="alert-desc">Mar/2026 · Fleury · Dra. Gabriela Guimarães. Relação PSA livre/total 0,12 (ref: &gt;0,18). Subiu de 0,98 (2019) → 1,1 (Out/2024) → 4,9 (Mar/2026). Aumento de 345% em 5 meses. Avaliação urológica urgente — biopsia prostática a considerar. Finasterida pode influenciar o valor real do PSA (dobrar o valor medido é prática clínica comum).</div></div>
+        <div class="alert-item al-bad"><div class="alert-title">🔴 Esofagite Erosiva Grau A (Los Angeles) — Ago/2025</div><div class="alert-desc">Fleury · Ago/2025. Erosões na transição esofagogástrica &lt;5mm. Gastrite enantematosa associada. H. pylori negativo. Repetiu em Dez/2025 com gastrite + pólipo gástrico benigno (glândulas fúndicas). Acompanhamento com gastroenterologista necessário — considerar IBP.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ BAV de 1º Grau — ECG Out/2024 e Mar/2026</div><div class="alert-desc">PR 200ms nos dois ECGs Fleury (Out/2024 e Mar/2026). Ecocardiograma Out/2024 normal (FE 69%). Holter Out/2024: ritmo sinusal com extrassístoles raras. Doppler carótidas normal. Monitoramento periódico recomendado.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ Ectasia aórtica — raiz 40mm (limite superior)</div><div class="alert-desc">Ecocardiograma Out/2024 Fleury: Aorta seios de Valsalva 40mm (ref: 28–40mm). Aorta ascendente 35mm (normal). Melhora em relação ao Einstein 2023 (41mm). Monitoramento anual com Eco recomendado.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ RM Ombro Direito — Tendinopatia + Capsulite Adesiva (Mar/2026)</div><div class="alert-desc">Fleury · Mar/2026 · Dra. Gabriela Guimarães. Tendinopatia do manguito rotador sem roturas. Fissura intrassubstancial no subescapular. Sinais sugestivos de capsulite adesiva glenoumeral. Fissura no lábio da glenóide. Avaliação fisioterápica/ortopédica indicada.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ Eosinófilos elevados — 490/mm³ (Mar/2026)</div><div class="alert-desc">Fleury · Mar/2026 · Ref: 34–420/mm³. Leve eosinofilia. Pode ser reação alérgica, parasitária ou relacionada a medicamentos (Finasterida). Investigar se persistir nos próximos exames.</div></div>
         <div class="alert-item al-warn"><div class="alert-title">⚠️ HRV baixo para atleta (24,7ms média)</div><div class="alert-desc">Garmin Out/2024 · HRV noturno 5–9ms, média 5 dias 24,7ms. Para atleta de 44 anos, esperado acima de 40ms. Pode ter correlação com estresse, sono ou recuperação inadequada.</div></div>
         <div class="alert-item al-warn"><div class="alert-title">⚠️ SpO₂ mínima de 69% durante o sono</div><div class="alert-desc">Garmin SLEEP_DATA · Out/2024. Valor normal: &gt;94%. Pode ser artefato de movimento ou indicar apneia do sono. Recomendado investigar com médico — avaliar polissonografia.</div></div>
-        <div class="alert-item al-info"><div class="alert-title">ℹ️ Sem imunidade para Hepatite B (Anti-HBs &lt;2 UI/L)</div><div class="alert-desc">Delboni Jun/2020 · Anti-HBs &lt;2 UI/L (Ref: ≥10 UI/L). Sem evidência de imunização prévia ou vacinação completa. Avaliação com médico sobre necessidade de vacinação.</div></div>
+        <div class="alert-item al-ok"><div class="alert-title">🟢 Lipídeos normalizados em Mar/2026</div><div class="alert-desc">Fleury · Mar/2026 · Dra. Gabriela Guimarães. Col. Total 161 ✅ · LDL 100 ✅ · TG 116 ✅ · HDL 40 (no limite). Melhora expressiva em relação ao pico de Jul/2023 (Col. 243, LDL 157, TG 192). GGT 69 U/L — quase normal (era 162).</div></div>
+        <div class="alert-item al-ok"><div class="alert-title">🟢 Testosterona 647 ng/dL — melhor valor histórico</div><div class="alert-desc">Fleury · Abr/2026 · Dra. Gabriela Guimarães. Evolução: 444 (2019) → 571 (Out/24) → 439 (Out/24b) → 647 (Abr/2026). Dentro da referência 240–816 ng/dL. Boa resposta.</div></div>
+        <div class="alert-item al-info"><div class="alert-title">ℹ️ Pólipo gástrico benigno — polipectomia realizada</div><div class="alert-desc">Fleury · Dez/2025. Pólipo de glândulas fúndicas 0,3cm removido. Anatomopatológico: benigno, sem malignidade, H. pylori negativo. Vigilância endoscópica recomendada.</div></div>
       </div>
     </div>
 
     <!-- ░░ LABORATORIAL ░░ -->
     <div class="page" id="page-laboratorial">
-      <div class="sh"><div class="sh-title">Painel Laboratorial Completo</div><div class="sh-line"></div><div class="sh-date">5 coletas · 2019–2023</div></div>
+      <div class="sh"><div class="sh-title">Painel Laboratorial Completo</div><div class="sh-line"></div><div class="sh-date">8 coletas · 2019–2026</div></div>
       <div class="lab-legend">
         <span class="ll-title">Instituições:</span>
         <span class="lab-tag lt-einstein">Einstein</span>
         <span class="lab-tag lt-delboni">Delboni</span>
         <span class="lab-tag lt-dasa">DASA</span>
+        <span class="lab-tag lt-fleury">Fleury</span>
       </div>
 
       <div class="spec-wrap">
@@ -619,20 +625,20 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
           <div style="margin-bottom:16px"><div style="position:relative;width:100%;height:180px"><canvas id="chart-lipideos"></canvas></div></div>
           <div class="markers-grid">
             <div class="marker-item">
-              <div class="marker-row"><span class="marker-name">Colesterol Total</span><span class="marker-val cb">243 mg/dL</span></div>
+              <div class="marker-row"><span class="marker-name">Colesterol Total</span><span class="marker-val cg">161 mg/dL</span></div>
               <div style="display:flex;align-items:center;gap:6px;">
-                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:85%;background:var(--danger)"></div></div>
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:55%;background:var(--good)"></div></div>
                 <span class="mref">&lt;190</span>
               </div>
-              <div class="mref" style="margin-top:6px">📊 Mar/22: 219 · Ago/22: 167 · Jul/23: <strong style="color:var(--danger)">243</strong></div>
+              <div class="mref" style="margin-top:6px">📊 Jul/23: <strong style="color:var(--danger)">243</strong> → Out/24: 200 → Mar/26: <strong style="color:var(--good)">161 ✅</strong></div>
             </div>
             <div class="marker-item">
-              <div class="marker-row"><span class="marker-name">LDL Colesterol</span><span class="marker-val cb">157 mg/dL</span></div>
+              <div class="marker-row"><span class="marker-name">LDL Colesterol</span><span class="marker-val cg">100 mg/dL</span></div>
               <div style="display:flex;align-items:center;gap:6px;">
-                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:75%;background:var(--danger)"></div></div>
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:52%;background:var(--good)"></div></div>
                 <span class="mref">&lt;130</span>
               </div>
-              <div class="mref" style="margin-top:6px">📊 Mar/22: 145 · Ago/22: 107 · Jul/23: <strong style="color:var(--danger)">157</strong></div>
+              <div class="mref" style="margin-top:6px">📊 Jul/23: <strong style="color:var(--danger)">157</strong> → Out/24: 132 → Mar/26: <strong style="color:var(--good)">100 ✅</strong></div>
             </div>
             <div class="marker-item">
               <div class="marker-row"><span class="marker-name">HDL Colesterol</span><span class="marker-val cg">51 mg/dL</span></div>
@@ -643,16 +649,16 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
               <div class="mref" style="margin-top:6px">📊 Mar/22: 47 · Ago/22: <strong style="color:var(--danger)">37</strong> · Jul/23: 51</div>
             </div>
             <div class="marker-item">
-              <div class="marker-row"><span class="marker-name">Triglicerídeos</span><span class="marker-val cb">192 mg/dL</span></div>
+              <div class="marker-row"><span class="marker-name">Triglicerídeos</span><span class="marker-val cg">116 mg/dL</span></div>
               <div style="display:flex;align-items:center;gap:6px;">
-                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:80%;background:var(--danger)"></div></div>
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:50%;background:var(--good)"></div></div>
                 <span class="mref">&lt;150</span>
               </div>
-              <div class="mref" style="margin-top:6px">📊 Mar/22: 138 · Ago/22: 117 · Jul/23: <strong style="color:var(--danger)">192</strong></div>
+              <div class="mref" style="margin-top:6px">📊 Jul/23: <strong style="color:var(--danger)">192</strong> → Out/24: 166 → Mar/26: <strong style="color:var(--good)">116 ✅</strong></div>
             </div>
           </div>
-          <div style="background:rgba(255,79,79,0.05);border:1px solid rgba(255,79,79,0.2);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);">
-            🔴 Perfil lipídico em deterioração em 2023. Colesterol, LDL e TG todos acima do ideal. HDL estava baixo em Ago/22. Avaliação cardiológica e mudanças de estilo de vida são prioritárias.
+          <div style="background:rgba(0,210,160,0.05);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);">
+            🟢 Perfil lipídico melhorou expressivamente em 2026 (Fleury/Dra. Gabriela). Colesterol Total 161 ✅, LDL 100 ✅, TG 116 ✅ — todos dentro da referência. HDL 40 no limite. Comparado ao pico de Jul/2023, uma melhora notável. GGT também normalizou (69 U/L em Mar/2026).
           </div>
         </div>
 
@@ -660,12 +666,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
           <div style="margin-bottom:16px"><div style="position:relative;width:100%;height:180px"><canvas id="chart-ggt2"></canvas></div></div>
           <div class="markers-grid">
             <div class="marker-item">
-              <div class="marker-row"><span class="marker-name">Gama GT (GGT)</span><span class="marker-val cb">162 U/L</span></div>
+              <div class="marker-row"><span class="marker-name">Gama GT (GGT)</span><span class="marker-val cg">69 U/L</span></div>
               <div style="display:flex;align-items:center;gap:6px;">
-                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:40%"></div><div class="mfill" style="width:90%;background:var(--danger)"></div></div>
-                <span class="mref">&lt;61</span>
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:60%"></div><div class="mfill" style="width:52%;background:var(--warn)"></div></div>
+                <span class="mref">&lt;73</span>
               </div>
-              <div class="mref" style="margin-top:6px">📊 2019: 119 · Mar/22: 128 · Ago/22: 64 · Jul/23: <strong style="color:var(--danger)">162</strong></div>
+              <div class="mref" style="margin-top:6px">📊 Jul/23: <strong style="color:var(--danger)">162</strong> → Out/24: 57 ✅ → Mar/26: <strong style="color:var(--warn)">69</strong> (quase normal)</div>
             </div>
             <div class="marker-item">
               <div class="marker-row"><span class="marker-name">TGP/ALT (2019)</span><span class="marker-val cw">40 U/L</span></div>
@@ -898,72 +904,81 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 
     <!-- ░░ HORMONAL ░░ -->
     <div class="page" id="page-hormonal">
-      <div class="sh"><div class="sh-title">Painel Hormonal &amp; Endócrino</div><div class="sh-line"></div><div class="sh-date">Delboni Mar/2019 · Einstein 2022–2023</div></div>
+      <div class="sh"><div class="sh-title">Painel Hormonal &amp; Endócrino</div><div class="sh-line"></div><div class="sh-date">Fleury Out/2024 · Abr/2026 · Dra. Gabriela Guimarães</div></div>
 
       <div class="info-card-grid" style="grid-template-columns:repeat(4,1fr)">
         <div class="info-card">
-          <div class="ic-label">Testosterona Total (2019)</div>
-          <div class="ic-value" style="color:var(--warn)">444</div>
-          <div class="ic-sub">ng/dL · ref. 165–753 (22–49a)</div>
+          <div class="ic-label">Testosterona Total (Abr/2026)</div>
+          <div class="ic-value" style="color:var(--good)">647</div>
+          <div class="ic-sub">ng/dL · ref. 240–816</div>
         </div>
         <div class="info-card">
-          <div class="ic-label">Test. Livre (2019)</div>
-          <div class="ic-value" style="color:var(--good)">9,10</div>
-          <div class="ic-sub">ng/dL · ref. 3,4–24,6</div>
+          <div class="ic-label">Test. Livre (Out/2024)</div>
+          <div class="ic-value" style="color:var(--good)">433,8</div>
+          <div class="ic-sub">pmol/L · ref. 131–640</div>
         </div>
         <div class="info-card">
-          <div class="ic-label">SHBG (2019)</div>
-          <div class="ic-value" style="color:var(--good)">33,4</div>
-          <div class="ic-sub">nmol/L · ref. 10–57</div>
+          <div class="ic-label">SHBG (Out/2024)</div>
+          <div class="ic-value" style="color:var(--good)">32</div>
+          <div class="ic-sub">nmol/L · ref. 18–54</div>
         </div>
         <div class="info-card">
-          <div class="ic-label">Estradiol (2019)</div>
-          <div class="ic-value" style="color:var(--good)">24,5</div>
-          <div class="ic-sub">pg/mL · ref. &lt;39,8</div>
+          <div class="ic-label">PSA Total (Mar/2026)</div>
+          <div class="ic-value" style="color:var(--danger)">4,9</div>
+          <div class="ic-sub">ng/mL · era 1,1 em Out/24 ⚠️</div>
         </div>
       </div>
 
       <div class="markers-grid">
         <div class="marker-item">
-          <div class="marker-row"><span class="marker-name">TSH</span><span class="marker-val cg">0,733 µUI/mL</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:12%;background:var(--good)"></div></div><span class="mref">0,4–4,3</span></div>
-          <div class="mref" style="margin-top:6px">Delboni 2019 · ✅ Função tireoidiana normal</div>
+          <div class="marker-row"><span class="marker-name">TSH (Mar/2026)</span><span class="marker-val cg">0,92 mUI/L</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:15%;background:var(--good)"></div></div><span class="mref">0,45–4,5</span></div>
+          <div class="mref" style="margin-top:6px">✅ Normal · Jul/20: 1,5 · Out/24: 1,3 · Mar/26: 0,92</div>
         </div>
         <div class="marker-item">
-          <div class="marker-row"><span class="marker-name">T4 Livre</span><span class="marker-val cg">1,58 ng/dL</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:80%;background:var(--good)"></div></div><span class="mref">0,7–1,8</span></div>
-          <div class="mref" style="margin-top:6px">✅ Normal</div>
+          <div class="marker-row"><span class="marker-name">T4 Livre (Mar/2026)</span><span class="marker-val cg">1,6 ng/dL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:77%;background:var(--good)"></div></div><span class="mref">0,9–1,8</span></div>
+          <div class="mref" style="margin-top:6px">✅ Normal · Out/24: 1,4 · Mar/26: 1,6</div>
         </div>
         <div class="marker-item">
-          <div class="marker-row"><span class="marker-name">FSH</span><span class="marker-val cg">6,1 mUI/mL</span></div>
+          <div class="marker-row"><span class="marker-name">Vitamina D (Mar/2026)</span><span class="marker-val cg">36 ng/mL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:20%;width:70%"></div><div class="mfill" style="width:36%;background:var(--good)"></div></div><span class="mref">&gt;20 ng/mL</span></div>
+          <div class="mref" style="margin-top:6px">✅ Normal · Out/24: 29 (limite) → Mar/26: 36</div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">BNP (Out/2024)</span><span class="marker-val cg">6 pg/mL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:6%;background:var(--good)"></div></div><span class="mref">&lt;100</span></div>
+          <div class="mref" style="margin-top:6px">✅ Excelente — sem disfunção cardíaca</div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">Testosterona Total — evolução</span><span class="marker-val cg">647 ng/dL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:69%;background:var(--good)"></div></div><span class="mref">240–816</span></div>
+          <div class="mref" style="margin-top:6px">2019: 444 → Out/24: 571 → Out/24b: 439 → Abr/26: <strong style="color:var(--good)">647 ✅</strong></div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">PSA Total — evolução ⚠️</span><span class="marker-val cb">4,9 ng/mL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:40%"></div><div class="mfill" style="width:65%;background:var(--danger)"></div></div><span class="mref">&lt;2,5–4,0</span></div>
+          <div class="mref" style="margin-top:6px">2019: 0,90 · Jun/20: 0,99 · Jul/23: 0,98 · Out/24: <strong>1,1</strong> → Mar/26: <strong style="color:var(--danger)">4,9 ⚠️</strong></div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">USG Tireoide (Mar/2026)</span><span class="marker-val cg">TI-RADS 3</span></div>
+          <div class="mref" style="margin-top:6px">Nódulo lobo esquerdo 0,5cm · estável vs Out/2024 · Acompanhamento anual</div>
+        </div>
+        <div class="marker-item">
+          <div class="marker-row"><span class="marker-name">FSH (2019)</span><span class="marker-val cg">6,1 mUI/mL</span></div>
           <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:30%;background:var(--good)"></div></div><span class="mref">1,4–18,1</span></div>
           <div class="mref" style="margin-top:6px">✅ Normal</div>
         </div>
-        <div class="marker-item">
-          <div class="marker-row"><span class="marker-name">LH</span><span class="marker-val cg">2,5 mUI/mL</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:15%;background:var(--good)"></div></div><span class="mref">1,5–9,3</span></div>
-          <div class="mref" style="margin-top:6px">✅ Normal</div>
-        </div>
-        <div class="marker-item">
-          <div class="marker-row"><span class="marker-name">DHEA-S</span><span class="marker-val cg">182,2 µg/dL</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:30%;background:var(--good)"></div></div><span class="mref">34,5–568,9</span></div>
-          <div class="mref" style="margin-top:6px">✅ Normal</div>
-        </div>
-        <div class="marker-item">
-          <div class="marker-row"><span class="marker-name">IGF-1 (Somatomedina C)</span><span class="marker-val cg">165 ng/mL</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:60%;background:var(--good)"></div></div><span class="mref">63–223</span></div>
-          <div class="mref" style="margin-top:6px">✅ Hormônio de crescimento normal</div>
-        </div>
       </div>
 
-      <div style="background:rgba(255,179,71,0.05);border:1px solid rgba(255,179,71,0.2);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);">
-        ℹ️ <strong style="color:var(--warn)">Nota sobre testosterona:</strong> O valor de 444 ng/dL (2019) está dentro do intervalo de referência (165–753 ng/dL para 22–49 anos). Contudo, para um atleta ativo aos 37 anos, o ideal costuma ser acima de 600 ng/dL. O painel hormonal completo (2022–2023) com valores atuais não foi incluído nos PDFs deste lote — aguardando exames mais recentes.
+      <div style="background:rgba(255,79,79,0.05);border:1px solid rgba(255,79,79,0.2);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);">
+        🔴 <strong style="color:var(--danger)">Alerta PSA:</strong> Salto de 1,1 → 4,9 ng/mL em 5 meses. Relação livre/total 0,12 (&lt;0,18 = atenção). Finasterida em uso desde Abr/2026 pode elevar PSA artificialmente — considerar dobrar o valor para estimativa real (~9,8). Avaliação urológica urgente com Dr. Luiz Cury Neto indicada.
       </div>
     </div>
 
     <!-- ░░ CARDIOLOGIA ░░ -->
     <div class="page" id="page-cardio">
-      <div class="sh"><div class="sh-title">Cardiologia</div><div class="sh-line"></div><div class="sh-date">Mar/2022 · Jul/2023 · Einstein</div></div>
+      <div class="sh"><div class="sh-title">Cardiologia</div><div class="sh-line"></div><div class="sh-date">Mar/2022 · Jul/2023 · Einstein | Out/2024 · Mar/2026 · Fleury</div></div>
 
       <div class="grid-two">
         <div class="panel">
@@ -971,40 +986,44 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
           <div class="panel-body">
             <div class="markers-grid" style="grid-template-columns:1fr 1fr;gap:8px;">
               <div class="marker-item">
-                <div class="marker-row"><span class="marker-name">Fração de Ejeção</span><span class="marker-val cg">63%</span></div>
-                <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:30%;width:65%"></div><div class="mfill" style="width:70%;background:var(--good)"></div></div><span class="mref">&gt;52%</span></div>
-                <div class="mref" style="margin-top:6px">Mar/22: 67% → Jul/23: 63% ✅</div>
+                <div class="marker-row"><span class="marker-name">Fração de Ejeção</span><span class="marker-val cg">69%</span></div>
+                <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:30%;width:65%"></div><div class="mfill" style="width:78%;background:var(--good)"></div></div><span class="mref">&gt;54%</span></div>
+                <div class="mref" style="margin-top:6px">Mar/22: 67% · Jul/23: 63% · Out/24: <strong style="color:var(--good)">69% ✅</strong></div>
               </div>
               <div class="marker-item">
-                <div class="marker-row"><span class="marker-name">Raiz Aórtica</span><span class="marker-val cw">41 mm</span></div>
-                <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:65%"></div><div class="mfill" style="width:80%;background:var(--warn)"></div></div><span class="mref">31–37mm</span></div>
-                <div class="mref" style="margin-top:6px">⚠️ Mar/22: 41mm → Jul/23: 41mm (estável)</div>
+                <div class="marker-row"><span class="marker-name">Raiz Aórtica (Valsalva)</span><span class="marker-val cw">40 mm</span></div>
+                <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:90%;background:var(--warn)"></div></div><span class="mref">28–40mm</span></div>
+                <div class="mref" style="margin-top:6px">⚠️ Einstein 41mm → Fleury Out/24: 40mm (no limite)</div>
               </div>
             </div>
             <div style="font-size:11px;color:var(--text2);margin-top:10px;line-height:1.6;">
-              <strong style="color:var(--text)">Conclusões:</strong><br>
-              Mar/2022: <em>Ectasia aórtica</em> (raiz 41mm) · FE 67% ✅<br>
-              Jul/2023: <em>Dilatação discreta estável</em> · FE 63% ✅<br>
-              Todas as valvas normais · Sem derrame pericárdico · Sem trombos
+              <strong style="color:var(--text)">Eco Out/2024 Fleury — <span style="color:var(--good)">NORMAL</span></strong><br>
+              FE 69% ✅ · VE 56mm diastólico ✅ · Septo 10mm ✅<br>
+              Valvas normais · Sem derrame · Sem trombos<br>
+              PSAP estimada 24 mmHg ✅ · Aorta Ascendente 35mm ✅
             </div>
           </div>
         </div>
 
         <div class="panel">
-          <div class="panel-header"><div class="panel-title">📋 ECG — Evolução</div></div>
+          <div class="panel-header"><div class="panel-title">📋 ECG e Holter — Evolução</div></div>
           <div class="panel-body">
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:12px 14px;">
-                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px;">ECG — Mar/2022 · Einstein</div>
-                <div style="font-size:10px;color:var(--text2);">FC: 51 BPM · PR: 198ms · QRS: 102ms<br><strong style="color:var(--good)">✅ Normal — Ritmo sinusal. Traçado morfologicamente normal.</strong></div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:11px 14px;">
+                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:3px;">ECG Repouso — Out/2024 · Fleury</div>
+                <div style="font-size:10px;color:var(--text2);">FC: 61 bpm · PR: 200ms · QRS: 90ms<br><strong style="color:var(--good)">✅ Normal para idade, sexo e biotipo</strong></div>
               </div>
-              <div style="background:var(--bg3);border:1px solid rgba(255,179,71,0.25);border-radius:8px;padding:12px 14px;">
-                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px;">ECG — Jul/2023 · Einstein</div>
-                <div style="font-size:10px;color:var(--text2);">FC: 51 BPM · PR: 212ms · QRS: 86ms<br><strong style="color:var(--warn)">⚠️ Bloqueio AV de 1º Grau — Intervalo PR prolongado</strong></div>
+              <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:11px 14px;">
+                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:3px;">ECG Repouso — Mar/2026 · Fleury</div>
+                <div style="font-size:10px;color:var(--text2);">FC: 52 bpm · PR: 200ms · QRS: 85ms<br><strong style="color:var(--good)">✅ Normal — Dra. Gabriela Guimarães</strong></div>
               </div>
-              <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:12px 14px;">
-                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px;">Holter 24h — Mar/2022 · Einstein</div>
-                <div style="font-size:10px;color:var(--text2);">FC média: 73 bpm · Mín: 46 · Máx: 140<br>Sem ectopia · Sem pausas &gt;2s<br><strong style="color:var(--good)">✅ Holter 100% normal — 22h21 gravação</strong></div>
+              <div style="background:var(--bg3);border:1px solid rgba(255,179,71,0.2);border-radius:8px;padding:11px 14px;">
+                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:3px;">Holter 24h SEM FIO — Out/2024 · Fleury</div>
+                <div style="font-size:10px;color:var(--text2);">Ritmo sinusal regular · HRV normal<br>Extrassístoles SV raras · Extrassístoles V monomórficas raras<br><strong style="color:var(--good)">✅ Sem alterações ST · Sem sintomas</strong></div>
+              </div>
+              <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:11px 14px;">
+                <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:3px;">Teste Ergométrico — Out/2024 · Fleury</div>
+                <div style="font-size:10px;color:var(--text2);">Protocolo Ellestad · FC max 177 bpm (95,5% prev.)<br>Sem alterações ST · Sem arritmias · PA normal<br><strong style="color:var(--good)">✅ Resposta cardiovascular normal ao esforço</strong></div>
               </div>
             </div>
           </div>
@@ -1012,13 +1031,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       </div>
 
       <div class="panel">
-        <div class="panel-header"><div class="panel-title">📊 Dados Cardíacos — Ecocardiograma Detalhado</div><div style="font-size:10px;color:var(--text3);font-family:var(--mono)">Jul/2023 · Dr. Edgar Daminello</div></div>
+        <div class="panel-header"><div class="panel-title">🩸 Doppler Carótidas + USG Tireoide — Out/2024 Fleury</div></div>
         <div class="panel-body">
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--good)">50mm</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">VE DIASTÓLICO<br>ref 37–55</div></div>
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--good)">10mm</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">SEPTO IV<br>ref 7–11</div></div>
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--warn)">41mm</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">RAIZ AÓRTICA<br>ref 31–37 ⚠️</div></div>
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:16px;font-weight:700;color:var(--good)">23 mmHg</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">PRESSÃO PULM.<br>estimada</div></div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--good)">Normal</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">DOPPLER<br>CARÓTIDAS</div></div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--good)">0,055cm</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">ÍNTIMA-MÉDIA<br>Sem placas</div></div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--warn)">TI-RADS 3</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">NÓDULO TIREÓIDE<br>Estável Mar/26</div></div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--good)">Normal</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">RX TÓRAX<br>Out/2024</div></div>
           </div>
         </div>
       </div>
@@ -1150,124 +1169,294 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
     </div>
 
     <div class="page" id="page-garmin">
-      <div class="sh"><div class="sh-title">Garmin Connect — Dados Reais</div><div class="sh-line"></div><div class="sh-date">01/10/2024 · 21 arquivos .fit</div></div>
+      <div class="sh"><div class="sh-title">Garmin Connect — Atividades + Biometria</div><div class="sh-line"></div><div class="sh-date">Jun/2024–Abr/2026 · dados reais CSV</div></div>
 
-      <div class="garmin-alert">⚠️ Dados do <strong>dia 01/10/2024</strong>. Arquivos mais recentes pendentes de upload para atualização completa.</div>
-
-      <div class="garmin-grid">
-        <div class="gg-card"><div class="gg-icon">🔥</div><div class="gg-val" style="color:var(--accent)">2.033</div><div class="gg-lbl">kcal/dia · taxa metabólica basal</div></div>
-        <div class="gg-card"><div class="gg-icon">📊</div><div class="gg-val" style="color:var(--accent2)">24,7</div><div class="gg-lbl">ms · HRV médio 5 dias</div></div>
-        <div class="gg-card"><div class="gg-icon">🧠</div><div class="gg-val" style="color:var(--good)">31</div><div class="gg-lbl">stress médio · 1.234 leituras</div></div>
-        <div class="gg-card"><div class="gg-icon">🌡️</div><div class="gg-val" style="color:var(--accent)">35,5°C</div><div class="gg-lbl">temperatura pele · baseline sono</div></div>
-        <div class="gg-card"><div class="gg-icon">😴</div><div class="gg-val" style="color:var(--warn)">69%</div><div class="gg-lbl">SpO₂ mínima sono ⚠️</div></div>
-        <div class="gg-card"><div class="gg-icon">💓</div><div class="gg-val" style="color:var(--accent)">6–9</div><div class="gg-lbl">ms · HRV noturno · 92 leituras</div></div>
+      <!-- BIOMETRIA VITAIS STRIP -->
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:16px">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)"></div><div style="font-size:16px;margin-bottom:3px">🔥</div><div style="font-size:16px;font-weight:700;color:var(--accent)">2.033</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono);text-transform:uppercase">kcal basal</div></div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent2)"></div><div style="font-size:16px;margin-bottom:3px">📊</div><div style="font-size:16px;font-weight:700;color:var(--accent2)">24,7</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono);text-transform:uppercase">HRV ms</div></div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--good)"></div><div style="font-size:16px;margin-bottom:3px">🧠</div><div style="font-size:16px;font-weight:700;color:var(--good)">31</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono);text-transform:uppercase">stress /100</div></div>
+        <div style="background:var(--card);border:1px solid rgba(255,79,79,0.3);border-radius:9px;padding:10px;text-align:center;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--warn)"></div><div style="font-size:16px;margin-bottom:3px">😴</div><div style="font-size:16px;font-weight:700;color:var(--warn)">69%</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono);text-transform:uppercase">SpO₂ ⚠️</div></div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)"></div><div style="font-size:16px;margin-bottom:3px">🌡️</div><div style="font-size:16px;font-weight:700;color:var(--accent)">35,5°</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono);text-transform:uppercase">temp. pele</div></div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px;text-align:center;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent2)"></div><div style="font-size:16px;margin-bottom:3px">📅</div><div style="font-size:16px;font-weight:700;color:var(--text)">477</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono);text-transform:uppercase">atividades</div></div>
       </div>
 
-      <div class="grid-two">
-        <div class="panel">
-          <div class="panel-header"><div class="panel-title">Stress ao longo do dia (01/10/2024)</div><div style="font-size:10px;color:var(--text3);font-family:var(--mono)">1.234 leituras · min 1 · máx 95</div></div>
-          <div class="panel-body">
-            <div style="display:flex;align-items:flex-end;gap:2px;height:70px;margin-bottom:8px;">
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.5);border-radius:2px;height:20%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">00h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.5);border-radius:2px;height:15%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">03h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.4);border-radius:2px;height:14%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">05h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.4);border-radius:2px;height:18%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">07h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.5);border-radius:2px;height:14%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">09h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,210,160,0.5);border-radius:2px;height:12%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">11h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(0,168,255,0.5);border-radius:2px;height:20%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">12h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:var(--danger);border-radius:2px;height:100%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">13h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.7);border-radius:2px;height:55%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">14h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,79,79,0.6);border-radius:2px;height:72%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">15h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.6);border-radius:2px;height:55%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">16h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.6);border-radius:2px;height:62%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">17h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.6);border-radius:2px;height:65%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">18h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.5);border-radius:2px;height:56%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">19h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,79,79,0.5);border-radius:2px;height:80%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">21h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,79,79,0.6);border-radius:2px;height:70%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">22h</span></div>
-              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;"><div style="width:100%;background:rgba(255,179,71,0.6);border-radius:2px;height:68%"></div><span style="font-size:8px;color:var(--text3);font-family:var(--mono)">23h</span></div>
+      <!-- TABS -->
+      <div class="spec-wrap">
+        <div class="spec-tabs">
+          <div class="spec-tab active" onclick="switchTab('gv-ativ',this)">🏃 Atividades por Modalidade</div>
+          <div class="spec-tab" onclick="switchTab('gv-evolucao',this)">📈 Evolução Mensal</div>
+          <div class="spec-tab" onclick="switchTab('gv-sono',this)">😴 Sono &amp; HRV</div>
+          <div class="spec-tab" onclick="switchTab('gv-stress',this)">🧠 Stress</div>
+        </div>
+
+        <!-- ABA: ATIVIDADES -->
+        <div class="spec-panel active" id="sp-gv-ativ">
+          <!-- TOTAIS POR MODALIDADE -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+            <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:10px;padding:14px;text-align:center">
+              <div style="font-size:24px;margin-bottom:4px">🚶</div>
+              <div style="font-size:28px;font-weight:700;color:var(--accent)">307</div>
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-top:2px">Caminhada</div>
+              <div style="height:4px;background:var(--bg);border-radius:2px;margin-top:8px"><div style="width:100%;height:100%;background:var(--accent);border-radius:2px"></div></div>
+              <div style="font-size:9px;color:var(--text3);margin-top:4px">modalidade principal</div>
             </div>
-            <div style="font-size:10px;color:var(--text3);font-family:var(--mono);">🟢 Repouso (0–25) · 🔵 Baixo (26–50) · 🟡 Moderado (51–75) · 🔴 Alto (76+)</div>
-            <div style="font-size:10px;color:var(--text2);margin-top:6px;">Pico: 95 às 13h31 · Mínimo: 1 às 10h30 · Média: 31</div>
+            <div style="background:var(--bg3);border:1px solid rgba(0,168,255,0.2);border-radius:10px;padding:14px;text-align:center">
+              <div style="font-size:24px;margin-bottom:4px">🏋️</div>
+              <div style="font-size:28px;font-weight:700;color:var(--accent2)">110</div>
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-top:2px">Academia / Fitness</div>
+              <div style="height:4px;background:var(--bg);border-radius:2px;margin-top:8px"><div style="width:36%;height:100%;background:var(--accent2);border-radius:2px"></div></div>
+              <div style="font-size:9px;color:var(--text3);margin-top:4px">presente desde Jun/24</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(255,179,71,0.2);border-radius:10px;padding:14px;text-align:center">
+              <div style="font-size:24px;margin-bottom:4px">🎾</div>
+              <div style="font-size:28px;font-weight:700;color:var(--warn)">39</div>
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-top:2px">Raquete (padel/tênis)</div>
+              <div style="height:4px;background:var(--bg);border-radius:2px;margin-top:8px"><div style="width:13%;height:100%;background:var(--warn);border-radius:2px"></div></div>
+              <div style="font-size:9px;color:var(--text3);margin-top:4px">iniciou Mai/2025</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+              <div style="font-size:20px;margin-bottom:3px">🚴</div>
+              <div style="font-size:22px;font-weight:700;color:#9664ff">7</div>
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono)">Ciclismo</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+              <div style="font-size:20px;margin-bottom:3px">🏃</div>
+              <div style="font-size:22px;font-weight:700;color:#00c896">5</div>
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono)">Corrida · nova em 2026</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.15);border-radius:10px;padding:12px;text-align:center">
+              <div style="font-size:20px;margin-bottom:3px">📊</div>
+              <div style="font-size:22px;font-weight:700;color:var(--accent)">477</div>
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono)">TOTAL Jun/24–Abr/26</div>
+            </div>
+          </div>
+          <!-- CHART STACKED BAR POR MODALIDADE -->
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:12px">
+            <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:10px">Atividades por Mês — Por Modalidade</div>
+            <div style="position:relative;height:220px"><canvas id="chart-ativ-mensal"></canvas></div>
+          </div>
+          <!-- TENDENCIAS -->
+          <div style="background:rgba(0,210,160,0.04);border:1px solid rgba(0,210,160,0.15);border-radius:8px;padding:12px 14px;font-size:10px;color:var(--text2);line-height:1.8">
+            🎯 <strong style="color:var(--accent)">Tendências:</strong>
+            Caminhada é a base consistente de todos os meses ·
+            Academia caiu em abr-mai/25 e voltou forte em set/25 ·
+            Esporte com raquete surgiu mai/25 e se consolidou ·
+            Corrida iniciou em fev/26 — nova modalidade em crescimento ·
+            <strong style="color:var(--accent)">Meses de pico:</strong> Set/25 (36) e Mar/26 (34)
           </div>
         </div>
 
-        <div class="panel">
-          <div class="panel-header"><div class="panel-title">HRV Noturno — 92 leituras reais</div><div style="font-size:10px;color:var(--text3);font-family:var(--mono)">RMSSD estimado</div></div>
-          <div class="panel-body">
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;">
-              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:700;color:var(--accent2)">24,7</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px;">MÉDIA 5 DIAS</div></div>
-              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:700;color:var(--good)">8,9</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px;">MÁX ms</div></div>
-              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:18px;font-weight:700;color:var(--text2)">6,0</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px;">MÍN ms</div></div>
-            </div>
-            <div style="background:rgba(255,179,71,0.06);border:1px solid rgba(255,179,71,0.2);border-radius:7px;padding:10px 12px;font-size:11px;color:var(--text2);">
-              ⚠️ HRV noturno 5–9ms é baixo para atleta de 44 anos. Para atletas ativos, o esperado é acima de 40ms. Pode ter correlação com:<br>
-              • Estresse elevado (pico 95 às 13h)<br>
-              • Qualidade do sono (SpO₂ 69% mínima)<br>
-              • Possível relação com colesterol e testosterona
-            </div>
-            <div style="margin-top:12px;font-size:10px;color:var(--text3);font-family:var(--mono);">Temperatura de pele: 35,5°C · Delta: −0,24°C (boa recuperação)</div>
+        <!-- ABA: EVOLUÇÃO MENSAL -->
+        <div class="spec-panel" id="sp-gv-evolucao">
+      <!-- RESUMO DO PROGRESSO OFICIAL GARMIN -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+        <!-- 2025 -->
+        <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:10px;padding:14px">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-family:var(--mono);margin-bottom:10px">📅 2025 — Ano Completo</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--accent)">213</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">ATIVIDADES</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--accent2)">393,89</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">KM TOTAIS</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--text)">145h12</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">HORAS ATIVAS</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--warn)">51.627</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">CALORIAS</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--text2)">4.511m</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">SUBIDA TOTAL</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--text2)">97bpm</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">FC MÉDIA</div></div>
           </div>
         </div>
+        <!-- 2026 -->
+        <div style="background:var(--bg3);border:1px solid rgba(255,179,71,0.2);border-radius:10px;padding:14px">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--warn);font-family:var(--mono);margin-bottom:10px">📅 2026 — Jan a Abr (4 meses)</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--warn)">109</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">ATIVIDADES</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--accent2)">136,83</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">KM TOTAIS</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--text)">63h26</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">HORAS ATIVAS</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--warn)">21.924</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">CALORIAS</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--text2)">1.022m</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">SUBIDA TOTAL</div></div>
+            <div style="text-align:center"><div style="font-size:18px;font-weight:700;color:var(--accent)">99bpm</div><div style="font-size:8px;color:var(--text3);font-family:var(--mono)">FC MÉDIA ▲</div></div>
+          </div>
+          <div style="margin-top:8px;font-size:9px;color:var(--accent);font-family:var(--mono);text-align:center">▲ 27,3 ativ/mês · ritmo recorde</div>
+        </div>
       </div>
+      <!-- COMPARATIVO VISUAL -->
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:12px">Comparativo: 2025 vs 2026 (projeção anual)</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:10px;color:var(--text2);font-family:var(--mono)">Atividades/mês</span><span style="font-size:10px;font-family:var(--mono)"><span style="color:var(--accent2)">17,8</span> → <span style="color:var(--accent)">27,3</span> <span style="color:var(--accent);font-size:9px">+53%</span></span></div><div style="display:flex;gap:4px;height:6px"><div style="flex:17.8;background:rgba(0,168,255,0.5);border-radius:2px"></div><div style="flex:9.5;background:rgba(0,210,160,0.8);border-radius:2px"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:10px;color:var(--text2);font-family:var(--mono)">Km/mês</span><span style="font-size:10px;font-family:var(--mono)"><span style="color:var(--accent2)">32,8</span> → <span style="color:var(--warn)">34,2</span></span></div><div style="display:flex;gap:4px;height:6px"><div style="flex:32.8;background:rgba(0,168,255,0.5);border-radius:2px"></div><div style="flex:1.4;background:rgba(255,179,71,0.8);border-radius:2px"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:3px"><span style="font-size:10px;color:var(--text2);font-family:var(--mono)">Calorias/mês</span><span style="font-size:10px;font-family:var(--mono)"><span style="color:var(--accent2)">4.302</span> → <span style="color:var(--warn)">5.481</span> <span style="color:var(--accent);font-size:9px">+27%</span></span></div><div style="display:flex;gap:4px;height:6px"><div style="flex:4302;background:rgba(0,168,255,0.5);border-radius:2px"></div><div style="flex:1179;background:rgba(255,179,71,0.8);border-radius:2px"></div></div></div>
+        </div>
+      </div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:12px">Total de Atividades por Mês — Jun/2024 a Abr/2026</div>
+          <div style="position:relative;height:240px;margin-bottom:16px"><canvas id="chart-ativ-total"></canvas></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+            <div style="background:var(--bg3);border:1px solid rgba(0,168,255,0.2);border-radius:8px;padding:12px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">2024 (Jun–Dez)</div>
+              <div style="font-size:24px;font-weight:700;color:var(--accent2)">155</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">7 meses · 22,1/mês</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(0,210,160,0.2);border-radius:8px;padding:12px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">2025 (Jan–Dez)</div>
+              <div style="font-size:24px;font-weight:700;color:var(--accent)">213</div>
+              <div style="font-size:9px;color:var(--accent);margin-top:3px">▲ +37% vs 2024</div>
+            </div>
+            <div style="background:var(--bg3);border:1px solid rgba(255,179,71,0.2);border-radius:8px;padding:12px;text-align:center">
+              <div style="font-size:9px;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px">2026 (Jan–Abr)</div>
+              <div style="font-size:24px;font-weight:700;color:var(--warn)">109</div>
+              <div style="font-size:9px;color:var(--text3);margin-top:3px">4 meses · 27,3/mês 🔝</div>
+            </div>
+          </div>
+          <div style="background:rgba(0,210,160,0.04);border:1px solid rgba(0,210,160,0.15);border-radius:8px;padding:11px 14px;font-size:10px;color:var(--text2)">
+            📈 <strong style="color:var(--accent)">2026 tem a maior média mensal</strong> (27,3 atividades/mês vs 22,1 em 2024 e 17,8 em 2025), indicando aumento consistente do volume de treino.
+          </div>
+        </div>
+
+        <!-- ABA: SONO & HRV -->
+        <div class="spec-panel" id="sp-gv-sono">
+          <div class="grid-two" style="margin-bottom:0">
+            <div class="panel" style="margin-bottom:0"><div class="panel-header"><div class="panel-title">HRV Noturno · Out/2024</div></div><div class="panel-body">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--accent2)">24,7</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">MÉDIA 5D</div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--good)">8,9</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">MÁX ms</div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:700;color:var(--text2)">6,0</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">MÍN ms</div></div>
+              </div>
+              <div style="background:rgba(255,179,71,0.06);border:1px solid rgba(255,179,71,0.2);border-radius:7px;padding:9px 12px;font-size:10px;color:var(--text2)">
+                ⚠️ HRV 5–9ms noturno é baixo para atleta 44a (esperado &gt;40ms).<br>Pico stress 95 às 13h pode correlacionar.
+              </div>
+              <div style="margin-top:10px;font-size:10px;color:var(--text3);font-family:var(--mono)">Temp. pele: 35,5°C · Delta: −0,24°C</div>
+            </div></div>
+            <div class="panel" style="margin-bottom:0"><div class="panel-header"><div class="panel-title">Score do Sono · Out/2024</div></div><div class="panel-body">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--good)">100</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">SCORE GERAL</div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--accent2)">84</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">HRV SCORE</div></div>
+                <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--warn)">82</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">STRESS SONO</div></div>
+                <div style="background:var(--bg3);border:1px solid rgba(255,79,79,0.3);border-radius:8px;padding:10px;text-align:center"><div style="font-size:22px;font-weight:700;color:var(--danger)">69%</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:2px">SpO₂ MÍN ⚠️</div></div>
+              </div>
+              <div style="font-size:10px;color:var(--danger);background:rgba(255,79,79,0.05);border:1px solid rgba(255,79,79,0.2);padding:8px 10px;border-radius:6px">
+                🔴 SpO₂ 69% durante sono — investigar apneia com polissonografia
+              </div>
+            </div></div>
+          </div>
+        </div>
+
+        <!-- ABA: STRESS -->
+        <div class="spec-panel" id="sp-gv-stress">
+          <div style="position:relative;height:200px;margin-bottom:14px"><canvas id="chart-stress"></canvas></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px">
+            <div style="background:rgba(0,210,160,0.08);border:1px solid rgba(0,210,160,0.2);border-radius:7px;padding:10px;text-align:center"><div style="font-size:15px;font-weight:700;color:var(--accent)">45%</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">REPOUSO 0–25</div></div>
+            <div style="background:rgba(0,168,255,0.08);border:1px solid rgba(0,168,255,0.2);border-radius:7px;padding:10px;text-align:center"><div style="font-size:15px;font-weight:700;color:var(--accent2)">30%</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">BAIXO 26–50</div></div>
+            <div style="background:rgba(255,179,71,0.08);border:1px solid rgba(255,179,71,0.2);border-radius:7px;padding:10px;text-align:center"><div style="font-size:15px;font-weight:700;color:var(--warn)">18%</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">MODERADO 51–75</div></div>
+            <div style="background:rgba(255,79,79,0.08);border:1px solid rgba(255,79,79,0.2);border-radius:7px;padding:10px;text-align:center"><div style="font-size:15px;font-weight:700;color:var(--danger)">7%</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">ALTO 76–100</div></div>
+          </div>
+          <div style="font-size:10px;color:var(--text3);font-family:var(--mono)">Pico: 95 às 13h31 · Mínimo: 1 · Média: 31 · 1.234 leituras · Out/2024</div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ░░ TIMELINE ░░ -->
     <div class="page" id="page-timeline">
-      <div class="sh"><div class="sh-title">Histórico Médico Completo</div><div class="sh-line"></div><div class="sh-date">2019–2024 · dados reais dos PDFs</div></div>
+      <div class="sh"><div class="sh-title">Histórico Médico Completo</div><div class="sh-line"></div><div class="sh-date">2003–2026 · dados reais dos PDFs e SUS</div></div>
       <div class="panel"><div class="panel-body">
         <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--danger)"></div>
+            <div class="tl-date">Abr 2026</div>
+            <div>
+              <div class="tl-title">💊 Início Tratamento Capilar + Testosterona 647 ng/dL</div>
+              <div class="tl-desc">Finasterida 1mg + Minoxidil 2,5mg + Biotina desde 29/04/2026. Testosterona 647 ng/dL — melhor valor histórico ✅. Dra. Gabriela Guimarães CRM 234075.</div>
+              <div class="tl-tags"><span class="lab-tag lt-fleury">Fleury</span><span class="lab-tag lt-outros">Dra. Gabriela Guimarães</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--danger)"></div>
+            <div class="tl-date">Mar 2026</div>
+            <div>
+              <div class="tl-title">🧪 Check-up Fleury + RM Ombro + PSA ⚠️</div>
+              <div class="tl-desc">Lipídeos normalizados (Col 161 ✅, LDL 100 ✅, TG 116 ✅) · GGT 69 · Glicose 86 · HbA1c 4,8% ✅ · <strong style="color:var(--danger)">PSA 4,9 ng/mL ⚠️ (era 1,1 em Out/24)</strong> · RM Ombro: tendinopatia + capsulite adesiva · ECG normal · Tireoide: nódulo TI-RADS 3 estável</div>
+              <div class="tl-tags"><span class="lab-tag lt-fleury">Fleury</span><span class="lab-tag lt-outros">Dra. Gabriela Guimarães</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--warn)"></div>
+            <div class="tl-date">Dez 2025</div>
+            <div>
+              <div class="tl-title">🔬 EDA + Polipectomia Gástrica</div>
+              <div class="tl-desc">Pólipo gástrico 0,3cm — polipectomia realizada. Anatomopatológico: pólipo de glândulas fúndicas benigno. H. pylori negativo. Gastrite enantematosa. Sem malignidade.</div>
+              <div class="tl-tags"><span class="lab-tag lt-fleury">Fleury</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--warn)"></div>
+            <div class="tl-date">Ago 2025</div>
+            <div>
+              <div class="tl-title">🔬 EDA — Esofagite Erosiva Grau A</div>
+              <div class="tl-desc">Fleury · Esofagite erosiva Grau A (Los Angeles). Gastrite enantematosa. H. pylori negativo. Primeira endoscopia confirmando refluxo. IBP indicado.</div>
+              <div class="tl-tags"><span class="lab-tag lt-fleury">Fleury</span></div>
+            </div>
+          </div>
           <div class="tl-item">
             <div class="tl-dot" style="background:var(--accent)"></div>
             <div class="tl-date">Out 2024</div>
             <div>
-              <div class="tl-title">⌚ Sincronização Garmin Connect</div>
-              <div class="tl-desc">21 arquivos .fit · HRV médio 24,7ms · Stress médio 31 · SpO₂ mínima sono 69% · Taxa metabólica 2.033 kcal/dia</div>
+              <div class="tl-title">🫀 Check-up Cardiológico Completo Fleury — ECO NORMAL</div>
+              <div class="tl-desc">Eco FE 69% ✅ · Aorta Valsalva 40mm (limite) · Holter 24h: extrassístoles raras · Ergométrico normal (FC max 177bpm) · Doppler carótidas normal · USG tireoide TI-RADS 3 · Testosterona 571/439 ng/dL · PSA 1,1 ✅</div>
+              <div class="tl-tags"><span class="lab-tag lt-fleury">Fleury</span><span class="lab-tag lt-outros">Dr. Marcelo G. Paiva / Dr. Luiz Cury Neto</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="background:var(--accent)"></div>
+            <div class="tl-date">Out 2024</div>
+            <div>
+              <div class="tl-title">⌚ Garmin Connect — HRV / Stress / SpO₂</div>
+              <div class="tl-desc">477 atividades Jun/24–Abr/26 · HRV médio 24,7ms ⚠️ · Stress médio 31 · SpO₂ mínima sono 69% ⚠️ · Taxa metabólica 2.033 kcal/dia</div>
               <div class="tl-tags"><span class="lab-tag lt-cete">Garmin</span></div>
             </div>
           </div>
           <div class="tl-item">
-            <div class="tl-dot" style="background:var(--accent2)"></div>
+            <div class="tl-dot" style="background:var(--danger)"></div>
             <div class="tl-date">Jul 2023</div>
             <div>
-              <div class="tl-title">🧪 Check-up Completo Einstein — Painel com 20+ marcadores</div>
-              <div class="tl-desc">Colesterol 243 🔴 · LDL 157 🔴 · TG 192 🔴 · GGT 162 🔴 · PCR ok · HbA1c 5,2% ✅ · Ecocardiograma FE 63% ✅ · ECG: <strong style="color:var(--warn)">BAV 1º Grau (novo)</strong> · PSA 0,98 ✅</div>
+              <div class="tl-title">🧪 Check-up Einstein — Lipídeos no pico</div>
+              <div class="tl-desc">Colesterol 243 🔴 · LDL 157 🔴 · TG 192 🔴 · GGT 162 🔴 · HbA1c 5,2% ✅ · Eco FE 63% · ECG: BAV 1º Grau · PSA 0,98 ✅</div>
               <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-outros">Dr. Marcelo G. Paiva</span></div>
             </div>
           </div>
           <div class="tl-item">
-            <div class="tl-dot" style="background:var(--good)"></div>
+            <div class="tl-dot" style="background:var(--warn)"></div>
             <div class="tl-date">Ago 2022</div>
             <div>
-              <div class="tl-title">🧪 Check-up Einstein — Colesterol melhorado</div>
-              <div class="tl-desc">Colesterol 167 ✅ · LDL 107 ✅ · GGT 64 ✅ · HbA1c 5,1% ✅ · Glicose 88 ✅ · HDL 37 ⚠️ baixo · Ácido Úrico 7,3 ⚠️</div>
-              <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span></div>
+              <div class="tl-title">🔬 EDA + Check-up Einstein</div>
+              <div class="tl-desc">Gastrite erosiva (EDA Ago/22) · H. pylori negativo · Colesterol 167 ✅ · GGT 64 ✅ · HDL 37 ⚠️ · Ácido Úrico 7,3 ⚠️</div>
+              <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-fleury">Fleury</span></div>
             </div>
           </div>
           <div class="tl-item">
             <div class="tl-dot" style="background:var(--accent2)"></div>
             <div class="tl-date">Mar 2022</div>
             <div>
-              <div class="tl-title">🫀 Check-up Cardiológico Completo + Exames</div>
-              <div class="tl-desc">Holter 24h: ✅ Normal (FC 73bpm, sem ectopia) · ECG ✅ Normal · Eco: FE 67%, ectasia aórtica 41mm · GGT 128 ⚠️ · LDL 145 ⚠️ · Colesterol 219 ⚠️</div>
+              <div class="tl-title">🫀 Check-up Cardiológico Einstein + Vasectomia</div>
+              <div class="tl-desc">Holter ✅ · ECG ✅ · Eco: FE 67%, ectasia 41mm · GGT 128 ⚠️ · Vasectomia CID Z30.2 (Jan/22)</div>
               <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-outros">Dr. Marcelo G. Paiva</span></div>
             </div>
           </div>
           <div class="tl-item">
             <div class="tl-dot" style="background:var(--warn)"></div>
-            <div class="tl-date">Jan 2022</div>
+            <div class="tl-date">Jan 2021</div>
             <div>
-              <div class="tl-title">🔬 Exames Pré-operatório + Vasectomia confirmada</div>
-              <div class="tl-desc">Hemograma normal · Creatinina 1,13 · Espermograma Mai/22: Azoospermia confirmada · Vasectomia realizada previamente</div>
-              <div class="tl-tags"><span class="lab-tag lt-einstein">Einstein</span><span class="lab-tag lt-outros">Dr. Luiz Cury Neto</span></div>
+              <div class="tl-title">🔪 Colecistectomia Laparoscópica — K80.2</div>
+              <div class="tl-desc">Hospital Oswaldo Cruz · Colecistite crônica com colesterolose + pólipos de colesterol. Colangiografia intraoperatória realizada. COVID PCR negativo pré-operatório.</div>
+              <div class="tl-tags"><span class="lab-tag lt-outros">H. Oswaldo Cruz</span><span class="lab-tag lt-fleury">Fleury</span></div>
             </div>
           </div>
           <div class="tl-item">
             <div class="tl-dot" style="background:var(--danger)"></div>
             <div class="tl-date">Jun 2020</div>
             <div>
-              <div class="tl-title">🦠 COVID-19 — IgM Reagente</div>
-              <div class="tl-desc">Delboni: Anti-SARS-CoV-2 IgM 1,4 UA/mL (Reagente) · IgG Não Reagente · ISTs negativas (HIV, Hep B, C, Sífilis, Chlamydia, Gonorreia) · Anti-HBs &lt;2 (sem imunidade) · PSA 0,99 ✅</div>
-              <div class="tl-tags"><span class="lab-tag lt-delboni">Delboni</span><span class="lab-tag lt-outros">Dra. Lilian Ramaldes Vera</span></div>
+              <div class="tl-title">🦠 COVID-19 Pandemia — Exames Delboni</div>
+              <div class="tl-desc">Ferritina 493 ⚠️ · GGT 105 ⚠️ · TGP 70 ⚠️ · Col.Total 172 ✅ · IgM COVID Reagente (1,4 UA/mL) · Anti-HBs &lt;2 (sem imunidade) · PSA 0,99 ✅ · USG abdome: hemangiomas hepáticos</div>
+              <div class="tl-tags"><span class="lab-tag lt-delboni">Delboni</span><span class="lab-tag lt-fleury">Fleury</span></div>
             </div>
           </div>
           <div class="tl-item">
@@ -1275,17 +1464,42 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
             <div class="tl-date">Mar 2019</div>
             <div>
               <div class="tl-title">🔬 Check-up Completo Delboni — 21 páginas</div>
-              <div class="tl-desc">Tipo A+ confirmado · Testosterona 444 ng/dL · TSH 0,733 ✅ · PCR ultrassensível 0,04 mg/dL (baixo risco CV) · GGT 119 ⚠️ · Ferritina 410 ✅ · PSA 0,90 ✅ · Homocisteína 10,2 ✅ · IGF-1 165 ✅</div>
-              <div class="tl-tags"><span class="lab-tag lt-delboni">Delboni</span><span class="lab-tag lt-outros">Dra. Andreia Rostirola</span></div>
+              <div class="tl-desc">Tipo A+ confirmado · Testosterona 444 ng/dL · TSH 0,733 ✅ · PCR ultrassensível 0,04 mg/dL (baixo risco CV) · GGT 119 ⚠️ · PSA 0,90 ✅ · RM Crânio Jan/2020: normal · RM Abdome Jun/2019: hemangiomas hepáticos</div>
+              <div class="tl-tags"><span class="lab-tag lt-delboni">Delboni</span></div>
             </div>
           </div>
         </div>
       </div></div>
     </div>
 
+    <!-- ░░ VACINAÇÃO ░░ -->
+    <div class="page" id="page-vacinas">
+      <div class="sh"><div class="sh-title">Carteira de Vacinação Digital</div><div class="sh-line"></div><div class="sh-date">Meu SUS Digital · 03/05/2026</div></div>
+      <div style="background:rgba(0,200,150,0.05);border:1px solid rgba(0,200,150,0.2);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">🇧🇷</span>
+        <div><strong style="color:#00c896">Carteira Nacional de Vacinação Digital</strong> · Ministério da Saúde · DATASUS<br>Rodrigo Dantas Santos · CPF 220.174.318-50 · Mãe: Maria Helena Dantas Santos</div>
+      </div>
+      <div class="sh"><div class="sh-title">COVID-19 — 4 doses</div><div class="sh-line"></div></div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid rgba(0,200,150,0.2);border-radius:8px;padding:11px 14px"><div style="width:36px;height:36px;border-radius:8px;background:rgba(0,200,150,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💉</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--text)">COVID-19 AstraZeneca/Fiocruz — Covishield</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:2px">14/07/2022 · 2º Reforço · Lote 21PVCD361Z · UBS Cambuci</div></div><span class="badge badge-ok">2º Reforço</span></div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid rgba(0,200,150,0.15);border-radius:8px;padding:11px 14px"><div style="width:36px;height:36px;border-radius:8px;background:rgba(0,200,150,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💉</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--text)">COVID-19 Pfizer — Comirnaty</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:2px">07/02/2022 · Reforço · Lote FK8911 · UBS Cambuci</div></div><span class="badge badge-ok">Reforço</span></div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid rgba(0,200,150,0.15);border-radius:8px;padding:11px 14px"><div style="width:36px;height:36px;border-radius:8px;background:rgba(0,200,150,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💉</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--text)">COVID-19 Pfizer — Comirnaty</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:2px">27/09/2021 · 2ª dose · Lote FG3530 · UBS Cambuci</div></div><span class="badge badge-ok">2/2</span></div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid rgba(0,200,150,0.15);border-radius:8px;padding:11px 14px"><div style="width:36px;height:36px;border-radius:8px;background:rgba(0,200,150,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💉</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--text)">COVID-19 Pfizer — Comirnaty</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:2px">07/07/2021 · 1ª dose · Lote FA9095 · UBS Cambuci</div></div><span class="badge badge-new">1/2</span></div>
+      </div>
+      <div class="sh"><div class="sh-title">Outras Vacinas</div><div class="sh-line"></div></div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid rgba(150,80,255,0.2);border-radius:8px;padding:11px 14px"><div style="width:36px;height:36px;border-radius:8px;background:rgba(150,80,255,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🛡️</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--text)">Herpes-Zoster (Recombinante) — Série Completa ✅</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:2px">1ª dose: 20/10/2025 · Beep Saúde Tatuapé &nbsp;|&nbsp; 2ª dose: 20/12/2025 · Beep Saúde Barra Funda · Lote L7FX9</div></div><span class="badge badge-ok">Completa</span></div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid rgba(0,168,255,0.15);border-radius:8px;padding:11px 14px"><div style="width:36px;height:36px;border-radius:8px;background:rgba(0,168,255,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🤧</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--text)">Influenza Tetravalente</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:2px">10/06/2025 · Dose Única · Lote U8710AB · Hospital Israelita Albert Einstein · Serviço Privado</div></div><span class="badge badge-ok">Única</span></div>
+        <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid rgba(255,179,71,0.2);border-radius:8px;padding:11px 14px"><div style="width:36px;height:36px;border-radius:8px;background:rgba(255,179,71,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🌡️</div><div style="flex:1"><div style="font-size:11px;font-weight:600;color:var(--text)">Febre Amarela — Certificado Internacional (CIVP)</div><div style="font-size:10px;color:var(--text2);font-family:var(--mono);margin-top:2px">06/03/2015 · 1ª dose · Fiocruz Lote 149VFC016Z · UBS Milton Santos · Válido: 16/03/2015 → VITALÍCIO</div></div><span class="badge badge-ok">Vitalício</span></div>
+      </div>
+      <div style="background:rgba(255,179,71,0.05);border:1px solid rgba(255,179,71,0.2);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2)">
+        ⚠️ <strong style="color:var(--warn)">Atenção:</strong> Anti-HBs &lt;2 UI/L (Jun/2020) — <strong>sem imunidade para Hepatite B</strong>. Vacina não registrada no SUS. Avaliar com médico a necessidade de vacinação ou reforço.
+      </div>
+    </div>
+
     <!-- ░░ ARQUIVOS ░░ -->
     <div class="page" id="page-arquivos">
-      <div class="sh"><div class="sh-title">Arquivos &amp; PDFs — 61 processados</div><div class="sh-line"></div></div>
+      <div class="sh"><div class="sh-title">Arquivos &amp; PDFs — 81 processados</div><div class="sh-line"></div></div>
       <div class="lab-legend">
         <span class="ll-title">Instituições:</span>
         <span class="lab-tag lt-einstein">Einstein</span>
@@ -1295,12 +1509,27 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       </div>
       <div class="filter-bar">
         <span class="filter-label">Filtrar:</span>
-        <button class="filter-btn active" onclick="filterFiles('all',this)">Todos (61)</button>
+        <button class="filter-btn active" onclick="filterFiles('all',this)">Todos (81)</button>
         <button class="filter-btn" onclick="filterFiles('einstein',this)"><span class="lab-tag lt-einstein" style="pointer-events:none">Einstein</span></button>
         <button class="filter-btn" onclick="filterFiles('delboni',this)"><span class="lab-tag lt-delboni" style="pointer-events:none">Delboni</span></button>
         <button class="filter-btn" onclick="filterFiles('garmin',this)"><span class="lab-tag lt-cete" style="pointer-events:none">Garmin</span></button>
       </div>
       <div class="exam-list" id="files-list">
+        <!-- ══ FLEURY 2024–2026 ══ -->
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Testosterona 647 ng/dL — Melhor resultado histórico</div><div class="exam-meta">Fleury · Abr/2026 · Dra. Gabriela Guimarães · Ficha 7900209302</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-ok">✅ ótimo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-b">🔬</div><div class="exam-info"><div class="exam-name">Check-up Completo + PSA 4,9 ⚠️ + RM Ombro + ECG</div><div class="exam-meta">Fleury · Mar/2026 · Dra. Gabriela Guimarães · 16 páginas · Ficha 5004934318</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-bad">PSA ⚠️</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-b">🔬</div><div class="exam-info"><div class="exam-name">EDA + Polipectomia Gástrica + Anatomopatológico</div><div class="exam-meta">Fleury · Dez/2025 · Benigno · H. pylori negativo · Ficha 5004899655</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-ok">benigno</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-b">🔬</div><div class="exam-info"><div class="exam-name">EDA — Esofagite Erosiva Grau A</div><div class="exam-meta">Fleury · Ago/2025 · Dr. José Roberto Hilsdorf · Ficha 5004842423</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-warn">esofagite</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-b">🫀</div><div class="exam-info"><div class="exam-name">Holter 24h Sem Fio — Extrassístoles Raras</div><div class="exam-meta">Fleury · Out/2024 · Dr. Dalmo Moreira · Ritmo sinusal ✅ · Ficha 5004703537</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-ok">✅ normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-b">🫀</div><div class="exam-info"><div class="exam-name">Eco ✅ + ECG ✅ + Ergométrico ✅ + USG + Doppler + Tireóide + Labs</div><div class="exam-meta">Fleury · Out/2024 · Dr. Marcelo G. Paiva / Dr. Luiz Cury Neto · 8 páginas · Ficha 5004703026</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-ok">check-up completo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Painel Completo 17p — Lipídeos + Glicemia + Testosterona + TSH + PSA</div><div class="exam-meta">Fleury · Out/2024 · Dr. Marcelo G. Paiva · 17 páginas · Ficha 3801754975</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-warn">LDL 132 ⚠️</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">COVID PCR + Painel Completo 9p + USG Abdome</div><div class="exam-meta">Fleury/Oswaldo Cruz · Jul-Ago/2020 · Dr. Pedro R. Chocair · GGT 105 ⚠️ · Ficha 2160009715</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-warn">GGT ⚠️</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-g">🦠</div><div class="exam-info"><div class="exam-name">COVID-19 PCR RT-PCR — Negativo</div><div class="exam-meta">Fleury/Oswaldo Cruz · Jan/2021 · Drive-thru · Ficha 1421308084</div></div><div class="exam-tags-row"><span class="lab-tag lt-fleury">Fleury</span><span class="badge badge-ok">negativo</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-g">🦠</div><div class="exam-info"><div class="exam-name">Anatomopatológico Vesícula Biliar — Colesterolose</div><div class="exam-meta">HAOC/Oswaldo Cruz · Jan/2021 · Dr. Rafael D. R. Moraes · AP21-002172</div></div><div class="exam-tags-row"><span class="lab-tag lt-outros">Oswaldo Cruz</span><span class="badge badge-ok">benigno</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="fleury"><div class="exam-icon-w ei-b">📻</div><div class="exam-info"><div class="exam-name">RX Colangiografia Operatória</div><div class="exam-meta">HAOC/Oswaldo Cruz · Jan/2021 · Imagem intraoperatória colecistectomia</div></div><div class="exam-tags-row"><span class="lab-tag lt-outros">Oswaldo Cruz</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="delboni"><div class="exam-icon-w ei-b">🧠</div><div class="exam-info"><div class="exam-name">RM Crânio — Normal</div><div class="exam-meta">Delboni · Jan/2020 · Dr. Renato A. Mendonça · Cefaleia/tontura</div></div><div class="exam-tags-row"><span class="lab-tag lt-delboni">Delboni</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="delboni"><div class="exam-icon-w ei-b">🫁</div><div class="exam-info"><div class="exam-name">RM Abdome Superior + Colângio-RM</div><div class="exam-meta">Delboni · Jun/2019 · Dr. Gustavo Henriques Pinto · Hemangiomas hepáticos</div></div><div class="exam-tags-row"><span class="lab-tag lt-delboni">Delboni</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <!-- ══ EINSTEIN ══ -->
         <!-- Einstein 2023 -->
         <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Painel Completo — Bioquímica + Hormonal + Eco + ECG</div><div class="exam-meta">Einstein · Jul/2023 · 20+ marcadores · ⚠️ Colesterol, LDL, TG, GGT altos</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-bad">4 alterados</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
         <!-- Einstein Ago/22 -->
@@ -1337,9 +1566,9 @@ const VALID_USERS=['rodrigo.dantas','rodrigo','dantas','admin'];
 const VALID_PASS='DantasSaude2026';
 let uploadedFiles=[];
 
-const LAB_LABELS={einstein:'Einstein',delboni:'Delboni',dasa:'DASA',hcor:'HCor',cete:'CETE Sport',sirio:'Sírio-Libanês',outros:'Outros'};
+const LAB_LABELS={einstein:'Einstein',fleury:'Fleury',delboni:'Delboni',dasa:'DASA',hcor:'HCor',cete:'CETE Sport',sirio:'Sírio-Libanês',outros:'Outros'};
 const SPEC_NAMES={lab:'Laboratorial',cardio:'Cardiologia',image:'Imagens',perf:'Performance',horm:'Hormonal',cirurg:'Cirurgias',outros:'Outros'};
-const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos · 10 pontos de atenção',laboratorial:'Painel Laboratorial Completo',hormonal:'Hormonal &amp; Endócrino',cardio:'Cardiologia · Eco · ECG · Holter',garmin:'Garmin Connect · Out/2024',timeline:'Histórico Médico · 2019–2024',arquivos:'Arquivos &amp; PDFs · 61 processados'};
+const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos · 11 pontos de atenção',laboratorial:'Painel Laboratorial Completo',hormonal:'Hormonal &amp; Endócrino',cardio:'Cardiologia · Eco · ECG · Holter · Ergométrico',garmin:'Garmin Connect · Abr/2026',timeline:'Histórico Médico · 2003–2026',arquivos:'Arquivos &amp; PDFs · 81 processados'};
 
 const SESSION_KEY='bioscan_sess_v4';
 const SESSION_DAYS=3;
@@ -1363,6 +1592,7 @@ function showApp(){
   document.getElementById('lerr').style.display='none';
   updateAge();
   setTimeout(initCharts,200);
+  setTimeout(initGarminCharts,400);
 }
 
 function doLogin(){
@@ -1404,7 +1634,7 @@ function goPage(id,el){
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   if(el)el.classList.add('active');
   document.getElementById('topbar-title').textContent=PAGE_TITLES[id]?.replace('&amp;','&')||'BioScan';
-  const subs={overview:'Empresário · 44 anos · A+ · 77kg · 1,77m · Einstein #4181819',alertas:'10 pontos de atenção identificados nos exames reais',laboratorial:'5 coletas · Mar/2019 a Jul/2023 · Einstein + Delboni',hormonal:'Painel Delboni 2019 · Dra. Andreia Rostirola',cardio:'Holter + 2x Eco + 2x ECG · Einstein · 2022–2023',cirurgias:'3 cirurgias registradas com CID-10',medicamentos:'3 medicamentos em uso desde 29/04/2026',garmin:'01/10/2024 · 21 arquivos .fit',timeline:'Histórico médico · 2003–2026',arquivos:'61 PDFs · Einstein · Delboni · Garmin',medicos:'Dra. Gabriela Guimarães + equipe Einstein + Delboni'};
+  const subs={overview:'Empresário · 44 anos · A+ · 77kg · 1,77m · Einstein #4181819',alertas:'11 pontos de atenção · PSA 4,9 prioridade urgente',laboratorial:'8 coletas · Mar/2019 a Mar/2026 · Einstein + Delboni + Fleury',hormonal:'Fleury Out/2024 · Abr/2026 · Dra. Gabriela Guimarães',cardio:'Eco ✅ + Holter ✅ + Ergométrico ✅ · Fleury Out/2024',cirurgias:'3 cirurgias registradas com CID-10',medicamentos:'3 medicamentos em uso desde 29/04/2026',garmin:'Abr/2026 · 477 atividades Jun/24–Abr/26',timeline:'Histórico médico · 2003–2026',vacinas:'8 vacinas registradas · Meu SUS Digital · Mai/2026',arquivos:'81 PDFs · Einstein · Delboni · Fleury · Garmin',medicos:'Dra. Gabriela Guimarães + Dr. Marcelo G. Paiva + Dr. Luiz Cury Neto',garmin:'477 atividades · Jun/2024–Abr/2026 · dados reais CSV'};
   document.getElementById('topbar-sub').textContent=subs[id]||'';
 }
 
@@ -1554,22 +1784,72 @@ function mkLineDetailed(id,labels,datasets){
 
 function initCharts(){
   // Overview sparklines
-  mkLine('chart-col',['Mar/22','Ago/22','Jul/23'],[{data:[219,167,243],borderColor:'#ff4f4f',backgroundColor:'rgba(255,79,79,0.08)',borderWidth:2,pointRadius:3,pointBackgroundColor:'#ff4f4f',tension:0.4,fill:true}]);
-  mkLine('chart-ldl',['Mar/22','Ago/22','Jul/23'],[{data:[145,107,157],borderColor:'#ff4f4f',backgroundColor:'rgba(255,79,79,0.08)',borderWidth:2,pointRadius:3,pointBackgroundColor:'#ff4f4f',tension:0.4,fill:true}]);
-  mkLine('chart-ggt',['2019','Mar/22','Ago/22','Jul/23'],[{data:[119,128,64,162],borderColor:'#ffb347',backgroundColor:'rgba(255,179,71,0.08)',borderWidth:2,pointRadius:3,pointBackgroundColor:'#ffb347',tension:0.4,fill:true},{data:[61,61,61,61],borderColor:'rgba(0,210,160,0.3)',borderWidth:1,borderDash:[4,4],pointRadius:0}]);
+  mkLine('chart-col',['Jul/20','Mar/22','Ago/22','Jul/23','Out/24','Mar/26'],[{data:[172,219,167,243,200,161],borderColor:'#00d2a0',backgroundColor:'rgba(0,210,160,0.08)',borderWidth:2,pointRadius:3,pointBackgroundColor:['#00d2a0','#ff4f4f','#00d2a0','#ff4f4f','#ffb347','#00d2a0'],tension:0.4,fill:true}]);
+  mkLine('chart-ldl',['Jul/20','Mar/22','Ago/22','Jul/23','Out/24','Mar/26'],[{data:[111,145,107,157,132,100],borderColor:'#00d2a0',backgroundColor:'rgba(0,210,160,0.08)',borderWidth:2,pointRadius:3,pointBackgroundColor:['#00d2a0','#ffb347','#00d2a0','#ff4f4f','#ffb347','#00d2a0'],tension:0.4,fill:true}]);
+  mkLine('chart-ggt',['2019','Jul/20','Mar/22','Ago/22','Jul/23','Out/24','Mar/26'],[{data:[119,105,128,64,162,57,69],borderColor:'#ffb347',backgroundColor:'rgba(255,179,71,0.08)',borderWidth:2,pointRadius:3,pointBackgroundColor:'#ffb347',tension:0.4,fill:true},{data:[73,73,73,73,73,73,73],borderColor:'rgba(0,210,160,0.3)',borderWidth:1,borderDash:[4,4],pointRadius:0}]);
   mkLine('chart-hrv',['D1','D2','D3','D4','D5'],[{data:[22,26,24,28,24.7],borderColor:'#00a8ff',backgroundColor:'rgba(0,168,255,0.08)',borderWidth:2,pointRadius:3,pointBackgroundColor:'#00a8ff',tension:0.4,fill:true},{data:[40,40,40,40,40],borderColor:'rgba(0,210,160,0.3)',borderWidth:1,borderDash:[4,4],pointRadius:0}]);
   // Lab lipideos detailed chart
-  mkLineDetailed('chart-lipideos',['Mar/2022','Ago/2022','Jul/2023'],[
-    {label:'Colesterol Total',data:[219,167,243],borderColor:'#ff4f4f',backgroundColor:'rgba(255,79,79,0.04)',tension:0.4,pointRadius:4,fill:true},
-    {label:'LDL',data:[145,107,157],borderColor:'#ffb347',backgroundColor:'rgba(255,179,71,0.04)',tension:0.4,pointRadius:4,fill:true},
-    {label:'HDL',data:[47,37,51],borderColor:'#00d2a0',backgroundColor:'rgba(0,210,160,0.04)',tension:0.4,pointRadius:4,fill:true},
-    {label:'Triglicerídeos',data:[138,117,192],borderColor:'#9664ff',backgroundColor:'rgba(150,100,255,0.04)',tension:0.4,pointRadius:4,fill:true}
+  mkLineDetailed('chart-lipideos',['Jul/2020','Mar/2022','Ago/2022','Jul/2023','Out/2024','Mar/2026'],[
+    {label:'Colesterol Total',data:[172,219,167,243,200,161],borderColor:'#ff4f4f',backgroundColor:'rgba(255,79,79,0.04)',tension:0.4,pointRadius:4,fill:true},
+    {label:'LDL',data:[111,145,107,157,132,100],borderColor:'#ffb347',backgroundColor:'rgba(255,179,71,0.04)',tension:0.4,pointRadius:4,fill:true},
+    {label:'HDL',data:[37,47,37,51,38,40],borderColor:'#00d2a0',backgroundColor:'rgba(0,210,160,0.04)',tension:0.4,pointRadius:4,fill:true},
+    {label:'Triglicerídeos',data:[175,138,117,192,166,116],borderColor:'#9664ff',backgroundColor:'rgba(150,100,255,0.04)',tension:0.4,pointRadius:4,fill:true}
   ]);
-  mkLineDetailed('chart-ggt2',['Mar/2019','Mar/2022','Ago/2022','Jul/2023'],[
-    {label:'Gama GT',data:[119,128,64,162],borderColor:'#ff4f4f',backgroundColor:'rgba(255,79,79,0.05)',tension:0.4,pointRadius:5,fill:true},
-    {label:'Referência (61)',data:[61,61,61,61],borderColor:'rgba(0,210,160,0.4)',borderDash:[5,5],borderWidth:1.5,pointRadius:0}
+  mkLineDetailed('chart-ggt2',['Mar/2019','Jul/2020','Mar/2022','Ago/2022','Jul/2023','Out/2024','Mar/2026'],[
+    {label:'Gama GT',data:[119,105,128,64,162,57,69],borderColor:'#ff4f4f',backgroundColor:'rgba(255,79,79,0.05)',tension:0.4,pointRadius:5,fill:true},
+    {label:'Referência (73)',data:[73,73,73,73,73,73,73],borderColor:'rgba(0,210,160,0.4)',borderDash:[5,5],borderWidth:1.5,pointRadius:0}
   ]);
-  // Stress chart
+  // ── GARMIN ACTIVITY CHARTS ─────────────────────────────────────────
+  function initGarminCharts(){
+    const months=['Jun/24','Jul/24','Ago/24','Set/24','Out/24','Nov/24','Dez/24',
+                  'Jan/25','Fev/25','Mar/25','Abr/25','Mai/25','Jun/25','Jul/25',
+                  'Ago/25','Set/25','Out/25','Nov/25','Dez/25',
+                  'Jan/26','Fev/26','Mar/26','Abr/26'];
+
+    const caminhada=[20,14,16,17,20,12,7,8,9,11,5,2,12,13,19,22,17,16,11,15,11,22,8];
+    const academia=[7,7,8,8,7,3,5,1,3,2,0,0,3,0,1,10,6,5,2,8,7,8,9];
+    const raquete=[0,0,0,0,0,0,0,0,0,0,0,1,3,6,5,4,3,4,4,4,4,1,0];
+    const corrida=[0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1];
+    const ciclismo=[0,0,0,0,0,0,2,3,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0];
+    const outros=[0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,6,0,1,0];
+    const total=months.map((_,i)=>caminhada[i]+academia[i]+raquete[i]+corrida[i]+ciclismo[i]+outros[i]);
+
+    const chartOpts={responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,position:'top',labels:{color:'#7fa99a',font:{family:'DM Mono',size:9},boxWidth:10,padding:8}},
+        tooltip:{backgroundColor:'rgba(13,19,24,0.95)',borderColor:'rgba(0,210,160,0.2)',borderWidth:1,titleColor:'#e8f4f0',bodyColor:'#7fa99a'}},
+      scales:{x:{stacked:true,grid:{color:'rgba(0,210,160,0.05)'},ticks:{color:'#3d6b5e',font:{family:'DM Mono',size:8},maxRotation:45}},
+              y:{stacked:true,grid:{color:'rgba(0,210,160,0.05)'},ticks:{color:'#3d6b5e',font:{family:'DM Mono',size:9}}}}};
+
+    // Stacked bar chart por modalidade
+    const c1=document.getElementById('chart-ativ-mensal');
+    if(c1)new Chart(c1.getContext('2d'),{type:'bar',data:{labels:months,datasets:[
+      {label:'Caminhada',data:caminhada,backgroundColor:'rgba(0,210,160,0.7)',borderRadius:2},
+      {label:'Academia',data:academia,backgroundColor:'rgba(0,168,255,0.7)',borderRadius:2},
+      {label:'Raquete',data:raquete,backgroundColor:'rgba(255,179,71,0.8)',borderRadius:2},
+      {label:'Corrida',data:corrida,backgroundColor:'rgba(0,200,150,0.8)',borderRadius:2},
+      {label:'Ciclismo',data:ciclismo,backgroundColor:'rgba(150,100,255,0.7)',borderRadius:2},
+      {label:'Outros',data:outros,backgroundColor:'rgba(150,150,150,0.5)',borderRadius:2}
+    ]},options:chartOpts});
+
+    // Line chart total mensal
+    const c2=document.getElementById('chart-ativ-total');
+    if(c2)new Chart(c2.getContext('2d'),{type:'line',data:{labels:months,datasets:[{
+      label:'Total de Atividades',data:total,
+      borderColor:'#00d2a0',backgroundColor:'rgba(0,210,160,0.08)',
+      borderWidth:2.5,pointRadius:4,pointBackgroundColor:total.map(v=>v>=30?'#ff4f4f':v>=20?'#ffb347':'#00d2a0'),
+      tension:0.3,fill:true
+    },{
+      label:'Média (20,7)',data:Array(months.length).fill(20.7),
+      borderColor:'rgba(255,255,255,0.2)',borderDash:[5,5],borderWidth:1,pointRadius:0
+    }]},options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,position:'top',labels:{color:'#7fa99a',font:{family:'DM Mono',size:9},boxWidth:10}},
+        tooltip:{backgroundColor:'rgba(13,19,24,0.95)',borderColor:'rgba(0,210,160,0.2)',borderWidth:1,titleColor:'#e8f4f0',bodyColor:'#7fa99a',callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y}`}}},
+      scales:{x:{grid:{color:'rgba(0,210,160,0.05)'},ticks:{color:'#3d6b5e',font:{family:'DM Mono',size:8},maxRotation:45}},
+              y:{grid:{color:'rgba(0,210,160,0.05)'},ticks:{color:'#3d6b5e',font:{family:'DM Mono',size:9}}}}}});
+  }
+
+  // ── STRESS CHART ──────────────────────────────────────────────────
+    // Stress chart
   const sc=document.getElementById('chart-stress');
   if(sc){
     const ctx=sc.getContext('2d');
