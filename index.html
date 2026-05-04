@@ -206,14 +206,14 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
 .btn-primary{background:var(--accent);color:#ffffff;font-weight:700;}
 .btn-primary:hover{background:var(--accent3);}
-.scroll-area{flex:1;overflow-y:auto;padding:22px 24px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.scroll-area{flex:1;overflow-y:auto;overflow-x:hidden;padding:22px 24px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
 .page{display:none;}.page.active{display:block;}
 
 /* SECTION HEADER */
-.sh{display:flex;align-items:center;gap:10px;margin:0 0 14px;}
-.sh-title{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);font-family:var(--mono);white-space:nowrap;}
+.sh{display:flex;align-items:center;gap:10px;margin:0 0 14px;min-width:0;overflow:hidden;}
+.sh-title{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);font-family:var(--mono);white-space:nowrap;flex-shrink:0;}
 .sh-line{flex:1;height:1px;background:var(--border);}
-.sh-date{font-size:10px;font-family:var(--mono);color:var(--text3);white-space:nowrap;}
+.sh-date{font-size:10px;font-family:var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex-shrink:1;color:var(--text3);white-space:nowrap;}
 
 /* VITALS */
 .vitals-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
@@ -704,7 +704,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
     <div class="nav-item" onclick="goPage('garmin',this)"><div class="nav-dot" style="background:var(--accent)"></div><span>⌚</span>Garmin</div>
     <div class="nav-item" onclick="goPage('timeline',this)"><div class="nav-dot" style="background:var(--warn)"></div><span>📅</span>Timeline</div>
     <div class="nav-item" onclick="goPage('vacinas',this)"><div class="nav-dot" style="background:#00c896"></div><span>💉</span>Vacinas<span class="nav-badge" style="background:rgba(0,200,150,0.15);color:#00c896">8</span></div>
-    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div><span>📂</span>PDFs<span class="nav-badge nb-g">89</span></div>
+    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div><span>📂</span>Exames & Laudos<span class="nav-badge nb-g">89</span></div>
   </div>
   <div class="nav-section">
     <div class="nav-label">Equipe Médica</div>
@@ -723,7 +723,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
   <div class="topbar">
     <div class="topbar-left">
       <div class="page-title" id="topbar-title">Visão Geral · Rodrigo Dantas Santos</div>
-      <div class="page-subtitle" id="topbar-sub">Empresário · 44 anos · A+ · 77kg · 1,77m · IMC 24,6 · Einstein #4181819</div>
+      <div class="page-subtitle" id="topbar-sub">Empresário · 45 anos · A+ · 77kg · 1,77m · IMC 24,6 · Einstein #4181819</div>
     </div>
     <div class="topbar-right">
       <div class="garmin-pill"><div class="pdot"></div>Garmin · Abr/2026</div>
@@ -807,7 +807,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div class="alert-item al-warn"><div class="alert-title">⚠️ Ectasia aórtica — raiz 40mm (limite superior)</div><div class="alert-desc">Ecocardiograma Out/2024 Fleury: Aorta seios de Valsalva 40mm (ref: 28–40mm). Aorta ascendente 35mm (normal). Melhora em relação ao Einstein 2023 (41mm). Monitoramento anual com Eco recomendado.</div></div>
         <div class="alert-item al-warn"><div class="alert-title">⚠️ RM Ombro Direito — Tendinopatia + Capsulite Adesiva (Mar/2026)</div><div class="alert-desc">Fleury · Mar/2026 · Dra. Gabriela Guimarães. Tendinopatia do manguito rotador sem roturas. Fissura intrassubstancial no subescapular. Sinais sugestivos de capsulite adesiva glenoumeral. Fissura no lábio da glenóide. Avaliação fisioterápica/ortopédica indicada.</div></div>
         <div class="alert-item al-warn"><div class="alert-title">⚠️ Eosinófilos elevados — 490/mm³ (Mar/2026)</div><div class="alert-desc">Fleury · Mar/2026 · Ref: 34–420/mm³. Leve eosinofilia. Pode ser reação alérgica, parasitária ou relacionada a medicamentos (Finasterida). Investigar se persistir nos próximos exames.</div></div>
-        <div class="alert-item al-warn"><div class="alert-title">⚠️ HRV noturno baixo em Out/2024 — melhorou em 2025/26</div><div class="alert-desc">Garmin Out/2024 · HRV 5–9ms (média 24,7ms). A partir de Set/2025 (dados healthStatus), HRV estabilizou em 44–46ms — dentro do esperado para atleta 44 anos. Dez/2025 mostrou queda (41ms) correlacionada com pior score de sono (66). Monitorar continuidade.</div></div>
+        <div class="alert-item al-warn"><div class="alert-title">⚠️ HRV noturno baixo em Out/2024 — melhorou em 2025/26</div><div class="alert-desc">Garmin Out/2024 · HRV 5–9ms (média 24,7ms). A partir de Set/2025 (dados healthStatus), HRV estabilizou em 44–46ms — dentro do esperado para atleta de 45 anos. Dez/2025 mostrou queda (41ms) correlacionada com pior score de sono (66). Monitorar continuidade.</div></div>
         <div class="alert-item al-warn"><div class="alert-title">⚠️ SpO₂ mínima de 69% durante o sono</div><div class="alert-desc">Garmin SLEEP_DATA · Out/2024. Valor normal: &gt;94%. Pode ser artefato de movimento ou indicar apneia do sono. Recomendado investigar com médico — avaliar polissonografia.</div></div>
         <div class="alert-item al-ok"><div class="alert-title">🟢 Lipídeos normalizados em Mar/2026</div><div class="alert-desc">Fleury · Mar/2026 · Dra. Gabriela Guimarães. Col. Total 161 ✅ · LDL 100 ✅ · TG 116 ✅ · HDL 40 (no limite). Melhora expressiva em relação ao pico de Jul/2023 (Col. 243, LDL 157, TG 192). GGT 69 U/L — quase normal (era 162).</div></div>
         <div class="alert-item al-ok"><div class="alert-title">🟢 Testosterona 647 ng/dL — melhor valor histórico</div><div class="alert-desc">Fleury · Abr/2026 · Dra. Gabriela Guimarães. Evolução: 444 (2019) → 571 (Out/24) → 439 (Out/24b) → 647 (Abr/2026). Dentro da referência 240–816 ng/dL. Boa resposta.</div></div>
@@ -1613,7 +1613,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
           <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:8px">Evolução VO₂ Máx — Mar/2024 a Mai/2026</div>
           <div style="position:relative;height:240px;margin-bottom:14px"><canvas id="g-chart-vo2"></canvas></div>
           <div style="background:rgba(0,119,204,0.05);border:1px solid rgba(0,119,204,0.15);border-radius:8px;padding:11px 14px;font-size:10px;color:var(--text2)">
-            🧬 <strong style="color:var(--accent)">Progressão:</strong> Mar/2024 VO₂ 43 → pico Set/2025 VO₂ 50 → atual 46. Classificação <strong>Excelente</strong> para homem 44 anos (esperado 35–43). FC repouso média 51 bpm — atleta de alto nível.
+            🧬 <strong style="color:var(--accent)">Progressão:</strong> Mar/2024 VO₂ 43 → pico Set/2025 VO₂ 50 → atual 46. Classificação <strong>Excelente</strong> para homem 45 anos (esperado 35–43). FC repouso média 51 bpm — atleta de alto nível.
           </div>
         </div>
 
@@ -1720,7 +1720,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
             🔴 <strong style="color:var(--danger)">SpO₂ 69% durante sono (Out/2024):</strong> valor anormalmente baixo. Pode indicar apneia obstrutiva. Avaliar polissonografia com médico.
           </div>
           <div style="background:rgba(0,119,204,0.05);border:1px solid rgba(0,119,204,0.15);border-radius:8px;padding:10px 14px;font-size:10px;color:var(--text2)">
-            ✅ <strong style="color:var(--accent)">HRV melhorou substancialmente:</strong> de ~25ms em Out/2024 para ~44–46ms em 2025–2026. FC repouso estável 50–51 bpm — excelente para atleta de 44 anos.
+            ✅ <strong style="color:var(--accent)">HRV melhorou substancialmente:</strong> de ~25ms em Out/2024 para ~44–46ms em 2025–2026. FC repouso estável 50–51 bpm — excelente para atleta de 45 anos.
           </div>
         </div>
 
@@ -1883,7 +1883,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 
     <!-- ░░ ARQUIVOS ░░ -->
     <div class="page" id="page-arquivos">
-      <div class="sh"><div class="sh-title">Arquivos &amp; PDFs — 89 processados</div><div class="sh-line"></div></div>
+      <div class="sh"><div class="sh-title">Exames & Laudos — 89 documentos</div><div class="sh-line"></div></div>
       <div class="lab-legend">
         <span class="ll-title">Instituições:</span>
         <span class="lab-tag lt-einstein">Einstein</span>
@@ -1956,7 +1956,7 @@ let uploadedFiles=[];
 
 const LAB_LABELS={einstein:'Einstein',fleury:'Fleury',delboni:'Delboni',dasa:'DASA',hcor:'HCor',cete:'CETE Sport',sirio:'Sírio-Libanês',outros:'Outros'};
 const SPEC_NAMES={lab:'Laboratorial',cardio:'Cardiologia',image:'Imagens',perf:'Performance',horm:'Hormonal',cirurg:'Cirurgias',outros:'Outros'};
-const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos · 11 pontos de atenção',laboratorial:'Painel Laboratorial Completo',hormonal:'Hormonal &amp; Endócrino',cardio:'Cardiologia · Eco · ECG · Holter · Ergométrico',garmin:'Garmin Connect · Abr/2026',timeline:'Histórico Médico · 2003–2026',arquivos:'Arquivos &amp; PDFs · 89 processados'};
+const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos',laboratorial:'Laboratorial Completo',hormonal:'Hormonal & Endócrino',cardio:'Cardiologia',garmin:'Garmin Connect',cirurgias:'Cirurgias & Procedimentos',medicamentos:'Medicamentos',timeline:'Histórico Médico · 2003–2026',arquivos:'Exames & Laudos'};
 
 const SESSION_KEY='bioscan_sess_v4';
 const SESSION_DAYS=3;
@@ -2061,14 +2061,18 @@ function doLogout(){
 window.addEventListener('load',()=>{if(checkSession())showApp();});
 
 function updateAge(){
-  const dob=new Date(1981,2,30);const now=new Date();
-  let age=now.getFullYear()-dob.getFullYear();
-  const m=now.getMonth()-dob.getMonth();
-  if(m<0||(m===0&&now.getDate()<dob.getDate()))age--;
-  const el=document.getElementById('patient-age');if(el)el.textContent=age;
-  const imc=(77/(1.77*1.77)).toFixed(1);
-  const imcEl=document.getElementById('patient-imc');if(imcEl)imcEl.textContent=imc;
-  const sub=document.getElementById('topbar-sub');if(sub)sub.textContent=`Empresário · ${age} anos · A+ · 77kg · 1,77m · IMC ${imc} · Einstein #4181819`;
+  const birth = new Date(1981, 2, 30); // 30/03/1981 — month is 0-indexed
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+  const heightM = 1.77;
+  const weightKg = 77;
+  const imc = (weightKg / (heightM * heightM)).toFixed(1);
+  const sub = document.getElementById('topbar-sub');
+  if(sub) sub.textContent = `Empresário · ${age} anos · A+ · ${weightKg}kg · ${heightM}m · IMC ${imc} · Einstein #4181819`;
+  const patMeta = document.getElementById('patient-meta');
+  if(patMeta) patMeta.textContent = `30/03/1981 · ${age} anos · São Paulo`;
 }
 document.getElementById('lu').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('lp').focus();});
 document.getElementById('lp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
@@ -2080,7 +2084,7 @@ function goPage(id,el){
   if(el)el.classList.add('active');
   document.getElementById('topbar-title').textContent=PAGE_TITLES[id]?.replace('&amp;','&')||'BioScan';
   if(id==='garmin'){setTimeout(initGarminCharts,100);}
-  const subs={overview:'Empresário · 44 anos · A+ · 77kg · 1,77m · Einstein #4181819',alertas:'11 pontos de atenção · PSA 4,9 prioridade urgente',laboratorial:'8 coletas · Mar/2019 a Mar/2026 · Einstein + Delboni + Fleury',hormonal:'Fleury Out/2024 · Abr/2026 · Dra. Gabriela Guimarães',cardio:'Eco ✅ + Holter ✅ + Ergométrico ✅ · Fleury Out/2024',cirurgias:'3 cirurgias registradas com CID-10',medicamentos:'3 medicamentos em uso desde 29/04/2026',garmin:'477 atividades · Jun/2024–Abr/2026 · dados reais JSON',timeline:'Histórico médico · 2003–2026',vacinas:'8 vacinas registradas · Meu SUS Digital · Mai/2026',arquivos:'89 PDFs · Einstein · Delboni · Fleury · Garmin'};
+  const subs={overview:'Empresário · 45 anos · A+ · 77kg · 1,77m · Einstein #4181819',alertas:'11 pontos de atenção · PSA 4,9 prioridade urgente',laboratorial:'8 coletas · Mar/2019 a Mar/2026 · Einstein + Delboni + Fleury',hormonal:'Fleury Out/2024 · Abr/2026 · Dra. Gabriela Guimarães',cardio:'Eco ✅ + Holter ✅ + Ergométrico ✅ · Fleury Out/2024',cirurgias:'3 cirurgias registradas com CID-10',medicamentos:'3 medicamentos em uso desde 29/04/2026',garmin:'477 atividades · Jun/2024–Abr/2026 · dados reais JSON',timeline:'Histórico médico · 2003–2026',vacinas:'8 vacinas registradas · Meu SUS Digital · Mai/2026',arquivos:'89 PDFs · Einstein · Delboni · Fleury · Garmin'};
   document.getElementById('topbar-sub').textContent=subs[id]||'';
   // Reset active tab within the newly shown page to avoid cross-contamination
   if(pg){
@@ -2163,9 +2167,9 @@ async function runAI(files){
     let msgs;
     if(isImg){
       const b64=(await toB64(f)).split(',')[1];
-      msgs=[{role:'user',content:[{type:'image',source:{type:'base64',media_type:f.type||'image/jpeg',data:b64}},{type:'text',text:`Médico assistente analisando exame de ${SPEC_NAMES[spec]} de ${LAB_LABELS[lab]} do paciente Rodrigo Dantas Santos, 44 anos, atleta, tipo A+.\nAnalise esta imagem médica. Responda SOMENTE JSON sem markdown:\n{"summary":"resumo clínico 2 frases português","values":[{"name":"marcador","value":"valor","status":"ok|warn|bad"}],"alert":""}\nMáximo 4 valores.`}]}];
+      msgs=[{role:'user',content:[{type:'image',source:{type:'base64',media_type:f.type||'image/jpeg',data:b64}},{type:'text',text:`Médico assistente analisando exame de ${SPEC_NAMES[spec]} de ${LAB_LABELS[lab]} do paciente Rodrigo Dantas Santos, 45 anos, atleta, tipo A+.\nAnalise esta imagem médica. Responda SOMENTE JSON sem markdown:\n{"summary":"resumo clínico 2 frases português","values":[{"name":"marcador","value":"valor","status":"ok|warn|bad"}],"alert":""}\nMáximo 4 valores.`}]}];
     } else {
-      msgs=[{role:'user',content:`Médico assistente analisando exame de ${SPEC_NAMES[spec]} de ${LAB_LABELS[lab]} do paciente Rodrigo Dantas Santos, 44 anos, atleta, tipo sanguíneo A+.\nArquivo: ${f.name}\nSimule análise clínica realista. Responda SOMENTE JSON sem markdown:\n{"summary":"resumo clínico 2 frases português","values":[{"name":"marcador","value":"valor","status":"ok|warn|bad"}],"alert":""}\nMáximo 4 valores.`}];
+      msgs=[{role:'user',content:`Médico assistente analisando exame de ${SPEC_NAMES[spec]} de ${LAB_LABELS[lab]} do paciente Rodrigo Dantas Santos, 45 anos, atleta, tipo sanguíneo A+.\nArquivo: ${f.name}\nSimule análise clínica realista. Responda SOMENTE JSON sem markdown:\n{"summary":"resumo clínico 2 frases português","values":[{"name":"marcador","value":"valor","status":"ok|warn|bad"}],"alert":""}\nMáximo 4 valores.`}];
     }
     const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:msgs})});
     const data=await resp.json();
