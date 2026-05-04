@@ -485,7 +485,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
     <div class="nav-label">Navegação</div>
     <div class="nav-item active" onclick="goPage('overview',this)"><div class="nav-dot"></div>Visão Geral</div>
     <div class="nav-item" onclick="goPage('alertas',this)"><div class="nav-dot" style="background:var(--danger)"></div>Alertas Clínicos<span class="nav-badge nb-r">11</span></div>
-    <div class="nav-item" onclick="goPage('laboratorial',this)"><div class="nav-dot"></div>Laboratorial Completo<span class="nav-badge nb-g" id="nb-lab">81</span></div>
+    <div class="nav-item" onclick="goPage('laboratorial',this)"><div class="nav-dot"></div>Laboratorial Completo<span class="nav-badge nb-g" id="nb-lab">89</span></div>
     <div class="nav-item" onclick="goPage('hormonal',this)"><div class="nav-dot"></div>Hormonal &amp; Endócrino</div>
     <div class="nav-item" onclick="goPage('cardio',this)"><div class="nav-dot" style="background:var(--accent2)"></div>Cardiologia</div>
     <div class="nav-item" onclick="goPage('cirurgias',this)"><div class="nav-dot" style="background:#ff6464"></div>Cirurgias<span class="nav-badge nb-r" id="surg-badge">3</span></div>
@@ -493,7 +493,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
     <div class="nav-item" onclick="goPage('garmin',this)"><div class="nav-dot" style="background:var(--accent)"></div>Garmin Connect</div>
     <div class="nav-item" onclick="goPage('timeline',this)"><div class="nav-dot" style="background:var(--warn)"></div>Histórico Médico</div>
     <div class="nav-item" onclick="goPage('vacinas',this)"><div class="nav-dot" style="background:#00c896"></div>Vacinação<span class="nav-badge" style="background:rgba(0,200,150,0.15);color:#00c896">8</span></div>
-    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div>Arquivos &amp; PDFs<span class="nav-badge nb-g">81</span></div>
+    <div class="nav-item" onclick="goPage('arquivos',this)"><div class="nav-dot"></div>Arquivos &amp; PDFs<span class="nav-badge nb-g">89</span></div>
   </div>
   <div class="nav-section">
     <div class="nav-label">Equipe Médica</div>
@@ -572,12 +572,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       <div class="ov-grid">
         <div class="ov-card" style="--ol:var(--danger)" onclick="goPage('alertas',null)"><div class="ov-icon">🚨</div><div class="ov-name">Alertas Ativos</div><div class="ov-num" style="color:var(--danger)">11</div><div class="ov-sub">pontos de atenção</div><div class="ov-st"><span class="badge badge-bad">PSA ⚠️ prioridade</span></div></div>
         <div class="ov-card" style="--ol:var(--warn)" onclick="goPage('laboratorial',null)"><div class="ov-icon">🧪</div><div class="ov-name">Laboratorial</div><div class="ov-num">81</div><div class="ov-sub">exames · 8 coletas</div><div class="ov-st"><span class="badge badge-ok">lipídeos normalizados</span></div></div>
-        <div class="ov-card" style="--ol:var(--accent2)" onclick="goPage('cardio',null)"><div class="ov-icon">🫀</div><div class="ov-name">Cardiologia</div><div class="ov-num">4</div><div class="ov-sub">exames completos</div><div class="ov-st"><span class="badge badge-warn">BAV 1º grau</span></div></div>
-        <div class="ov-card" style="--ol:#9664ff" onclick="goPage('hormonal',null)"><div class="ov-icon">💉</div><div class="ov-name">Hormonal</div><div class="ov-num">2</div><div class="ov-sub">painéis completos</div><div class="ov-st"><span class="badge badge-ok">dentro do ref.</span></div></div>
-        <div class="ov-card" style="--ol:var(--accent)" onclick="goPage('garmin',null)"><div class="ov-icon">⌚</div><div class="ov-name">Garmin</div><div class="ov-num">21</div><div class="ov-sub">arquivos .fit</div><div class="ov-st"><span class="badge badge-warn">SpO₂ 69% sono</span></div></div>
+        <div class="ov-card" style="--ol:var(--accent2)" onclick="goPage('cardio',null)"><div class="ov-icon">🫀</div><div class="ov-name">Cardiologia</div><div class="ov-num">8</div><div class="ov-sub">exames · Eco + Holter + Ergo</div><div class="ov-st"><span class="badge badge-ok">Eco Out/24 normal ✅</span></div></div>
+        <div class="ov-card" style="--ol:#9664ff" onclick="goPage('hormonal',null)"><div class="ov-icon">💉</div><div class="ov-name">Hormonal</div><div class="ov-num">647</div><div class="ov-sub">ng/dL test. · Abr/2026</div><div class="ov-st"><span class="badge badge-bad">PSA 4,9 ⚠️</span></div></div>
+        <div class="ov-card" style="--ol:var(--accent)" onclick="goPage('garmin',null)"><div class="ov-icon">⌚</div><div class="ov-name">Garmin</div><div class="ov-num">477</div><div class="ov-sub">atividades · Jun/24–Abr/26</div><div class="ov-st"><span class="badge badge-warn">SpO₂ 69% sono</span></div></div>
         <div class="ov-card" style="--ol:#ff6464" onclick="goPage('cirurgias',null)"><div class="ov-icon">🔪</div><div class="ov-name">Cirurgias</div><div class="ov-num" id="surg-ov-count">3</div><div class="ov-sub">procedimentos · CID</div><div class="ov-st"><span class="badge badge-new">registradas</span></div></div>
         <div class="ov-card" style="--ol:#b57aff" onclick="goPage('medicamentos',null)"><div class="ov-icon">💊</div><div class="ov-name">Medicamentos</div><div class="ov-num">3</div><div class="ov-sub">em uso · abr/2026</div><div class="ov-st"><span class="badge badge-ok">ativos</span></div></div>
-        <div class="ov-card" style="--ol:var(--good)" onclick="goPage('timeline',null)"><div class="ov-icon">📅</div><div class="ov-name">Timeline</div><div class="ov-num">8</div><div class="ov-sub">eventos médicos</div><div class="ov-st"><span class="badge badge-new">2003–2026</span></div></div>
+        <div class="ov-card" style="--ol:var(--good)" onclick="goPage('timeline',null)"><div class="ov-icon">📅</div><div class="ov-name">Timeline</div><div class="ov-num">14</div><div class="ov-sub">eventos médicos</div><div class="ov-st"><span class="badge badge-new">2003–2026</span></div></div>
         <div class="ov-card" style="--ol:var(--text3)"><div class="ov-icon">🩸</div><div class="ov-name">Tipo Sanguíneo</div><div class="ov-num">A+</div><div class="ov-sub">Delboni Mar/2019</div><div class="ov-st"><span class="badge badge-ok">confirmado</span></div></div>
       </div>
     </div>
@@ -866,12 +866,44 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div class="spec-panel" id="sp-outros">
           <div class="markers-grid">
             <div class="marker-item">
-              <div class="marker-row"><span class="marker-name">PSA Total</span><span class="marker-val cg">0,98 ng/mL</span></div>
+              <div class="marker-row"><span class="marker-name">PSA Total — evolução</span><span class="marker-val cg">0,98 ng/mL</span></div>
               <div style="display:flex;align-items:center;gap:6px;">
                 <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:25%;background:var(--good)"></div></div>
                 <span class="mref">&lt;2,5–4,0</span>
               </div>
-              <div class="mref" style="margin-top:6px">2019: 0,90 · Jun/20: 0,99 · Jul/23: 0,98 · ✅ Estável e baixo</div>
+              <div class="mref" style="margin-top:6px">2019: 0,90 · Jun/20: 0,99 · Jul/23: 0,98 · Out/24: 1,1 → <strong style="color:var(--danger)">Mar/26: 4,9 ⚠️</strong></div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Sódio</span><span class="marker-val cg">142 mEq/L</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:70%;background:var(--good)"></div></div>
+                <span class="mref">135–145</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Ago/22: 140 · Jul/23: 142 — sempre normal</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">T4 Livre (Einstein)</span><span class="marker-val cg">1,26 ng/dL</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:60%;background:var(--good)"></div></div>
+                <span class="mref">0,70–1,90</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Mar/22: 1,47 · Jul/23: 1,26 — normal nas duas coletas</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Tempo de Protrombina (RNI)</span><span class="marker-val cg">1,00</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:50%;background:var(--good)"></div></div>
+                <span class="mref">0,96–1,30</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Jan/22 · Atividade 100% · Pré-vasectomia · Dr. Luiz Cury Neto</div>
+            </div>
+            <div class="marker-item">
+              <div class="marker-row"><span class="marker-name">Tempo de Trombina</span><span class="marker-val cg">19,8 s</span></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:55%;background:var(--good)"></div></div>
+                <span class="mref">16,0–26,1 s</span>
+              </div>
+              <div class="mref" style="margin-top:6px">✅ Jan/22 · Coagulação normal pré-operatória</div>
             </div>
             <div class="marker-item">
               <div class="marker-row"><span class="marker-name">Ferro Sérico</span><span class="marker-val cg">155 µg/dL</span></div>
@@ -895,8 +927,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
             </div>
           </div>
           <div style="background:rgba(0,168,255,0.05);border:1px solid rgba(0,168,255,0.15);border-radius:8px;padding:12px 14px;font-size:11px;color:var(--text2);margin-top:8px;">
-            ℹ️ <strong style="color:var(--accent2)">COVID-19 Jun/2020:</strong> IgM Reagente (1,4 UA/mL) — confirmando infecção recente naquele período. IgG não reagente (ainda precoce). <br>
-            ℹ️ <strong style="color:var(--accent2)">Hepatite B:</strong> Anti-HBs &lt;2 UI/L — sem imunidade. Avaliar vacinação com médico.
+            ℹ️ <strong style="color:var(--accent2)">RX Tórax Jul/2023 (Einstein):</strong> Índice cardiotorácico normal · Nódulo calcificado 5º arco costal esq. (benigno — enostose) · Clipes metálicos pós-colecistectomia · Parênquima pulmonar normal.<br>
+            ℹ️ <strong style="color:var(--accent2)">COVID-19 Jun/2020:</strong> IgM Reagente (1,4 UA/mL) · IgG não reagente. <br>
+            ℹ️ <strong style="color:var(--accent2)">Hepatite B:</strong> Anti-HBs &lt;2 UI/L — sem imunidade documentada.
           </div>
         </div>
       </div>
@@ -936,9 +969,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
           <div class="mref" style="margin-top:6px">✅ Normal · Jul/20: 1,5 · Out/24: 1,3 · Mar/26: 0,92</div>
         </div>
         <div class="marker-item">
-          <div class="marker-row"><span class="marker-name">T4 Livre (Mar/2026)</span><span class="marker-val cg">1,6 ng/dL</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:77%;background:var(--good)"></div></div><span class="mref">0,9–1,8</span></div>
-          <div class="mref" style="margin-top:6px">✅ Normal · Out/24: 1,4 · Mar/26: 1,6</div>
+          <div class="marker-row"><span class="marker-name">T4 Livre — evolução</span><span class="marker-val cg">1,6 ng/dL</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><div class="mtrack" style="flex:1"><div class="mrange" style="left:5%;width:90%"></div><div class="mfill" style="width:77%;background:var(--good)"></div></div><span class="mref">0,70–1,90</span></div>
+          <div class="mref" style="margin-top:6px">✅ Mar/22: 1,47 · Jul/23: 1,26 · Out/24: 1,4 · Mar/26: 1,6 — sempre normal</div>
         </div>
         <div class="marker-item">
           <div class="marker-row"><span class="marker-name">Vitamina D (Mar/2026)</span><span class="marker-val cg">36 ng/mL</span></div>
@@ -1037,7 +1070,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
             <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--good)">Normal</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">DOPPLER<br>CARÓTIDAS</div></div>
             <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--good)">0,055cm</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">ÍNTIMA-MÉDIA<br>Sem placas</div></div>
             <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--warn)">TI-RADS 3</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">NÓDULO TIREÓIDE<br>Estável Mar/26</div></div>
-            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--good)">Normal</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">RX TÓRAX<br>Out/2024</div></div>
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center;"><div style="font-size:14px;font-weight:700;color:var(--good)">Normal</div><div style="font-size:9px;color:var(--text3);font-family:var(--mono)">RX TÓRAX<br>Jul/23 + Out/24</div></div>
           </div>
         </div>
       </div>
@@ -1499,7 +1532,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 
     <!-- ░░ ARQUIVOS ░░ -->
     <div class="page" id="page-arquivos">
-      <div class="sh"><div class="sh-title">Arquivos &amp; PDFs — 81 processados</div><div class="sh-line"></div></div>
+      <div class="sh"><div class="sh-title">Arquivos &amp; PDFs — 89 processados</div><div class="sh-line"></div></div>
       <div class="lab-legend">
         <span class="ll-title">Instituições:</span>
         <span class="lab-tag lt-einstein">Einstein</span>
@@ -1509,7 +1542,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       </div>
       <div class="filter-bar">
         <span class="filter-label">Filtrar:</span>
-        <button class="filter-btn active" onclick="filterFiles('all',this)">Todos (81)</button>
+        <button class="filter-btn active" onclick="filterFiles('all',this)">Todos (89)</button>
         <button class="filter-btn" onclick="filterFiles('einstein',this)"><span class="lab-tag lt-einstein" style="pointer-events:none">Einstein</span></button>
         <button class="filter-btn" onclick="filterFiles('delboni',this)"><span class="lab-tag lt-delboni" style="pointer-events:none">Delboni</span></button>
         <button class="filter-btn" onclick="filterFiles('garmin',this)"><span class="lab-tag lt-cete" style="pointer-events:none">Garmin</span></button>
@@ -1530,6 +1563,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div class="exam-row" data-lab="delboni"><div class="exam-icon-w ei-b">🧠</div><div class="exam-info"><div class="exam-name">RM Crânio — Normal</div><div class="exam-meta">Delboni · Jan/2020 · Dr. Renato A. Mendonça · Cefaleia/tontura</div></div><div class="exam-tags-row"><span class="lab-tag lt-delboni">Delboni</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
         <div class="exam-row" data-lab="delboni"><div class="exam-icon-w ei-b">🫁</div><div class="exam-info"><div class="exam-name">RM Abdome Superior + Colângio-RM</div><div class="exam-meta">Delboni · Jun/2019 · Dr. Gustavo Henriques Pinto · Hemangiomas hepáticos</div></div><div class="exam-tags-row"><span class="lab-tag lt-delboni">Delboni</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
         <!-- ══ EINSTEIN ══ -->
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-b">📻</div><div class="exam-info"><div class="exam-name">RX Tórax Frente e Perfil — Nódulo calcificado benigno</div><div class="exam-meta">Einstein · Jul/2023 · Dr. Eduardo Kaiser Ururahy Nunes Fonseca CRM 176628 · Índice cardiotorácico normal · Clipes pós-colecistectomia</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Sódio — 2 coletas</div><div class="exam-meta">Einstein · Ago/2022: 140 mEq/L ✅ · Jul/2023: 142 mEq/L ✅ · Dr. Marcelo G. Paiva</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">T4 Livre — 2 coletas</div><div class="exam-meta">Einstein · Mar/2022: 1,47 ng/dL ✅ · Jul/2023: 1,26 ng/dL ✅ · Dr. Marcelo G. Paiva</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
+        <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">🩸</div><div class="exam-info"><div class="exam-name">Coagulação — Protrombina (RNI) + Tempo de Trombina</div><div class="exam-meta">Einstein · Jan/2022 · RNI 1,00 ✅ · Atividade 100% ✅ · Trombina 19,8s ✅ · Dr. Luiz Cury Neto (pré-vasectomia)</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-ok">normal</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
         <!-- Einstein 2023 -->
         <div class="exam-row" data-lab="einstein"><div class="exam-icon-w ei-g">🧪</div><div class="exam-info"><div class="exam-name">Painel Completo — Bioquímica + Hormonal + Eco + ECG</div><div class="exam-meta">Einstein · Jul/2023 · 20+ marcadores · ⚠️ Colesterol, LDL, TG, GGT altos</div></div><div class="exam-tags-row"><span class="lab-tag lt-einstein">Einstein</span><span class="badge badge-bad">4 alterados</span></div><div style="display:flex;gap:4px"><button class="btn-xs bx-g">Ver</button><button class="btn-xs bx-b">↓</button></div></div>
         <!-- Einstein Ago/22 -->
@@ -1568,7 +1605,7 @@ let uploadedFiles=[];
 
 const LAB_LABELS={einstein:'Einstein',fleury:'Fleury',delboni:'Delboni',dasa:'DASA',hcor:'HCor',cete:'CETE Sport',sirio:'Sírio-Libanês',outros:'Outros'};
 const SPEC_NAMES={lab:'Laboratorial',cardio:'Cardiologia',image:'Imagens',perf:'Performance',horm:'Hormonal',cirurg:'Cirurgias',outros:'Outros'};
-const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos · 11 pontos de atenção',laboratorial:'Painel Laboratorial Completo',hormonal:'Hormonal &amp; Endócrino',cardio:'Cardiologia · Eco · ECG · Holter · Ergométrico',garmin:'Garmin Connect · Abr/2026',timeline:'Histórico Médico · 2003–2026',arquivos:'Arquivos &amp; PDFs · 81 processados'};
+const PAGE_TITLES={overview:'Visão Geral · Rodrigo Dantas Santos',alertas:'Alertas Clínicos · 11 pontos de atenção',laboratorial:'Painel Laboratorial Completo',hormonal:'Hormonal &amp; Endócrino',cardio:'Cardiologia · Eco · ECG · Holter · Ergométrico',garmin:'Garmin Connect · Abr/2026',timeline:'Histórico Médico · 2003–2026',arquivos:'Arquivos &amp; PDFs · 89 processados'};
 
 const SESSION_KEY='bioscan_sess_v4';
 const SESSION_DAYS=3;
@@ -1634,7 +1671,7 @@ function goPage(id,el){
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   if(el)el.classList.add('active');
   document.getElementById('topbar-title').textContent=PAGE_TITLES[id]?.replace('&amp;','&')||'BioScan';
-  const subs={overview:'Empresário · 44 anos · A+ · 77kg · 1,77m · Einstein #4181819',alertas:'11 pontos de atenção · PSA 4,9 prioridade urgente',laboratorial:'8 coletas · Mar/2019 a Mar/2026 · Einstein + Delboni + Fleury',hormonal:'Fleury Out/2024 · Abr/2026 · Dra. Gabriela Guimarães',cardio:'Eco ✅ + Holter ✅ + Ergométrico ✅ · Fleury Out/2024',cirurgias:'3 cirurgias registradas com CID-10',medicamentos:'3 medicamentos em uso desde 29/04/2026',garmin:'Abr/2026 · 477 atividades Jun/24–Abr/26',timeline:'Histórico médico · 2003–2026',vacinas:'8 vacinas registradas · Meu SUS Digital · Mai/2026',arquivos:'81 PDFs · Einstein · Delboni · Fleury · Garmin',medicos:'Dra. Gabriela Guimarães + Dr. Marcelo G. Paiva + Dr. Luiz Cury Neto',garmin:'477 atividades · Jun/2024–Abr/2026 · dados reais CSV'};
+  const subs={overview:'Empresário · 44 anos · A+ · 77kg · 1,77m · Einstein #4181819',alertas:'11 pontos de atenção · PSA 4,9 prioridade urgente',laboratorial:'8 coletas · Mar/2019 a Mar/2026 · Einstein + Delboni + Fleury',hormonal:'Fleury Out/2024 · Abr/2026 · Dra. Gabriela Guimarães',cardio:'Eco ✅ + Holter ✅ + Ergométrico ✅ · Fleury Out/2024',cirurgias:'3 cirurgias registradas com CID-10',medicamentos:'3 medicamentos em uso desde 29/04/2026',garmin:'Abr/2026 · 477 atividades Jun/24–Abr/26',timeline:'Histórico médico · 2003–2026',vacinas:'8 vacinas registradas · Meu SUS Digital · Mai/2026',arquivos:'89 PDFs · Einstein · Delboni · Fleury · Garmin',medicos:'Dra. Gabriela Guimarães + Dr. Marcelo G. Paiva + Dr. Luiz Cury Neto',garmin:'477 atividades · Jun/2024–Abr/2026 · dados reais CSV'};
   document.getElementById('topbar-sub').textContent=subs[id]||'';
 }
 
